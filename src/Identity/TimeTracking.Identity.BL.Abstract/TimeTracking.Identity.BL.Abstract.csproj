@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\TimeTracking.Common\TimeTracking.Common.csproj" />
+      <ProjectReference Include="..\TimeTracking.Identity.Entities\TimeTracking.Identity.Entities.csproj" />
+      <ProjectReference Include="..\TimeTracking.Identity.Models\TimeTracking.Identity.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
+    </ItemGroup>
+
+</Project>
