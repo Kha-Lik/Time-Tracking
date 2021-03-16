@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\TimeTracking.Common\TimeTracking.Common.csproj" />
+      <ProjectReference Include="..\..\TimeTracking.Contracts\TimeTracking.Contracts.csproj" />
+      <ProjectReference Include="..\TimeTracking.Identity.BL.Abstract\TimeTracking.Identity.BL.Abstract.csproj" />
+      <ProjectReference Include="..\TimeTracking.Identity.Dal.Impl\TimeTracking.Identity.Dal.Impl.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IO.Abstractions" Version="13.2.24" />
+    </ItemGroup>
+
+</Project>

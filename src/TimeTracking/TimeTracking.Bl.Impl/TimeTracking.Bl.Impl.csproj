@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="9.5.1" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.1" />
+      <PackageReference Include="MicroElements.Swashbuckle.FluentValidation.WebApi" Version="0.1.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.11" />
+      <PackageReference Include="SonarAnalyzer.CSharp" Version="8.18.0.27296">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\TimeTracking.Contracts\TimeTracking.Contracts.csproj" />
+      <ProjectReference Include="..\TimeTracking.Bl.Abstract\TimeTracking.Bl.Abstract.csproj" />
+      <ProjectReference Include="..\TimeTracking.Dal.Abstract\TimeTracking.Dal.Abstract.csproj" />
+      <ProjectReference Include="..\TimeTracking.Models\TimeTracking.Models.csproj" />
+    </ItemGroup>
+
+</Project>
