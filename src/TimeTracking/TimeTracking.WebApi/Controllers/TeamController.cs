@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Wrapper;
@@ -7,6 +8,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/team")]
     public class TeamController : ControllerBase
@@ -42,6 +44,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
+        [Authorize(Roles = "TeamLead")]
         public async Task<ApiResponse<TeamDto>> CreateTeamAsync([FromBody]TeamDto dto)
         {
             return await _teamService.CreateTeamAsync(dto);

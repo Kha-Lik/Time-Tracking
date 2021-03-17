@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Requests;
@@ -12,6 +13,7 @@ namespace TimeTracking.WebApi.Controllers
     /// <summary>
     /// Milestone controller
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("api/project")]
     public class ProjectController:ControllerBase
@@ -29,6 +31,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
+        [Authorize(Roles = "ProjectManager")]
         public async Task<ApiResponse<ProjectDto>> CreateProjectAsync([FromBody]ProjectDto dto)
         {
             return await _projectService.CreateProjectAsync(dto);

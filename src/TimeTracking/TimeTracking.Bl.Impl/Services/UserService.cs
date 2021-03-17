@@ -37,7 +37,7 @@ namespace TimeTracking.Bl.Impl.Services
             _userDetailsMapper = userDetailsMapper;
         }
         
-        //TODO role TL
+        
         public async Task<ApiResponse<TimeTrackingUserDto>> AddUserToTeam(AssignUserToTeamRequest request)
         { 
             try

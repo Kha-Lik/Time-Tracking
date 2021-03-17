@@ -49,8 +49,6 @@ namespace TimeTracking.Bl.Impl.Services
             _issueDetailsMapper = issueDetailsMapper;
         }
 
-     
-        //TODO  PM  role
         public async Task<ApiResponse<IssueDto>> CreateIssue(IssueDto dto)
         {
             try
@@ -93,8 +91,7 @@ namespace TimeTracking.Bl.Impl.Services
                 return ApiResponse<IssueDto>.InternalError();
             }
         }
-        
-        //TODO TL OR PM  role
+      
         public async Task<ApiResponse> AssignIssueToUser(AssignIssueToUserRequest request)
         {
             try
@@ -127,7 +124,6 @@ namespace TimeTracking.Bl.Impl.Services
                 _logger.LogWarning(ex,"An error occured while assigning user {0} for issue {1} ", request.UserId,request.IssueId);
                 return ApiResponse<IssueDto>.InternalError();
             }
-            
         }
         
 

@@ -2,15 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Requests;
 using TimeTracking.Common.Wrapper;
+using TimeTracking.Dal.Impl.Seeds.Data;
 using TimeTracking.Models;
 using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/workLog")]
     public class WorkLogController : ControllerBase
@@ -50,6 +53,7 @@ namespace TimeTracking.WebApi.Controllers
             return await _workLogService.GetWorkLog(workLogId);
         }        
       
+        [Authorize(Roles = "ProjectManager,TeamLead")]
         [HttpPost]
         [Route("update-status")]
         public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus([FromBody]UpdateWorkLogStatusRequest request)

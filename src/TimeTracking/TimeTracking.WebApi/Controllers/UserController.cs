@@ -30,6 +30,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("add-to-team")]
+        [Authorize(Roles = "TeamLead")]
         public async Task<ApiResponse<TimeTrackingUserDto>> AddUserToTeam([FromBody]AssignUserToTeamRequest request)
         {
             return await _userService.AddUserToTeam(request);

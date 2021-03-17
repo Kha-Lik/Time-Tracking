@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Requests;
@@ -10,6 +11,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("issue")]
     public class IssueController : ControllerBase
@@ -29,6 +31,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("assign-to-user")]
+        [Authorize(Roles = "ProjectManager,TeamLead")]
         public async Task<ApiResponse> AssignIssueToUser([FromQuery]AssignIssueToUserRequest request)
         {
             return await _issueService.AssignIssueToUser(request);
@@ -65,6 +68,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("create-issue")]
+        [Authorize(Roles = "ProjectManager")]
         public async Task<ApiResponse<IssueDto>> CreateIssue([FromBody]IssueDto issueDto)
         {
             return await _issueService.CreateIssue(issueDto);

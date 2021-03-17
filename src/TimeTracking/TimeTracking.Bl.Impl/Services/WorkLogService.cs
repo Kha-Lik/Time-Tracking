@@ -153,7 +153,7 @@ namespace TimeTracking.Bl.Impl.Services
                 }
         }
 
-        //TODO PM OR TL role
+     
         public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description=null)
         {
             try

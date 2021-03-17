@@ -35,9 +35,7 @@ namespace TimeTracking.Bl.Impl.Services
             _teamRepository = teamRepository;
             _projectRepository = projectRepository;
         }
-
-        //TODO role TL
-        public  async  Task<ApiResponse<TeamDto>> CreateTeamAsync(TeamDto dto)
+        public async Task<ApiResponse<TeamDto>> CreateTeamAsync(TeamDto dto)
         {
             try
             {
@@ -69,7 +67,6 @@ namespace TimeTracking.Bl.Impl.Services
                 return ApiResponse<TeamDto>.InternalError();
             }
         }
-
         
         
         public async Task<ApiResponse<TeamDetailsDto>> GetTeamById(Guid teamId)

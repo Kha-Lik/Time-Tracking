@@ -33,7 +33,7 @@ namespace TimeTracking.Bl.Impl.Services
             _projectRepository = projectRepository;
         }
         
-        //TODO PM role
+      
         public async Task<ApiResponse<ProjectDto>> CreateProjectAsync(ProjectDto dto)
         {
             try
