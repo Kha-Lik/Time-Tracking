@@ -78,12 +78,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Abstract/Services/IDeviceTypeInfoService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/BlDependencyInstaller.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Services.Crud/DeviceService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Services.Crud/DeviceTypeInfoService.cs">
           <value>
             <set />
           </value>
@@ -104,6 +114,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Validators/DeviceValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Validators/StartAddDeviceProcessValidator.cs">
           <value>
             <set />
           </value>
@@ -174,6 +189,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Repository/SmartObjectTypeRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Repository/UserDevice.cs">
           <value>
             <set />
           </value>
@@ -339,6 +359,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Services/SmartObjectService/ObjectServiceTestsBase.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/SmsService/Services/SmsService/CreateSmsInTransactionAsyncTests.cs">
           <value>
             <set />
           </value>
