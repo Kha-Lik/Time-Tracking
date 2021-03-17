@@ -54,7 +54,7 @@ namespace TimeTracking.WebApi.Controllers
         [Route("update-status")]
         public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus([FromBody]UpdateWorkLogStatusRequest request)
         {
-            return await _workLogService.UpdateWorkLogStatus(request.WorkLogId,request.IsApproved);
+            return await _workLogService.UpdateWorkLogStatus(request.WorkLogId,request.IsApproved,request.Description);
         }
 
         [HttpGet]

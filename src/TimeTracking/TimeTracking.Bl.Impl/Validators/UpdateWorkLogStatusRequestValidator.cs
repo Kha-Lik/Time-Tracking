@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using TimeTracking.Common.Wrapper;
 using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
@@ -12,6 +13,13 @@ namespace TimeTracking.Bl.Impl.Validators
 
             RuleFor(d => d.WorkLogId)
                 .NotEmpty();
+
+            RuleFor(d => d.Description)
+                .NotNull()
+                .NotEmpty()
+                .When(e => !e.IsApproved)
+                .WithErrorCode(ErrorCode.ClientError.ToString())
+                .WithMessage("Description should be set when workLog is not approved");
         }
     }
 }

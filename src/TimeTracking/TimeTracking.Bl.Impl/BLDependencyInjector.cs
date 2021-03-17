@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TimeTracking.Bl.Abstract.Services;
+using TimeTracking.Bl.Impl.Helpers;
 using TimeTracking.Bl.Impl.Mappers;
 using TimeTracking.Bl.Impl.Services;
 using TimeTracking.Bl.Impl.Validators;
@@ -26,6 +27,7 @@ namespace TimeTracking.Bl.Impl
             services.AddTransient<IWorkLogService, WorkLogService>();
             services.AddTransient<ISystemClock, SystemClock>();
             services.AddTransient<ITeamService, TeamService>();
+            services.AddTransient<IEmailHelper, EmailHelper>();
             services.AddMappers();
             return services;
         }

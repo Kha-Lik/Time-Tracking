@@ -67,5 +67,6 @@ namespace TimeTracking.Common.Wrapper
         RefreshTokenRevocationFailed,
         [Description("Failed to send email")]
         EmailSendFailed,
+        ClientError
     }
 }

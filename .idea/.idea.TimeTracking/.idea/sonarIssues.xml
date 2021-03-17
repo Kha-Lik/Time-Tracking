@@ -2203,6 +2203,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Helpers/EmailHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Mappers/IssueDeatilsMapper.cs">
           <value>
             <set />
@@ -2279,6 +2284,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Validators/MilestoneDtoValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Validators/UpdateWorkLogStatusRequestValidator.cs">
           <value>
             <set />
           </value>
@@ -2409,6 +2419,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/Requests/AssignIssueToUserRequest.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/Requests/UpdateWorkLogStatusRequest.cs">
           <value>
             <set />
           </value>

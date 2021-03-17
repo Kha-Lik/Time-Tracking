@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using TimeTracking.Bl.Impl;
 using TimeTracking.Bl.Impl.Consumers;
 using TimeTracking.Bl.Impl.Validators;
+using TimeTracking.Common.Email;
 using TimeTracking.Common.FluentValidator;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.RabbitMq;
@@ -27,7 +28,6 @@ namespace TimeTracking.WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services
@@ -49,6 +49,7 @@ namespace TimeTracking.WebApi
             services.AddFluentValidatorServices(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.AddRabbitMqConfiguration(Configuration);
+            services.AddFluentEmailServices(Configuration);
             
             services.AddCors(options =>
             {

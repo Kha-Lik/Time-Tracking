@@ -28,5 +28,12 @@ namespace TimeTracking.Dal.Impl.Repositories
                 select new Tuple<string,List<WorkLog>>(grp.Key.ProjectName,grp.Select(e=>e.wl).ToList());
             return  await query.FirstOrDefaultAsync();
         }
+
+        public async Task<WorkLog> GetByIdWithUserAsync(Guid workLogId)
+        {
+             return await _dbContext.WorkLogs.Where(e => e.Id.Equals(workLogId))
+                .Include(e => e.TimeTrackingUser)
+                .FirstOrDefaultAsync();
+        }
     }
 }

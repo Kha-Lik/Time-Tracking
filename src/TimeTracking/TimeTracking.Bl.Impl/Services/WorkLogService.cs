@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using TimeTracking.Bl.Abstract.Services;
+using TimeTracking.Bl.Impl.Helpers;
+using TimeTracking.Common.Abstract;
 using TimeTracking.Common.Helpers;
 using TimeTracking.Common.Mappers;
 using TimeTracking.Common.Pagination;
@@ -23,21 +25,24 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly IBaseMapper<WorkLog, WorkLogDto> _worklogMapper;
         private readonly IModelMapper<WorkLog, WorkLogDetailsDto> _worklogDetailsMapper;
         private readonly IWorklogRepository _worklogRepository;
+        private readonly IIssueService _issueService;
+        private readonly IEmailHelper _emailHelper;
         private readonly IUserService _userService;
-        private readonly IIssueRepository _issueRepository;
 
         public WorkLogService(ILogger<WorkLogService> logger,
             IBaseMapper<WorkLog,WorkLogDto> worklogMapper,
-            IWorklogRepository worklogRepository,
             IUserService userService,
-            IIssueRepository issueRepository,
+            IWorklogRepository worklogRepository,
+            IIssueService issueService,
+            IEmailHelper emailHelper,
             IModelMapper<WorkLog, WorkLogDetailsDto> worklogDetailsMapper)
         {
             _logger = logger;
             _worklogMapper = worklogMapper;
             _worklogRepository = worklogRepository;
+            _issueService = issueService;
+            _emailHelper = emailHelper;
             _userService = userService;
-            _issueRepository = issueRepository;
             _worklogDetailsMapper = worklogDetailsMapper;
         }
 
@@ -45,15 +50,10 @@ namespace TimeTracking.Bl.Impl.Services
         {
             try
             {
-                var issue = _issueRepository.GetByIdAsync(dto.IssueId);
-                if (issue == null)
+                var issueFoundResponse = await _issueService.GetIssueByIdAsync(dto.IssueId);
+                if (!issueFoundResponse.IsSuccess)
                 {
-                    return new ApiResponse<WorkLogDto>()
-                    {
-                        StatusCode = 404,
-                        IsSuccess = false,
-                        ResponseException = new ApiError(ErrorCode.IssueNotFound, ErrorCode.IssueNotFound.GetDescription())
-                    };
+                    return issueFoundResponse.ToFailed<WorkLogDto>();
                 }
                 var entityToAdd = _worklogMapper.MapToEntity(dto); 
                 entityToAdd = await _worklogRepository.AddAsync(entityToAdd);
@@ -154,11 +154,11 @@ namespace TimeTracking.Bl.Impl.Services
         }
 
         //TODO PM OR TL role
-        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved)
+        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description=null)
         {
             try
             {
-                var workLog = await _worklogRepository.GetByIdAsync(workLogId);
+                var workLog = await _worklogRepository.GetByIdWithUserAsync(workLogId);
                 if (workLog == null)
                 {
                     return new ApiResponse<WorkLogDto>()
@@ -167,6 +167,12 @@ namespace TimeTracking.Bl.Impl.Services
                         IsSuccess = false,
                         ResponseException = new ApiError(ErrorCode.WorkLogNotFound, ErrorCode.WorkLogNotFound.GetDescription())
                     };
+                }
+
+                if (!isApproved)
+                {
+                    await _emailHelper.SendEmailWithValidationOfWorkLogFailed(workLog.TimeTrackingUser.Email,
+                        description);  
                 }
                 workLog.IsApproved = isApproved;
                 workLog = await _worklogRepository.UpdateAsync(workLog);

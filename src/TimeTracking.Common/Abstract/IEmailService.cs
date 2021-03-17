@@ -8,5 +8,7 @@ namespace TimeTracking.Common.Abstract
     {
         Task<bool> SendMessageWithPurpose<TModel>(MailModel model, EmailPurpose emailPurpose, TModel templateModel)
             where  TModel : class;
+
+       Task<bool> SendMessage(MailModel model);
     }
 }

@@ -23,6 +23,31 @@ namespace TimeTracking.Common.Email
             _templateStorageService = templateStorageService;
         }
 
+        public async Task<bool> SendMessage (MailModel model)
+        {
+            try
+            {
+                var result = await _email
+                    .To(model.ToEmail)
+                    .Subject(model.Subject)
+                    .Body(model.Body)
+                    .SendAsync();
+                if (!result.Successful)
+                {
+                    _logger.LogError("Failed to send an email.\n{Errors}",
+                        string.Join(Environment.NewLine, result.ErrorMessages));
+                }
+
+                return result.Successful;
+            }
+            catch (Exception ex)
+            {
+             
+                _logger.LogError($"{DateTime.Now}: Failed to send email notification ❌! ({ex.Message})");
+                return false;
+            }
+
+        }
 
         public async Task<bool> SendMessageWithPurpose<TModel>(MailModel model, EmailPurpose emailPurpose,
             TModel templateModel)
@@ -47,7 +72,7 @@ namespace TimeTracking.Common.Email
             catch (Exception ex)
             {
              
-                _logger.LogError($"{DateTime.Now}: Failed to send email notification ❌! ({ex.Message})");
+                _logger.LogError($"{DateTime.Now}: Failed to send email with purpose {emailPurpose.ToString()} ❌! ({ex.Message})");
                 return false;
             }
         }

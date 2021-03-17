@@ -15,6 +15,6 @@ namespace TimeTracking.Bl.Abstract.Services
         Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged(PagedRequest pagedRequest);
         Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogDto workLogDto,Guid workLogId);
         Task<ApiResponse<WorkLogDto>> GetWorkLog(Guid workLogId);
-        Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved);
+        Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description = null);
     }
 }

@@ -12,5 +12,6 @@ namespace TimeTracking.Dal.Abstract.Repositories
     public interface IWorklogRepository:IRepository<Guid,WorkLog>
     {
         Task<Tuple<string, List<WorkLog>>> GetActivitiesWithDetailsByUserId(Guid userId, Guid projectId);
+        Task<WorkLog> GetByIdWithUserAsync(Guid workLogId);
     }
 }
