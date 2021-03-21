@@ -11,6 +11,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
 {
     [Authorize]
     [Produces("application/json")]
+    [ApiController]
     [Route("api/user")]
     public class UserController:ControllerBase
     {

@@ -1,7 +1,5 @@
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\appsettings.json
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\Views\_ViewImports.cshtml
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\Views\_ViewStart.cshtml
@@ -280,3 +278,4 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\ob
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\obj\Debug\netcoreapp3.1\TimeTracking.Identity.BL.Abstract.csproj.CopyComplete
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\obj\Debug\netcoreapp3.1\TimeTracking.Identity.BL.Abstract.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\obj\Debug\netcoreapp3.1\TimeTracking.Identity.BL.Abstract.pdb
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.BL.Abstract\bin\Debug\netcoreapp3.1\ReportsTemplates\time-log.xlsx

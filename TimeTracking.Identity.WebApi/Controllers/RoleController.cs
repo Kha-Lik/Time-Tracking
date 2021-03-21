@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Common.Wrapper;
@@ -6,8 +7,9 @@ using TimeTracking.Identity.BL.Abstract.Services;
 using TimeTracking.Identity.Models.Requests;
 
 namespace TimeTracking.Identity.WebApi.Controllers
-{
-    [Authorize]
+{    
+    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Produces("application/json")]
     [Route("api/role")]
     public class RoleController : ControllerBase

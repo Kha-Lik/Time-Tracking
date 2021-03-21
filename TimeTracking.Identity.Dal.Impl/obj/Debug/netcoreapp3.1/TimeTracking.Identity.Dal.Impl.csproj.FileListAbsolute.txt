@@ -12,8 +12,6 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\obj\D
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Impl.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\appsettings.json
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Common.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Templates.dll
@@ -278,3 +276,4 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\D
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\refs\WindowsBase.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\Views\_ViewImports.cshtml
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\Views\_ViewStart.cshtml
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\ReportsTemplates\time-log.xlsx

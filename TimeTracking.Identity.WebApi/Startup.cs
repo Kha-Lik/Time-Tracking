@@ -71,6 +71,7 @@ namespace TimeTracking.Identity.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<TokenExchangeRequestValidator>();
                 });
 
+       
             services.AddRabbitMqConfiguration(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.AddBlLogicServices(Configuration);

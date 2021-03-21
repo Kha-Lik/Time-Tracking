@@ -96,7 +96,7 @@ namespace TimeTracking.Identity.BL.Impl.Factories
                               .TotalSeconds);
 
        
-       //TODO fluent validator
+     
         private static void ThrowIfInvalidOptions(JwtSettings options)
         {
             if (options == null) throw new ArgumentNullException(nameof(options));

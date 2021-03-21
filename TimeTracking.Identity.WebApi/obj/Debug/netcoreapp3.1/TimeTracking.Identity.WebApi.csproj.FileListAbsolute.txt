@@ -61,7 +61,6 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Deb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Impl.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Templates.Views.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.WebApi.StaticWebAssets.xml
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\FluentEmail.Core.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\FluentEmail.Razor.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\FluentEmail.Smtp.dll
@@ -410,3 +409,4 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Deb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.BL.Impl.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Contracts.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.BL.Abstract.pdb
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\ReportsTemplates\time-log.xlsx

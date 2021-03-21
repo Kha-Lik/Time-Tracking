@@ -7,6 +7,7 @@ using TimeTracking.Identity.Models.Responses;
 
 namespace TimeTracking.Identity.WebApi.Controllers
 {
+    [ApiController]
     [Produces("application/json")]
     [Route("api/auth")]
     public class AuthController : ControllerBase

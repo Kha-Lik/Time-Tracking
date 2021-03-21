@@ -59,12 +59,11 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     });
             }
             
-            var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
+          /*  var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
             if (!sendEmailConfirmResult.IsSuccess)
             {
                 return sendEmailConfirmResult;
-            }
-            
+            }*/
             await _publish.Publish<UserSignedUp>(new
             {
                 UserId = userToAdd.Id,
