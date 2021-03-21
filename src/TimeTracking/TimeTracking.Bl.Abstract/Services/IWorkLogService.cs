@@ -13,8 +13,9 @@ namespace TimeTracking.Bl.Abstract.Services
         Task<ApiResponse<WorkLogDto>> CreateWorkLog(WorkLogDto dto);
         Task<ApiResponse<UserActivityDto>> GetAllActivitiesForUser(ActivitiesRequest request);
         Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged(PagedRequest pagedRequest);
-        Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogDto workLogDto,Guid workLogId);
+        Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogUpdateRequest workLogUpdateRequest);
         Task<ApiResponse<WorkLogDto>> GetWorkLog(Guid workLogId);
         Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description = null);
+        Task<ApiResponse> DeleteWorkLog(Guid workLogId);
     }
 }

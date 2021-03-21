@@ -21,18 +21,21 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly IBaseMapper<Milestone, MilestoneDto> _milestoneMapper;
         private readonly IModelMapper<Milestone, MilestoneDetailsDto> _milestoneDetailsMapper;
         private readonly IMilestoneRepository _milestoneRepository;
+        private readonly IUserProvider _userProvider;
         private readonly IProjectRepository _projectRepository;
 
         public MileStoneService(ILogger<Milestone> logger,
             IBaseMapper<Milestone,MilestoneDto> milestoneMapper,
             IModelMapper<Milestone,MilestoneDetailsDto> milestoneDetailsMapper,
             IMilestoneRepository milestoneRepository,
+            IUserProvider userProvider,
             IProjectRepository projectRepository)
         {
             _logger = logger;
             _milestoneMapper = milestoneMapper;
             _milestoneDetailsMapper = milestoneDetailsMapper;
             _milestoneRepository = milestoneRepository;
+            _userProvider = userProvider;
             _projectRepository = projectRepository;
         }
         
@@ -52,6 +55,7 @@ namespace TimeTracking.Bl.Impl.Services
                     };
                 }
                 var entityToAdd = _milestoneMapper.MapToEntity(dto);
+                entityToAdd.CreatedByUserId = _userProvider.GetUserId();
                 entityToAdd = await _milestoneRepository.AddAsync(entityToAdd);
                 if (entityToAdd != null) return new ApiResponse<MilestoneDto>(_milestoneDetailsMapper.MapToModel(entityToAdd));
                 _logger.LogWarning("Failed to create milestone entity {0}", JsonConvert.SerializeObject(dto));

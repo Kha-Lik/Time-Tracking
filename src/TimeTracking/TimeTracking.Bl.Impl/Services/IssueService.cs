@@ -54,29 +54,30 @@ namespace TimeTracking.Bl.Impl.Services
             try
             {
                 var entityToAdd = _issueMapper.MapToEntity(dto); 
+                if (dto.MilestoneId != null)
+                {
+                    var mileStoneFoundResponse = await _mileStoneService.GetMileStoneById(dto.MilestoneId.Value);
+                    if (!mileStoneFoundResponse.IsSuccess)
+                    {
+                        return mileStoneFoundResponse.ToFailed<IssueDto>();
+                    }
+
+                    entityToAdd.MilestoneId = dto.MilestoneId;
+                }
+                
+                var projectFindResponse = await _projectService.GetProjectByIdAsync(dto.ProjectId);
+                if (!projectFindResponse.IsSuccess)
+                {
+                    return projectFindResponse.ToFailed<IssueDto>();
+                }
+                entityToAdd.ProjectId= dto.ProjectId;
+                entityToAdd.OpenedAt = _systemClock.UtcNow;
+                entityToAdd.Status = Status.Open;
                 entityToAdd = await _issueRepository.AddAsync(entityToAdd);
                 if (entityToAdd != null)
                 {
-                    ApiResponse<MilestoneDetailsDto> mileStoneFoundResponse=null;
-                    if (dto.MilestoneId != null)
-                    {
-                        mileStoneFoundResponse = await _mileStoneService.GetMileStoneById(dto.MilestoneId.Value);
-                        if (!mileStoneFoundResponse.IsSuccess)
-                        {
-                            return mileStoneFoundResponse.ToFailed<IssueDto>();
-                        }
-                    }
-                
-                    var projectFindResponse = await _projectService.GetProjectByIdAsync(dto.ProjectId);
-                    if (!projectFindResponse.IsSuccess)
-                    {
-                        return projectFindResponse.ToFailed<IssueDto>();
-                    }
-                    entityToAdd.OpenedAt = _systemClock.UtcNow;
-                    entityToAdd.Status = Status.Open;
                     return new ApiResponse<IssueDto>(dto);
                 }
-
                 _logger.LogWarning("Failed to create entity {0}", JsonConvert.SerializeObject(dto));
                 return new ApiResponse<IssueDto>()
                 {

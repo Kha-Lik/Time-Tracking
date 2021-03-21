@@ -55,8 +55,8 @@ namespace TimeTracking.WebApi.Controllers
         /// <param name="issueId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
-        public async Task<ApiResponse<IssueDetailsDto>> AssignIssueToUser([FromRoute]Guid issueId)
+        [Route("{issueId}")]
+        public async Task<ApiResponse<IssueDetailsDto>> GetIssueById([FromRoute]Guid issueId)
         {
             return await _issueService.GetIssueByIdAsync(issueId);
         }
@@ -66,7 +66,7 @@ namespace TimeTracking.WebApi.Controllers
         /// </summary>
         /// <param name="issueDto"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("create-issue")]
         [Authorize(Roles = "ProjectManager")]
         public async Task<ApiResponse<IssueDto>> CreateIssue([FromBody]IssueDto issueDto)

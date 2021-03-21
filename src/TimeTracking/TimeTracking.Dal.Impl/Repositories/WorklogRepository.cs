@@ -15,18 +15,15 @@ namespace TimeTracking.Dal.Impl.Repositories
         {
         }
         
-        public async Task<Tuple<string,List<WorkLog>>> GetActivitiesWithDetailsByUserId(Guid userId, Guid projectId)
+        public async Task<List<WorkLog>> GetActivitiesWithDetailsByUserId(Guid userId, Guid projectId)
         {
-            var workLogSubQuery =
-                from wl in _dbContext.WorkLogs.Where(e => e.UserId.Equals(userId))
-                join i in _dbContext.Issues on wl.IssueId equals i.Id
-                join pr in _dbContext.Projects on i.ProjectId equals projectId
-                select new {wl,i,pr};
-            
-           var query = from w in  workLogSubQuery
-                group w by new {ProjectName = w.pr.Name, Id =w.pr.Id} into grp
-                select new Tuple<string,List<WorkLog>>(grp.Key.ProjectName,grp.Select(e=>e.wl).ToList());
-            return  await query.FirstOrDefaultAsync();
+     
+            var query =
+                _dbContext.WorkLogs.Where(e => e.UserId.Equals(userId))
+                    .Include(e => e.Issue)
+                    .ThenInclude(e => e.Project)
+                    .Where(e=>e.Issue.ProjectId.Equals(projectId));
+            return  await query.ToListAsync();
         }
 
         public async Task<WorkLog> GetByIdWithUserAsync(Guid workLogId)

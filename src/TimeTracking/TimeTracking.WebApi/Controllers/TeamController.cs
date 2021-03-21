@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
+using TimeTracking.Common.Requests;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Models;
 
@@ -49,5 +50,17 @@ namespace TimeTracking.WebApi.Controllers
         {
             return await _teamService.CreateTeamAsync(dto);
         }
+        
+        /// <summary>
+        /// Returns paged response with all teams
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ApiPagedResponse<TeamDetailsDto>> GetAll([FromQuery]PagedRequest request)
+        {
+            return await _teamService.GetAllTeamAsync(request);
+        }
+
     }
 }

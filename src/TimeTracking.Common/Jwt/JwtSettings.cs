@@ -10,8 +10,8 @@ namespace TimeTracking.Common.Jwt
         public string Audience { get; set; }
         public DateTime IssuedAt => DateTime.UtcNow;
         public DateTime AccessTokenExpiration => IssuedAt.Add(AccessTokenValidFor);
-        public TimeSpan AccessTokenValidFor { get; set; } = TimeSpan.FromMinutes(120);
-        public TimeSpan RefreshTokenValidFor { get; set; }= TimeSpan.FromMinutes(120*3);
+        public TimeSpan AccessTokenValidFor { get; set; } = TimeSpan.FromMinutes(120*3);
+        public TimeSpan RefreshTokenValidFor { get; set; }= TimeSpan.FromMinutes(120);
         public DateTime NotBefore => DateTime.UtcNow;
         public Func<Task<string>> JtiGenerator =>
             () => Task.FromResult(Guid.NewGuid().ToString());

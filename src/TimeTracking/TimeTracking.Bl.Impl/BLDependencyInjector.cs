@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TimeTracking.Bl.Abstract.Services;
@@ -28,6 +29,8 @@ namespace TimeTracking.Bl.Impl
             services.AddTransient<ISystemClock, SystemClock>();
             services.AddTransient<ITeamService, TeamService>();
             services.AddTransient<IEmailHelper, EmailHelper>();
+            services.AddTransient<IUserProvider, UserProvider>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMappers();
             return services;
         }

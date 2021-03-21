@@ -31,7 +31,8 @@ namespace TimeTracking.Dal.Impl
                 .WithOne();
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.Milestone)
-                .WithOne();
+                .WithOne()
+                .HasForeignKey<Issue>(e=>e.MilestoneId);
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.Project)
                 .WithMany()
@@ -52,7 +53,8 @@ namespace TimeTracking.Dal.Impl
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Team>()
                 .HasOne(e => e.Project)
-                .WithMany();
+                .WithMany()
+                .HasForeignKey(e=>e.ProjectId);
             
             
             modelBuilder.Entity<Project>()
@@ -76,6 +78,10 @@ namespace TimeTracking.Dal.Impl
                 .HasMany(e => e.Issues)
                 .WithOne();
             modelBuilder.Entity<Milestone>()
+                .HasOne(e => e.Project)
+                .WithMany()
+                .HasForeignKey(e=>e.ProjectId);
+            modelBuilder.Entity<Milestone>()
                 .HasOne(e => e.CreatedByUser)
                 .WithOne()
                 .OnDelete(DeleteBehavior.NoAction);
@@ -93,7 +99,8 @@ namespace TimeTracking.Dal.Impl
                 .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<WorkLog>()
                 .HasOne(e => e.Issue)
-                .WithMany();
+                .WithMany()
+                .HasForeignKey(e => e.IssueId);
             modelBuilder.Entity<WorkLog>()
                 .Property(e => e.ActivityType)
                 .HasConversion<string>();

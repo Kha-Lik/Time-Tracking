@@ -67,6 +67,9 @@ namespace TimeTracking.Common.Wrapper
         RefreshTokenRevocationFailed,
         [Description("Failed to send email")]
         EmailSendFailed,
-        ClientError
+        [Description("An error caused by client")]
+        ClientError,
+        [Description("An user to role failed")]
+        AddToRoleFailed,
     }
 }

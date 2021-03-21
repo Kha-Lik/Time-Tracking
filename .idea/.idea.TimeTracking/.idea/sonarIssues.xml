@@ -173,6 +173,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Migrations/20210318063221_UserDeviceAdded.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Migrations/20210318140315_UserDeviceAdded.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Migrations/20210318141815_UserDeviceAdded.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Migrations/BackendDataReceiverDbContextModelSnapshot.cs">
           <value>
             <set />
@@ -314,6 +329,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Repositories/SmartObjectTypeRepositoryTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Services/DeviceService/AddDeviceToHubTests.cs">
           <value>
             <set />
           </value>
@@ -613,12 +633,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Factories/JwtFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Mappers/UserDtoMapper.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Services/EmailHelperService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Services/RoleService.cs">
           <value>
             <set />
           </value>
@@ -1183,6 +1213,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.Bl.Impl/Heplers/Rotes.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.Bl.Impl/Heplers/Routes.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.Bl.Impl/PdfReportExporter.cs">
           <value>
             <set />
@@ -1314,6 +1354,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.Models/Responces/ReportExporterResponse.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.Models/UserActivityDto.cs">
           <value>
             <set />
           </value>
@@ -1663,6 +1708,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/HttpClientHadler/HttpContextProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/HttpClientHadler/IHttpProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/HttpClientHandler/HttpContextProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/HttpClientHandler/IHttpProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking.Common/Implementation/EmailService.cs">
           <value>
             <set />
@@ -1699,6 +1764,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking.Common/Implementation/UnitOfWorkFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/Jwt/JwtDependencyInstaller.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.Common/Jwt/JwtSettings.cs">
           <value>
             <set />
           </value>
@@ -2208,6 +2283,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Abstract/Services/IUserProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Abstract/Services/IUserService.cs">
           <value>
             <set />
@@ -2224,6 +2304,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Consumers/UserSignedInEventConsumer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Exceptions/AuthorizationError.cs">
           <value>
             <set />
           </value>
@@ -2263,6 +2348,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Mappers/WorkLogDetailsMapper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Mappers/WorkLogMapper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Services/IssueService.cs">
           <value>
             <set />
@@ -2279,6 +2374,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Services/TeamService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Services/UserProvider.cs">
           <value>
             <set />
           </value>
@@ -2309,6 +2409,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Validators/MilestoneDtoValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Impl/Validators/UpdateWorkLogRequestValidator.cs">
           <value>
             <set />
           </value>
@@ -2453,12 +2558,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/Requests/UpdateWorkLogStatusRequestValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/Requests/WorkLogUpdateRequest.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/TimeTrackingUserDto.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/UserActivityDto.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Models/WorkLogDto.cs">
           <value>
             <set />
           </value>

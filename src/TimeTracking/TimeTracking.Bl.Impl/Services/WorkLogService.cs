@@ -23,6 +23,7 @@ namespace TimeTracking.Bl.Impl.Services
     {
         private readonly ILogger<WorkLogService> _logger;
         private readonly IBaseMapper<WorkLog, WorkLogDto> _worklogMapper;
+        private readonly IUserProvider _userProvider;
         private readonly IModelMapper<WorkLog, WorkLogDetailsDto> _worklogDetailsMapper;
         private readonly IWorklogRepository _worklogRepository;
         private readonly IIssueService _issueService;
@@ -31,6 +32,7 @@ namespace TimeTracking.Bl.Impl.Services
 
         public WorkLogService(ILogger<WorkLogService> logger,
             IBaseMapper<WorkLog,WorkLogDto> worklogMapper,
+            IUserProvider userProvider,
             IUserService userService,
             IWorklogRepository worklogRepository,
             IIssueService issueService,
@@ -39,6 +41,7 @@ namespace TimeTracking.Bl.Impl.Services
         {
             _logger = logger;
             _worklogMapper = worklogMapper;
+            _userProvider = userProvider;
             _worklogRepository = worklogRepository;
             _issueService = issueService;
             _emailHelper = emailHelper;
@@ -54,8 +57,11 @@ namespace TimeTracking.Bl.Impl.Services
                 if (!issueFoundResponse.IsSuccess)
                 {
                     return issueFoundResponse.ToFailed<WorkLogDto>();
+                    
                 }
-                var entityToAdd = _worklogMapper.MapToEntity(dto); 
+                var entityToAdd = _worklogMapper.MapToEntity(dto);
+                entityToAdd.IssueId = dto.IssueId;
+                entityToAdd.UserId = _userProvider.GetUserId();
                 entityToAdd = await _worklogRepository.AddAsync(entityToAdd);
                 if (entityToAdd != null) return new ApiResponse<WorkLogDto>(dto);
                 _logger.LogWarning("Failed to create entity {0}", JsonConvert.SerializeObject(dto));
@@ -73,7 +79,6 @@ namespace TimeTracking.Bl.Impl.Services
             }
         }
 
-        //TODO maybe get from header
         public async Task<ApiResponse<UserActivityDto>> GetAllActivitiesForUser(ActivitiesRequest request)
         {
             try
@@ -88,9 +93,10 @@ namespace TimeTracking.Bl.Impl.Services
                     UserId = request.UserId,
                     UserName = userFoundResponse.Data.FirstName,
                     UserSurname = userFoundResponse.Data.LastName,
-                    ProjectName = workLogActivities.Item1,
-                    TotalWorkLogInSeconds = (long)workLogActivities.Item2.Sum(e => e.TimeSpent.TotalSeconds),
-                    WorkLogItems = workLogActivities.Item2.Select(e=>_worklogMapper.MapToModel(e)).ToList(),
+                    UserEmail = userFoundResponse.Data.Email,
+                    ProjectName =workLogActivities.Select(e=>e.Issue.Project.Name).FirstOrDefault(),
+                    TotalWorkLogInSeconds = (long)workLogActivities.Sum(e => e.TimeSpent.TotalSeconds),
+                    WorkLogItems = workLogActivities.Select(e=>_worklogDetailsMapper.MapToModel(e)).ToList(),
                 };
                 return new ApiResponse<UserActivityDto>(userActivity);
             }
@@ -109,11 +115,12 @@ namespace TimeTracking.Bl.Impl.Services
         }
 
 
-        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogDto workLogDto,Guid workLogId)
+       
+        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogUpdateRequest workLogUpdateRequest)
         {
             try
             {
-                var workLog = await _worklogRepository.GetByIdAsync(workLogId);
+                var workLog = await _worklogRepository.GetByIdAsync(workLogUpdateRequest.WorkLogId);
                 if (workLog == null)
                 {
                     return new ApiResponse<WorkLogDto>()
@@ -123,13 +130,16 @@ namespace TimeTracking.Bl.Impl.Services
                         ResponseException = new ApiError(ErrorCode.WorkLogNotFound, ErrorCode.WorkLogNotFound.GetDescription())
                     };
                 }
-                var workLogToUpdate = _worklogMapper.MapToEntity(workLogDto);
-                workLogToUpdate = await _worklogRepository.UpdateAsync(workLogToUpdate);
-                return new ApiResponse<WorkLogDto>(_worklogMapper.MapToModel(workLogToUpdate));
+                workLog.Description = workLogUpdateRequest.Description;
+                workLog.ActivityType = workLogUpdateRequest.ActivityType;
+                workLog.StartDate = workLogUpdateRequest.StartDate;
+                workLog.TimeSpent = workLogUpdateRequest.TimeSpent;
+                workLog = await _worklogRepository.UpdateAsync(workLog);
+                return new ApiResponse<WorkLogDto>(_worklogMapper.MapToModel(workLog));
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while updating workLog {0] status to", workLogId);
+                _logger.LogError(e,"An error occured while updating workLog");
                 return  ApiResponse<WorkLogDto>.InternalError();
             }
         }
@@ -181,6 +191,30 @@ namespace TimeTracking.Bl.Impl.Services
             catch (Exception e)
             {
                 _logger.LogWarning(e,"An error occured while updating workLog {0] status to {1} ", workLogId,isApproved);
+                return  ApiResponse<WorkLogDto>.InternalError();
+            }
+        }
+        public  async Task<ApiResponse> DeleteWorkLog(Guid workLogId)
+        {
+            try
+            {
+                var workLogFound = await _worklogRepository.GetByIdAsync(workLogId);
+                if(workLogFound==null)
+                {
+                    _logger.LogWarning("Worklog by id {0} was not found in database",workLogId);
+                    return new ApiResponse<WorkLogDto>()
+                    {
+                        StatusCode = 400,
+                        IsSuccess = false,
+                        ResponseException = new ApiError(ErrorCode.WorkLogNotFound, ErrorCode.WorkLogNotFound.GetDescription())
+                    };
+                }
+                await _worklogRepository.DeleteAsync(workLogFound);
+                return ApiResponse.Success();
+            }
+            catch (Exception e)
+            {
+                _logger.LogWarning(e,"An error occured while deleting workLog {0] ", workLogId);
                 return  ApiResponse<WorkLogDto>.InternalError();
             }
         }
