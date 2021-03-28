@@ -11,8 +11,9 @@ namespace TimeTracking.Identity.WebApi.Controllers
 {
     [Authorize]
     [Produces("application/json")]
+    [ApiController]
     [Route("api/user")]
-    public class UserController:ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IUserIdentityService _userIdentityService;
 
@@ -27,9 +28,9 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("all-users")]
-        public  async Task<ApiResponse<List<UserDto>>> GetAll()
+        public async Task<ApiResponse<List<UserDto>>> GetAll()
         {
-           return  await  _userIdentityService.GetAllUsers();
+            return await _userIdentityService.GetAllUsers();
         }
 
         /// <summary>

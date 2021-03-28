@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Mappers
 {
-    public class MileStoneMapper :IBaseMapper<Milestone,MilestoneDto>
+    public class MileStoneMapper : IBaseMapper<Milestone, MilestoneDto>
     {
         public MilestoneDto MapToModel(Milestone entity)
         {

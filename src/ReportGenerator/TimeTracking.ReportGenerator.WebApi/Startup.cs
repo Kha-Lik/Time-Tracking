@@ -1,19 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using TimeTracking.Common.FluentValidator;
+using TimeTracking.Common.HttpClientHandler;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.Services;
 using TimeTracking.Common.Swager;
+using TimeTracking.IocContainer;
+using TimeTracking.IocContainer.TimeTrackingIoc.Extensions;
+using TimeTracking.ReportGenerator.Bl.Abstract;
 using TimeTracking.ReportGenerator.Bl.Impl;
+using TimeTracking.ReportGenerator.Bl.Impl.Services;
 using TimeTracking.ReportGenerator.Bl.Impl.Validators;
 
 namespace TimeTracking.ReportGenerator.WebApi
@@ -25,10 +34,12 @@ namespace TimeTracking.ReportGenerator.WebApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
@@ -41,14 +52,22 @@ namespace TimeTracking.ReportGenerator.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<Startup>();
                     c.RegisterValidatorsFromAssemblyContaining<ReportConfigParameterValidator>();
                 });
-            
 
+            //services.AddServicesFrom("TimeTracking.ReportGenerator.Bl.Impl"); // <-- Your implementations namespace.
             services.AddBlLogicServices(Configuration);
+            services.AddOptions();
+            //services.Configure<ConsoleLifetimeOptions>(options => Options.Create(new ConsoleLifetimeOptions()));
+            //services.Configure<HostOptions>(options => Options.Create(new HostOptions()) );
+
+
+
+            services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
+            services.AddLogging();
             services.AddSwaggerConfiguration("Time tracking report generator");
             services.AddFluentValidatorServices(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.RegisterTemplateServices();
-            
+            //services.AddClassesAsImplementedInterface(services.BuildServiceProvider(),Assembly.GetEntryAssembly(),typeof(IOptions<>));
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CurrentCorsPolicy",
@@ -66,8 +85,9 @@ namespace TimeTracking.ReportGenerator.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseCors("CurrentCorsPolicy");
-        
+
             app.UseSwagger();
 
             if (env.IsDevelopment())

@@ -3,23 +3,23 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class ProjectDtoValidator:AbstractValidator<ProjectDto>
+    public class ProjectDtoValidator : AbstractValidator<ProjectDto>
     {
         public ProjectDtoValidator()
         {
             RuleFor(x => x.Abbreviation)
                 .NotNull()
                 .NotEmpty();
-            
-            RuleFor(x=>x.Name)
+
+            RuleFor(x => x.Name)
                 .NotNull()
                 .NotEmpty();
-            
-            RuleFor(x=>x.Description)
+
+            RuleFor(x => x.Description)
                 .NotNull()
                 .NotEmpty();
-            
-            RuleFor(e=>e.InitialRisk)
+
+            RuleFor(e => e.InitialRisk)
                 .NotNull()
                 .NotEmpty();
         }

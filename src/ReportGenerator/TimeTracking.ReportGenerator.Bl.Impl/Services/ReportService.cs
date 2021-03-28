@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.ReportGenerator.Bl.Abstract;
 using TimeTracking.ReportGenerator.Models;
@@ -10,30 +12,52 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Services
     public class ReportService : IReportService
     {
         private readonly IReportExporter _reportExporter;
+        private readonly ILogger<ReportService> _logger;
         private readonly IWorkLogClientService _workLogClientService;
 
-        public ReportService(IReportExporter reportExporter, 
+        public ReportService(IReportExporter reportExporter,
+            ILogger<ReportService> logger,
             IWorkLogClientService workLogClientService)
         {
             _reportExporter = reportExporter;
+            _logger = logger;
             _workLogClientService = workLogClientService;
         }
 
 
-        public async Task<ApiResponse<ReportExporterResponse>> GenerateReportAsync(ReportConfiguration reportConfiguration)
+        public async Task<ApiResponse<ReportExporterResponse>> GenerateReportAsync(
+            ReportConfiguration reportConfiguration)
         {
-            var reportGeneratorRequest = new ReportGeneratorRequest()
+            try
             {
-                ProjectId = reportConfiguration.ReportParameters.ProjectId,
-                UserId = reportConfiguration.ReportParameters.UserId,
-            };
-            var apiResponse = await _workLogClientService.GetUserActivities(reportGeneratorRequest);
-            if (!apiResponse.IsSuccess)
-            {
-                return apiResponse.ToFailed<ReportExporterResponse>();
+                var reportGeneratorRequest = new ReportGeneratorRequest()
+                {
+                    ProjectId = reportConfiguration.ProjectId,
+                    UserId = reportConfiguration.UserId,
+                };
+                var apiResponse = await _workLogClientService.GetUserActivities(reportGeneratorRequest);
+                if (!apiResponse.IsSuccess)
+                {
+                    return apiResponse.ToFailed<ReportExporterResponse>();
+                }
+
+                var reportExportFile =
+                    _reportExporter.GenerateReportForExport(apiResponse.Data, reportConfiguration.ReportFormatType);
+                return new ApiResponse<ReportExporterResponse>(reportExportFile);
             }
-            var reportExportFile = _reportExporter.GenerateReportForExport(apiResponse.Data,reportConfiguration.ReportFormatType);
-            return new ApiResponse<ReportExporterResponse>(reportExportFile);
+            catch (Exception e)
+            {
+                _logger.LogError(e, "");
+                return new ApiResponse<ReportExporterResponse>()
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    ResponseException = new ApiError()
+                    {
+                        ErrorMessage = "Failed to generate report",
+                    }
+                };
+            }
         }
     }
 }

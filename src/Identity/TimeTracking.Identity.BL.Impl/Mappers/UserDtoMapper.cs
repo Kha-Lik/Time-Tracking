@@ -4,7 +4,7 @@ using TimeTracking.Identity.Models.Dtos;
 
 namespace TimeTracking.Identity.BL.Impl.Mappers
 {
-    public class UserDtoMapper:IBaseMapper<User,UserDto>
+    public class UserDtoMapper : IBaseMapper<User, UserDto>
     {
         public UserDto MapToModel(User entity)
         {

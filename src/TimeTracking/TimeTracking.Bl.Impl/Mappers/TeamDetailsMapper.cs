@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Mappers
 {
-    public class TeamDetailsMapper:IModelMapper<Team,TeamDetailsDto>
+    public class TeamDetailsMapper : IModelMapper<Team, TeamDetailsDto>
     {
         public TeamDetailsDto MapToModel(Team entity)
         {

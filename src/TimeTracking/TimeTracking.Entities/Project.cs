@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimeTracking.Entities
 {
-    public class Project:IKeyEntity<Guid>
+    public class Project : IKeyEntity<Guid>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,6 +16,6 @@ namespace TimeTracking.Entities
         public DateTimeOffset InitialRisk { get; set; }
         public ICollection<Milestone> Milestones { get; set; }
         public ICollection<Issue> Issues { get; set; }
-        public ICollection<Team>  Teams { get; set; }
+        public ICollection<Team> Teams { get; set; }
     }
 }

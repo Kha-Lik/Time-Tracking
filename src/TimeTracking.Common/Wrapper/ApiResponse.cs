@@ -22,7 +22,7 @@ namespace TimeTracking.Common.Wrapper
             this.IsSuccess = true;
             this.StatusCode = 200;
         }
-        public ApiResponse(ApiError apiError,int statusCode=500)
+        public ApiResponse(ApiError apiError, int statusCode = 500)
         {
             this.ResponseException = apiError;
             this.IsSuccess = false;
@@ -36,16 +36,16 @@ namespace TimeTracking.Common.Wrapper
                     IsSuccess = true,
                     StatusCode = 200,
                 };
-        
+
         public static ApiResponse Failed()
             =>
                 new ApiResponse()
                 {
-                    IsSuccess =false,
+                    IsSuccess = false,
                     StatusCode = 500,
                 };
 
-     
+
     }
 
     public class ApiResponse<T> : ApiResponse
@@ -53,14 +53,14 @@ namespace TimeTracking.Common.Wrapper
     {
         [DataMember(EmitDefaultValue = false)]
         public T Data { get; set; }
-        
-        public ApiResponse():base(){}
-        public ApiResponse(T data):base()
+
+        public ApiResponse() : base() { }
+        public ApiResponse(T data) : base()
         {
             this.Data = data;
         }
 
-        public ApiResponse(ApiError error,int statusCode=500):base(error,statusCode)
+        public ApiResponse(ApiError error, int statusCode = 500) : base(error, statusCode)
         {
             this.Data = default(T);
         }
@@ -74,7 +74,7 @@ namespace TimeTracking.Common.Wrapper
             };
 
         public ApiResponse<TX> ToFailed<TX>()
-        where  TX:class,new()
+        where TX : class, new()
 
             => new ApiResponse<TX>()
             {

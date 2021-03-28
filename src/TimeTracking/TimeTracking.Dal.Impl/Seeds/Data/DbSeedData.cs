@@ -10,29 +10,29 @@ namespace TimeTracking.Dal.Impl.Seeds.Data
     {
         #region TimeTrackingUsers
 
-        public  static List<TimeTrackingUser> TimeTrackingUserData()
+        public static List<TimeTrackingUser> TimeTrackingUserData()
         {
             return GeneratePredefinedUsers();
         }
 
         private static List<TimeTrackingUser> GeneratePredefinedUsers()
         {
-            
+
             var list = new List<TimeTrackingUser>();
             var rolesNames = Enum.GetNames(typeof(AuthorizationData.Roles)).ToList();
-            rolesNames?.ForEach(role=>
+            rolesNames?.ForEach(role =>
             {
                 list.Add(new TimeTrackingUser()
                 {
-                    FirstName =  AuthorizationData.DefaultUsername+role,
-                    LastName =  AuthorizationData.DefaultUsername+role,
-                    Email = AuthorizationData.DefaultEmail+role,
+                    FirstName = AuthorizationData.DefaultUsername + role,
+                    LastName = AuthorizationData.DefaultUsername + role,
+                    Email = AuthorizationData.DefaultEmail + role,
                 });
             });
-    
+
             return list;
         }
-        
+
         public static class AuthorizationData
         {
             public enum Roles

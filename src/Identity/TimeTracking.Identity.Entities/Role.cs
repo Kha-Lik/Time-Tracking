@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace TimeTracking.Identity.Entities
 {
-    public class Role:IdentityRole<Guid>
+    public class Role : IdentityRole<Guid>
     {
         public Role()
         {

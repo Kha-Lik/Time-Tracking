@@ -14,7 +14,7 @@ namespace TimeTracking.WebApi.Controllers
     /// </summary>
     [ApiController]
     [Route("api/milestone")]
-    public class MilestoneController:ControllerBase
+    public class MilestoneController : ControllerBase
     {
         private readonly IMileStoneService _mileStoneService;
 
@@ -34,7 +34,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
-        public  async Task<ApiResponse<MilestoneDto>> CreateMileStoneAsync([FromBody]MilestoneDto dto)
+        public async Task<ApiResponse<MilestoneDto>> CreateMileStoneAsync([FromBody] MilestoneDto dto)
         {
             return await _mileStoneService.CreateMileStoneAsync(dto);
         }

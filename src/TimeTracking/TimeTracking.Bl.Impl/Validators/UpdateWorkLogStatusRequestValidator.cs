@@ -4,7 +4,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class UpdateWorkLogStatusRequestValidator:AbstractValidator<UpdateWorkLogStatusRequest>
+    public class UpdateWorkLogStatusRequestValidator : AbstractValidator<UpdateWorkLogStatusRequest>
     {
         public UpdateWorkLogStatusRequestValidator()
         {

@@ -10,8 +10,8 @@ namespace TimeTracking.Models
         public DateTimeOffset InitialRisk { get; set; }
     }
 
-    public class ProjectDetailsDto:ProjectDto
+    public class ProjectDetailsDto : ProjectDto
     {
-        public  Guid ProjectId { get; set; }
+        public Guid ProjectId { get; set; }
     }
 }

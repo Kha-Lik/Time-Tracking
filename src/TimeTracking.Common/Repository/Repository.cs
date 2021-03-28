@@ -40,7 +40,7 @@ namespace TimeTracking.Common.Repository
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<PagedResult<TEntity>> GetAllPagedAsync(int page=0, int size=0)
+        public async Task<PagedResult<TEntity>> GetAllPagedAsync(int page = 0, int size = 0)
         {
             return await _dbSet.PaginateAsync(page, size);
         }
@@ -95,7 +95,7 @@ namespace TimeTracking.Common.Repository
             if (includeProperties != null)
             {
                 foreach (
-                    var includeProperty in includeProperties.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                    var includeProperty in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProperty);
                 }

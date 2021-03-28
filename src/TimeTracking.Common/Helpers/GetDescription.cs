@@ -34,5 +34,5 @@ namespace TimeTracking.Common.Helpers
             return String.Empty;
         }
     }
-    
+
 }

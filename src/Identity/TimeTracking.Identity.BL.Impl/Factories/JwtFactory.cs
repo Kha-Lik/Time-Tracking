@@ -39,7 +39,7 @@ namespace TimeTracking.Identity.BL.Impl.Factories
             _systemClock = systemClock;
             ThrowIfInvalidOptions(jwtSettings);
             _jwtSettings = jwtSettings;
-         
+
         }
 
         public async Task<JwtAccessToken> GenerateEncodedAccessToken(User user)
@@ -48,20 +48,20 @@ namespace TimeTracking.Identity.BL.Impl.Factories
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
             var jwtSecurityToken = new JwtSecurityToken(
-                issuer:  _jwtSettings.Issuer,
-                audience:   _jwtSettings.Audience,
+                issuer: _jwtSettings.Issuer,
+                audience: _jwtSettings.Audience,
                 claims: claims,
                 notBefore: _jwtSettings.NotBefore,
-                expires:_jwtSettings.AccessTokenExpiration,
+                expires: _jwtSettings.AccessTokenExpiration,
                 signingCredentials: signingCredentials);
             return new JwtAccessToken()
             {
-                ExpiredAt = (long) _jwtSettings.AccessTokenValidFor.TotalSeconds,
+                ExpiredAt = (long)_jwtSettings.AccessTokenValidFor.TotalSeconds,
                 Token = _jwtTokenHandler.WriteToken(jwtSecurityToken),
             };
         }
 
-        private async Task<IEnumerable<Claim>>  GenerateClaimsIdentity(User user)
+        private async Task<IEnumerable<Claim>> GenerateClaimsIdentity(User user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
@@ -74,7 +74,7 @@ namespace TimeTracking.Identity.BL.Impl.Factories
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, await _jwtSettings.JtiGenerator()),
-                    new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_jwtSettings.IssuedAt).ToString(), 
+                    new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_jwtSettings.IssuedAt).ToString(),
                         ClaimValueTypes.Integer64),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(Constants.Strings.JwtClaimIdentifiers.Id, user.Id.ToString()),
@@ -84,19 +84,19 @@ namespace TimeTracking.Identity.BL.Impl.Factories
             return claims;
         }
 
-        
-       /// <summary>
-       ///  Coverts <param name="date"/> covered to seconds since Unix epoch (Jan 1, 1970, midnight UTC)  
-       /// </summary>
-       /// <param name="date"></param>
-       /// <returns>Converted data in seconds since Unix epoch</returns>
+
+        /// <summary>
+        ///  Coverts <param name="date"/> covered to seconds since Unix epoch (Jan 1, 1970, midnight UTC)  
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>Converted data in seconds since Unix epoch</returns>
         private static long ToUnixEpochDate(DateTime date)
           => (long)Math.Round((date.ToUniversalTime() -
                                new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero))
                               .TotalSeconds);
 
-       
-       //TODO fluent validator
+
+
         private static void ThrowIfInvalidOptions(JwtSettings options)
         {
             if (options == null) throw new ArgumentNullException(nameof(options));
@@ -116,8 +116,8 @@ namespace TimeTracking.Identity.BL.Impl.Factories
                 throw new ArgumentNullException(nameof(options.JtiGenerator));
             }
         }
-        
-        public RefreshToken GenerateRefreshToken(int size=32)
+
+        public RefreshToken GenerateRefreshToken(int size = 32)
         {
             var randomNumber = new byte[size];
             using var rng = RandomNumberGenerator.Create();
@@ -125,7 +125,7 @@ namespace TimeTracking.Identity.BL.Impl.Factories
             return new RefreshToken()
             {
                 Created = _systemClock.UtcNow,
-                Expires = _systemClock.UtcNow+_jwtSettings.RefreshTokenValidFor,
+                Expires = _systemClock.UtcNow + _jwtSettings.RefreshTokenValidFor,
                 Token = Convert.ToBase64String(randomNumber),
             };
         }

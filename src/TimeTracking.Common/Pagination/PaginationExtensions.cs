@@ -9,8 +9,8 @@ namespace TimeTracking.Common.Pagination
     public static class PaginationExtensions
     {
         private const int ResultsPerPage = 3;
-        
-        public static async Task<PagedResult<T>> PaginateAsync<T>(this IQueryable<T>  queryeable,
+
+        public static async Task<PagedResult<T>> PaginateAsync<T>(this IQueryable<T> queryeable,
             int page = 1, int resultsPerPage = ResultsPerPage)
         {
             if (page <= 0)

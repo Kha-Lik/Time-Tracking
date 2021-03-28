@@ -20,14 +20,14 @@ namespace TimeTracking.Common.Jwt
             services.AddSingleton(jwtSettings);
             var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Key));
             services.AddTransient<JwtSecurityTokenHandler>();
-            
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
                 ValidIssuer = jwtSettings.Issuer,
 
                 ValidateAudience = true,
-                ValidAudience =  jwtSettings.Audience,
+                ValidAudience = jwtSettings.Audience,
 
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = signingKey,
@@ -41,7 +41,7 @@ namespace TimeTracking.Common.Jwt
             {
                 var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
                     JwtBearerDefaults.AuthenticationScheme);
-                defaultAuthorizationPolicyBuilder = 
+                defaultAuthorizationPolicyBuilder =
                     defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
                 options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
             });
@@ -97,7 +97,7 @@ namespace TimeTracking.Common.Jwt
                 // User settings.
                 options.User.RequireUniqueEmail = true;
             });
-            
+
             return services;
 
         }

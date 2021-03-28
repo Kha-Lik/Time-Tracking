@@ -8,7 +8,7 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Bl.Impl.Consumers
 {
-    public class UserSignedUpEventConsumer: IConsumer<UserSignedUp>
+    public class UserSignedUpEventConsumer : IConsumer<UserSignedUp>
     {
         private readonly IUserRepository _userRepository;
         private readonly ILogger<UserSignedUpEventConsumer> _logger;
@@ -22,7 +22,7 @@ namespace TimeTracking.Bl.Impl.Consumers
         public async Task Consume(ConsumeContext<UserSignedUp> context)
         {
             var userExisting = await _userRepository.GetByIdAsync(context.Message.UserId);
-            if (userExisting==null)
+            if (userExisting == null)
             {
                 try
                 {
@@ -36,12 +36,12 @@ namespace TimeTracking.Bl.Impl.Consumers
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError(e,"An error occurred while adding new user {0}",context.Message);
+                    _logger.LogError(e, "An error occurred while adding new user {0}", context.Message);
                     throw;
                 }
             }
-            _logger.LogWarning("Such user is already exists {0}",context.Message.UserId);
-            
+            _logger.LogWarning("Such user is already exists {0}", context.Message.UserId);
+
             /*await _userRepository.UpdateAsync(new TimeTrackingUser()
             {
                 Id = context.Message.UserId,

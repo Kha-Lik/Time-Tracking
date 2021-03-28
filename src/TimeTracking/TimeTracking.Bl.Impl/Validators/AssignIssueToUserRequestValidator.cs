@@ -3,7 +3,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class AssignIssueToUserRequestValidator:AbstractValidator<AssignIssueToUserRequest>
+    public class AssignIssueToUserRequestValidator : AbstractValidator<AssignIssueToUserRequest>
     {
         public AssignIssueToUserRequestValidator()
         {
@@ -14,7 +14,7 @@ namespace TimeTracking.Bl.Impl.Validators
             RuleFor(x => x.UserId)
                 .NotEmpty()
                 .NotNull();
- 
+
         }
     }
 }

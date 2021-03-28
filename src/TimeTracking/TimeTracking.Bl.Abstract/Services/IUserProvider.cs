@@ -4,6 +4,6 @@ namespace TimeTracking.Bl.Abstract.Services
 {
     public interface IUserProvider
     {
-       Guid GetUserId();
+        Guid GetUserId();
     }
 }

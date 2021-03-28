@@ -3,7 +3,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class MilestoneDtoValidator:AbstractValidator<MilestoneDto>
+    public class MilestoneDtoValidator : AbstractValidator<MilestoneDto>
     {
         public MilestoneDtoValidator()
         {
@@ -13,17 +13,17 @@ namespace TimeTracking.Bl.Impl.Validators
 
             RuleFor(x => x.State)
                 .IsInEnum();
-            
-            RuleFor(x=>x.Title)
+
+            RuleFor(x => x.Title)
                 .NotEmpty()
                 .NotNull();
-            
-            
-            RuleFor(x=>x.DueDate)
+
+
+            RuleFor(x => x.DueDate)
                 .NotEmpty()
                 .NotNull();
-            
-            RuleFor(x=>x.ProjectId)
+
+            RuleFor(x => x.ProjectId)
                 .NotEmpty()
                 .NotNull();
         }

@@ -7,7 +7,7 @@ namespace TimeTracking.Common.Services
 {
     public static class TemplateStorageExtensions
     {
-        public static IServiceCollection  RegisterTemplateServices(this  IServiceCollection services)
+        public static IServiceCollection RegisterTemplateServices(this IServiceCollection services)
         {
             services.AddSingleton<IReadOnlyTemplateStorageService, TemplateStorageService>();
             services.AddSingleton<IWriteableTemplateStorageService, TemplateStorageService>();

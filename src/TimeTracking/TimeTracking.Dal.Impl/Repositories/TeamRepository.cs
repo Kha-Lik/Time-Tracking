@@ -7,7 +7,7 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl.Repositories
 {
-    public class TeamRepository:Repository<Guid,Team,TimeTrackingDbContext>,ITeamRepository
+    public class TeamRepository : Repository<Guid, Team, TimeTrackingDbContext>, ITeamRepository
     {
         public TeamRepository(TimeTrackingDbContext dbContext) : base(dbContext)
         {
@@ -17,7 +17,7 @@ namespace TimeTracking.Dal.Impl.Repositories
         {
             return _dbContext.Teams
                 .Include(e => e.Project)
-                .FirstOrDefaultAsync(e=>e.Id==teamId);
+                .FirstOrDefaultAsync(e => e.Id == teamId);
         }
     }
 }

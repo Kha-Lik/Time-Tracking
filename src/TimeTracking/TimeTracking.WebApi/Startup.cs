@@ -42,7 +42,7 @@ namespace TimeTracking.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<Startup>();
                     c.RegisterValidatorsFromAssemblyContaining<AssignIssueToUserRequestValidator>();
                 });
-            
+
             services.AddDalDependencies(Configuration);
             services.AddBlLogicServices();
             services.AddSwaggerConfiguration("Time tracking");
@@ -50,7 +50,7 @@ namespace TimeTracking.WebApi
             services.AddJwtAuthServices(Configuration);
             services.AddRabbitMqConfiguration(Configuration);
             services.AddFluentEmailServices(Configuration);
-            
+
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CurrentCorsPolicy",
@@ -61,7 +61,7 @@ namespace TimeTracking.WebApi
                     });
             });
         }
-      
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -71,7 +71,7 @@ namespace TimeTracking.WebApi
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("CurrentCorsPolicy");
-        
+
             app.UseSwagger();
 
             if (env.IsDevelopment())

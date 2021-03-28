@@ -3,7 +3,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class UpdateWorkLogRequestValidator:AbstractValidator<WorkLogUpdateRequest>
+    public class UpdateWorkLogRequestValidator : AbstractValidator<WorkLogUpdateRequest>
     {
         public UpdateWorkLogRequestValidator()
         {
@@ -21,7 +21,7 @@ namespace TimeTracking.Bl.Impl.Validators
             RuleFor(x => x.TimeSpent)
                 .NotEmpty()
                 .NotNull();
-            
+
             RuleFor(x => x.WorkLogId)
                 .NotEmpty()
                 .NotNull();

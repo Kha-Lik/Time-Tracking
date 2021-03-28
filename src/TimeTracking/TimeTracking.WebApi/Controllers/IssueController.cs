@@ -22,8 +22,8 @@ namespace TimeTracking.WebApi.Controllers
         {
             _issueService = issueService;
         }
-        
-        
+
+
         /// <summary>
         /// Assigns issue to user 
         /// </summary>
@@ -32,11 +32,11 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("assign-to-user")]
         [Authorize(Roles = "ProjectManager,TeamLead")]
-        public async Task<ApiResponse> AssignIssueToUser([FromQuery]AssignIssueToUserRequest request)
+        public async Task<ApiResponse> AssignIssueToUser([FromQuery] AssignIssueToUserRequest request)
         {
             return await _issueService.AssignIssueToUser(request);
         }
-        
+
         /// <summary>
         /// Change status of issue by id 
         /// </summary>
@@ -44,11 +44,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("change-status")]
-        public async Task<ApiResponse> ChangeIssueStatus([FromQuery]ChangeIssueStatusRequest request)
+        public async Task<ApiResponse> ChangeIssueStatus([FromQuery] ChangeIssueStatusRequest request)
         {
-            return await _issueService.ChangeIssueStatus(request.Status,request.IssueId);
+            return await _issueService.ChangeIssueStatus(request.Status, request.IssueId);
         }
-        
+
         /// <summary>
         /// Assigns issue to user by id
         /// </summary>
@@ -56,11 +56,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{issueId}")]
-        public async Task<ApiResponse<IssueDetailsDto>> GetIssueById([FromRoute]Guid issueId)
+        public async Task<ApiResponse<IssueDetailsDto>> GetIssueById([FromRoute] Guid issueId)
         {
             return await _issueService.GetIssueByIdAsync(issueId);
         }
-        
+
         /// <summary>
         /// Creates issue by request
         /// </summary>
@@ -69,11 +69,11 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("create-issue")]
         [Authorize(Roles = "ProjectManager")]
-        public async Task<ApiResponse<IssueDto>> CreateIssue([FromBody]IssueDto issueDto)
+        public async Task<ApiResponse<IssueDto>> CreateIssue([FromBody] IssueDto issueDto)
         {
             return await _issueService.CreateIssue(issueDto);
         }
-        
+
         /// <summary>
         /// Returns paged response with all issues
         /// </summary>
@@ -84,6 +84,6 @@ namespace TimeTracking.WebApi.Controllers
         {
             return await _issueService.GetAllIssuesAsync(request);
         }
-        
+
     }
 }

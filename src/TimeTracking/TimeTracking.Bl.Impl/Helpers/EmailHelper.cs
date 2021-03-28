@@ -10,7 +10,7 @@ namespace TimeTracking.Bl.Impl.Helpers
 {
     public interface IEmailHelper
     {
-        Task<ApiResponse> SendEmailWithValidationOfWorkLogFailed(string email,string description);
+        Task<ApiResponse> SendEmailWithValidationOfWorkLogFailed(string email, string description);
     }
 
     public class EmailHelper : IEmailHelper
@@ -21,8 +21,8 @@ namespace TimeTracking.Bl.Impl.Helpers
         {
             _emailService = emailService;
         }
-        
-        public async Task<ApiResponse> SendEmailWithValidationOfWorkLogFailed(string email,string description)
+
+        public async Task<ApiResponse> SendEmailWithValidationOfWorkLogFailed(string email, string description)
         {
 
             var emailSendingSuccess = await _emailService.SendMessage(new MailModel()
@@ -32,7 +32,7 @@ namespace TimeTracking.Bl.Impl.Helpers
                 Body = description
 
             });
-            
+
             if (!emailSendingSuccess)
             {
                 return new ApiResponse(
@@ -42,7 +42,7 @@ namespace TimeTracking.Bl.Impl.Helpers
                         ErrorMessage = ErrorCode.EmailSendFailed.GetDescription(),
                     });
             }
-            return  ApiResponse.Success();
+            return ApiResponse.Success();
         }
 
     }

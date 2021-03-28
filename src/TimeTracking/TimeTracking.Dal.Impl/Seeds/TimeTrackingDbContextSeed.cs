@@ -13,5 +13,5 @@ namespace TimeTracking.Dal.Impl.Seeds
             modelBuilder.Entity<TimeTrackingUser>().HasData(DbSeedData.TimeTrackingUserData());
         }
     }
-    
+
 }

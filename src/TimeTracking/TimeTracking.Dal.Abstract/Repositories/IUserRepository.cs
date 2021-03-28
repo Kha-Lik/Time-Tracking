@@ -5,8 +5,8 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Abstract.Repositories
 {
-    public interface IUserRepository:IRepository<Guid,TimeTrackingUser>
+    public interface IUserRepository : IRepository<Guid, TimeTrackingUser>
     {
-        
+
     }
 }

@@ -7,7 +7,7 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Abstract.Repositories
 {
-    public interface IIssueRepository:IRepository<Guid,Issue>
+    public interface IIssueRepository : IRepository<Guid, Issue>
     {
         Task<Issue> GetIssueWithDetails(Guid id);
         Task<PagedResult<Issue>> GetAllIssueWithDetails(int page, int size);

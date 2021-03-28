@@ -15,7 +15,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Services
 {
-    
+
     public class UserService : IUserService
     {
         private readonly ILogger<UserService> _logger;
@@ -27,7 +27,7 @@ namespace TimeTracking.Bl.Impl.Services
         public UserService(ILogger<UserService> logger,
             ITeamRepository teamRepository,
             IUserRepository userRepository,
-            IBaseMapper<TimeTrackingUser,TimeTrackingUserDto> userMapper,
+            IBaseMapper<TimeTrackingUser, TimeTrackingUserDto> userMapper,
             IModelMapper<TimeTrackingUser, TimeTrackingUserDetailsDto> userDetailsMapper)
         {
             _logger = logger;
@@ -36,10 +36,10 @@ namespace TimeTracking.Bl.Impl.Services
             _userMapper = userMapper;
             _userDetailsMapper = userDetailsMapper;
         }
-        
-        
+
+
         public async Task<ApiResponse<TimeTrackingUserDto>> AddUserToTeam(AssignUserToTeamRequest request)
-        { 
+        {
             try
             {
                 var teamFounded = await _teamRepository.GetByIdAsync(request.TeamId);
@@ -65,13 +65,13 @@ namespace TimeTracking.Bl.Impl.Services
                     };
                 }
 
-                userFound.TeamId=request.TeamId;
+                userFound.TeamId = request.TeamId;
                 userFound = await _userRepository.UpdateAsync(userFound);
                 return new ApiResponse<TimeTrackingUserDto>(_userMapper.MapToModel(userFound));
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while assigning user {0] to team team {1} ", request.UserId,request.TeamId);
+                _logger.LogWarning(ex, "An error occured while assigning user {0] to team team {1} ", request.UserId, request.TeamId);
                 return ApiResponse<TimeTrackingUserDto>.InternalError();
             }
         }

@@ -25,8 +25,8 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly IProjectRepository _projectRepository;
 
         public MileStoneService(ILogger<Milestone> logger,
-            IBaseMapper<Milestone,MilestoneDto> milestoneMapper,
-            IModelMapper<Milestone,MilestoneDetailsDto> milestoneDetailsMapper,
+            IBaseMapper<Milestone, MilestoneDto> milestoneMapper,
+            IModelMapper<Milestone, MilestoneDetailsDto> milestoneDetailsMapper,
             IMilestoneRepository milestoneRepository,
             IUserProvider userProvider,
             IProjectRepository projectRepository)
@@ -38,12 +38,12 @@ namespace TimeTracking.Bl.Impl.Services
             _userProvider = userProvider;
             _projectRepository = projectRepository;
         }
-        
+
         public async Task<ApiResponse<MilestoneDto>> CreateMileStoneAsync(MilestoneDto dto)
         {
             try
             {
-                var projectFound =  await _projectRepository.GetByIdAsync(dto.ProjectId);
+                var projectFound = await _projectRepository.GetByIdAsync(dto.ProjectId);
                 if (projectFound == null)
                 {
                     _logger.LogWarning("Failed to found project by id {0}", dto.ProjectId);
@@ -68,8 +68,8 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception e)
             {
-                 _logger.LogError(e,"An error occured while creating milestone {0}", JsonConvert.SerializeObject(dto));
-                 return ApiResponse<MilestoneDto>.InternalError();
+                _logger.LogError(e, "An error occured while creating milestone {0}", JsonConvert.SerializeObject(dto));
+                return ApiResponse<MilestoneDto>.InternalError();
             }
         }
 
@@ -90,12 +90,12 @@ namespace TimeTracking.Bl.Impl.Services
                 else
                 {
                     var milestoneDetailsDto = _milestoneDetailsMapper.MapToModel(milestone);
-                    return new ApiResponse<MilestoneDetailsDto> (milestoneDetailsDto);
+                    return new ApiResponse<MilestoneDetailsDto>(milestoneDetailsDto);
                 }
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while getting milestone by id {0} ", mileStoneId);
+                _logger.LogWarning(e, "An error occured while getting milestone by id {0} ", mileStoneId);
                 return ApiResponse<MilestoneDetailsDto>.InternalError();
             }
         }
@@ -103,7 +103,7 @@ namespace TimeTracking.Bl.Impl.Services
         public async Task<ApiPagedResponse<MilestoneDetailsDto>> GetAllMilestonesPaged(PagedRequest request)
         {
             var pagedList = await _milestoneRepository.GetAllPagedAsync(request.Page, request.PageSize);
-            return new ApiPagedResponse<MilestoneDetailsDto>().FromPagedResult(pagedList,_milestoneDetailsMapper.MapToModel);
+            return new ApiPagedResponse<MilestoneDetailsDto>().FromPagedResult(pagedList, _milestoneDetailsMapper.MapToModel);
         }
     }
 }

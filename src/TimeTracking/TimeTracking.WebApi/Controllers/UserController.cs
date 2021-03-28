@@ -31,20 +31,20 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("add-to-team")]
         [Authorize(Roles = "TeamLead")]
-        public async Task<ApiResponse<TimeTrackingUserDto>> AddUserToTeam([FromBody]AssignUserToTeamRequest request)
+        public async Task<ApiResponse<TimeTrackingUserDto>> AddUserToTeam([FromBody] AssignUserToTeamRequest request)
         {
             return await _userService.AddUserToTeam(request);
         }
-        
+
         /// <summary>
         /// Get all users paged
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("all-users")]
-        public  async Task<ApiPagedResponse<TimeTrackingUserDetailsDto>> GetAll([FromRoute]PagedRequest request)
+        public async Task<ApiPagedResponse<TimeTrackingUserDetailsDto>> GetAll([FromRoute] PagedRequest request)
         {
-            return  await  _userService.GetAllUsers(request);
+            return await _userService.GetAllUsers(request);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{userId}")]
-        public async Task<ApiResponse<TimeTrackingUserDetailsDto>> Get([FromRoute]Guid userId)
+        public async Task<ApiResponse<TimeTrackingUserDetailsDto>> Get([FromRoute] Guid userId)
         {
             return await _userService.GetUsersById(userId);
         }

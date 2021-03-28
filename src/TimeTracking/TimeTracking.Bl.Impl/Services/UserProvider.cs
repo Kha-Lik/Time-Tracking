@@ -22,7 +22,7 @@ namespace TimeTracking.Bl.Impl.Services
         {
             var userId = _context.HttpContext.User.Claims
                 .First(i => i.Type == Constants.Strings.JwtClaimIdentifiers.Id).Value;
-            var result = Guid.TryParse(userId,out Guid id);
+            var result = Guid.TryParse(userId, out Guid id);
             if (!result)
             {
                 throw new AuthorizationError("Failed to fetch user id");

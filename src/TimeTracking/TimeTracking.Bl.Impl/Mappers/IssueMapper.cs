@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Mappers
 {
-    public class IssueMapper:IBaseMapper<Issue,IssueDto>
+    public class IssueMapper : IBaseMapper<Issue, IssueDto>
     {
         public IssueDto MapToModel(Issue entity)
         {
@@ -17,7 +17,7 @@ namespace TimeTracking.Bl.Impl.Mappers
                 Title = entity.Title,
             };
         }
-       
+
         public Issue MapToEntity(IssueDto model)
         {
             return new Issue()

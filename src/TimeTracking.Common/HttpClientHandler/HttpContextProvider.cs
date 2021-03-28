@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace TimeTracking.Common.HttpClientHandler
@@ -10,6 +12,13 @@ namespace TimeTracking.Common.HttpClientHandler
         public HttpClientProvider(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        public void SetBearerAuthorization(string token)
+        {
+            if (token == null) throw new ArgumentNullException(nameof(token));
+            _httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
         }
 
         public Task<HttpResponseMessage> GetAsync(string requestUri)

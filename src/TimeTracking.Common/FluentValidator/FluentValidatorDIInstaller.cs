@@ -16,16 +16,16 @@ namespace TimeTracking.Common.FluentValidator
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-            
+
             services.AddMvc(options =>
                 {
                     options.Filters.Add(new ModelStateFilter());
                 })
                 .AddFluentValidation(options =>
                 {
-                  
+
                     options.ValidatorFactoryType = typeof(HttpContextServiceProviderValidatorFactory);
-                    
+
                 });
             return services;
         }

@@ -9,7 +9,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Dal.Abstract.Repositories
 {
-    public interface IWorklogRepository:IRepository<Guid,WorkLog>
+    public interface IWorklogRepository : IRepository<Guid, WorkLog>
     {
         Task<List<WorkLog>> GetActivitiesWithDetailsByUserId(Guid userId, Guid projectId);
         Task<WorkLog> GetByIdWithUserAsync(Guid workLogId);

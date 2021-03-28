@@ -30,11 +30,11 @@ namespace TimeTracking.WebApi.Internal
                         // configure health checks for this bus instance
                         cfg.UseHealthCheck(provider);
 
-                        cfg.Host(new Uri($"rabbitmq://{host}:{port}") , configurator =>
-                        {
-                            configurator.Username(userName);
-                            configurator.Password(password);
-                        });
+                        cfg.Host(new Uri($"rabbitmq://{host}:{port}"), configurator =>
+                       {
+                           configurator.Username(userName);
+                           configurator.Password(password);
+                       });
 
                         cfg.ReceiveEndpoint(rabbitMqConfiguration.Endpoint, ep =>
                         {

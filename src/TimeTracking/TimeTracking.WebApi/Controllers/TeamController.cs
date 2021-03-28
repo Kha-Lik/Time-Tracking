@@ -16,16 +16,16 @@ namespace TimeTracking.WebApi.Controllers
     {
         private readonly ITeamService _teamService;
 
-        
+
         /// <summary>
         /// Team controller
         /// </summary>
         /// <param name="teamService"></param>
-        public TeamController(ITeamService teamService )
+        public TeamController(ITeamService teamService)
         {
             _teamService = teamService;
         }
-        
+
         /// <summary>
         /// Get team by id
         /// </summary>
@@ -33,7 +33,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{teamId}")]
-        public async Task<ApiResponse<TeamDetailsDto>> GetTeamById([FromRoute]Guid teamId)
+        public async Task<ApiResponse<TeamDetailsDto>> GetTeamById([FromRoute] Guid teamId)
         {
             return await _teamService.GetTeamById(teamId);
         }
@@ -46,18 +46,18 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "TeamLead")]
-        public async Task<ApiResponse<TeamDto>> CreateTeamAsync([FromBody]TeamDto dto)
+        public async Task<ApiResponse<TeamDto>> CreateTeamAsync([FromBody] TeamDto dto)
         {
             return await _teamService.CreateTeamAsync(dto);
         }
-        
+
         /// <summary>
         /// Returns paged response with all teams
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ApiPagedResponse<TeamDetailsDto>> GetAll([FromQuery]PagedRequest request)
+        public async Task<ApiPagedResponse<TeamDetailsDto>> GetAll([FromQuery] PagedRequest request)
         {
             return await _teamService.GetAllTeamAsync(request);
         }

@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TimeTracking.IocContainer;
 
 namespace TimeTracking.ReportGenerator.WebApi
 {
@@ -18,9 +20,20 @@ namespace TimeTracking.ReportGenerator.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                //.UseLightInject()
+                //.UseServiceProviderFactory(new IocContainerServiceProviderFactory())
+                .ConfigureLogging(l => l.AddConsole(o =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    o.DisableColors = true;
+                }))
+                .ConfigureWebHostDefaults(webHostBuilder =>
+                {
+                    webHostBuilder
+                        .UseContentRoot(Directory.GetCurrentDirectory())
+                        .UseIISIntegration()
+                        .UseStartup<Startup>();
+                })
+                ;
+
     }
 }

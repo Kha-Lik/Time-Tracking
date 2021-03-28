@@ -3,7 +3,7 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class ChangeIssueStatusRequestValidator:AbstractValidator<ChangeIssueStatusRequest>
+    public class ChangeIssueStatusRequestValidator : AbstractValidator<ChangeIssueStatusRequest>
     {
         public ChangeIssueStatusRequestValidator()
         {

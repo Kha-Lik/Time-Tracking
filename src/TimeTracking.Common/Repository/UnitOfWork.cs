@@ -7,7 +7,7 @@ using TimeTracking.Common.Abstract.Repository;
 
 namespace TimeTracking.Common.Repository
 {
-    public class UnitOfWork: IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         readonly DbContext _dbContext;
         IDbContextTransaction _dbContextTransaction;
@@ -41,7 +41,7 @@ namespace TimeTracking.Common.Repository
             if (_isTransactionStarted && _dbContextTransaction != null)
             {
                 await _dbContextTransaction.CommitAsync();
-                _dbContextTransaction =await _dbContext.Database.BeginTransactionAsync(_isolationLevel);
+                _dbContextTransaction = await _dbContext.Database.BeginTransactionAsync(_isolationLevel);
             }
         }
 
@@ -52,45 +52,45 @@ namespace TimeTracking.Common.Repository
         }
         public async Task RollbackAsync()
         {
-            if (_isTransactionStarted && _dbContextTransaction != null) 
+            if (_isTransactionStarted && _dbContextTransaction != null)
                 await _dbContextTransaction?.RollbackAsync();
         }
-        
+
         public void Dispose()
         {
             _dbContextTransaction?.Dispose();
         }
     }
 
-/*        public virtual async Task SaveChangesAsync()
-          {
-            try
-            {
-                Validate();
-                var result =await _dbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-              
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-        
-        private void Validate()
-        {
-            var entities = _dbContext.ChangeTracker.Entries()
-                .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
-                .Select(e => e.Entity)
-                .ToList();
+    /*        public virtual async Task SaveChangesAsync()
+              {
+                try
+                {
+                    Validate();
+                    var result =await _dbContext.SaveChangesAsync();
+                }
+                catch (Exception e)
+                {
 
-            foreach (var entity in entities)
-            {
-                var validationContext = new ValidationContext(entity);
-                Validator.ValidateObject(entity, validationContext, validateAllProperties: true);
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
-        }
 
-*/
-   
+            private void Validate()
+            {
+                var entities = _dbContext.ChangeTracker.Entries()
+                    .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
+                    .Select(e => e.Entity)
+                    .ToList();
+
+                foreach (var entity in entities)
+                {
+                    var validationContext = new ValidationContext(entity);
+                    Validator.ValidateObject(entity, validationContext, validateAllProperties: true);
+                }
+            }
+
+    */
+
 }

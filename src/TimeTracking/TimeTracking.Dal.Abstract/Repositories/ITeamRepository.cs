@@ -6,7 +6,7 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Abstract.Repositories
 {
-    public interface ITeamRepository:IRepository<Guid,Team>
+    public interface ITeamRepository : IRepository<Guid, Team>
     {
         Task<Team> GetByIdWithDetails(Guid teamId);
     }

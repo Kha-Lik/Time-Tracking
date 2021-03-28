@@ -8,7 +8,7 @@ using TimeTracking.Common.Wrapper;
 
 namespace TimeTracking.Common.Helpers
 {
-     public class ModelStateFilter : IActionFilter
+    public class ModelStateFilter : IActionFilter
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
@@ -16,7 +16,7 @@ namespace TimeTracking.Common.Helpers
             {
                 context.Result =
                     new JsonResult(new ApiResponse(
-                        new ApiError(ErrorCode.ValidationError, GetModelErrors(context.ModelState)),statusCode:400));
+                        new ApiError(ErrorCode.ValidationError, GetModelErrors(context.ModelState)), statusCode: 400));
             }
         }
 
@@ -27,8 +27,8 @@ namespace TimeTracking.Common.Helpers
 
         private IEnumerable<ValidationFailure> GetModelErrors(ModelStateDictionary modelState)
         {
-            return (from modelStateInfo in modelState 
-                    from modelError in modelStateInfo.Value?.Errors 
+            return (from modelStateInfo in modelState
+                    from modelError in modelStateInfo.Value?.Errors
                     select new ValidationFailure(modelStateInfo.Key, modelError.ErrorMessage)
                     ).ToList();
         }

@@ -4,7 +4,7 @@
     {
         public ConfirmAccountEmailViewModel()
         {
-            
+
         }
         public ConfirmAccountEmailViewModel(string confirmEmailUrl)
         {

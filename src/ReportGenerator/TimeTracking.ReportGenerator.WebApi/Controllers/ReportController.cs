@@ -1,13 +1,16 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TimeTracking.Common.Wrapper;
 using TimeTracking.ReportGenerator.Bl.Abstract;
 using TimeTracking.ReportGenerator.Models;
 
 namespace TimeTracking.ReportGenerator.WebApi.Controllers
 {
     [Authorize]
-    public class ReportController:ControllerBase
+    [ApiController]
+    [Route("api/reports")]
+    public class ReportController : ControllerBase
     {
         private readonly IReportService _reportService;
 
@@ -22,7 +25,7 @@ namespace TimeTracking.ReportGenerator.WebApi.Controllers
         /// <param name="reportConfiguration"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<FileContentResult> GenerateReport([FromRoute]ReportConfiguration reportConfiguration)
+        public async Task<FileContentResult> GenerateReport([FromQuery] ReportConfiguration reportConfiguration)
         {
             var response = await _reportService.GenerateReportAsync(reportConfiguration);
             return new FileContentResult(response.Data.FileBytes, response.Data.FileContentType)

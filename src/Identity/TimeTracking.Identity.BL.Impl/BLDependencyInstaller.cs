@@ -42,11 +42,11 @@ namespace TimeTracking.Identity.BL.Impl
             services.Configure<ClientSenderSettings>(configuration.GetSection(nameof(ClientSenderSettings)));
             services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
             return services;
-        }   
-        
+        }
+
         private static IServiceCollection AddMappers(this IServiceCollection services)
         {
-            services.AddTransient<IBaseMapper<User, UserDto>,UserDtoMapper>();
+            services.AddTransient<IBaseMapper<User, UserDto>, UserDtoMapper>();
             return services;
         }
     }

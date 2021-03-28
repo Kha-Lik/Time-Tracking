@@ -36,8 +36,8 @@ namespace TimeTracking.Bl.Impl.Services
             IMileStoneService mileStoneService,
             IProjectService projectService,
             ISystemClock systemClock,
-            IBaseMapper<Issue,IssueDto> issueMapper,
-            IModelMapper<Issue,IssueDetailsDto> issueDetailsMapper)
+            IBaseMapper<Issue, IssueDto> issueMapper,
+            IModelMapper<Issue, IssueDetailsDto> issueDetailsMapper)
         {
             _logger = logger;
             _issueRepository = issueRepository;
@@ -53,7 +53,7 @@ namespace TimeTracking.Bl.Impl.Services
         {
             try
             {
-                var entityToAdd = _issueMapper.MapToEntity(dto); 
+                var entityToAdd = _issueMapper.MapToEntity(dto);
                 if (dto.MilestoneId != null)
                 {
                     var mileStoneFoundResponse = await _mileStoneService.GetMileStoneById(dto.MilestoneId.Value);
@@ -64,13 +64,13 @@ namespace TimeTracking.Bl.Impl.Services
 
                     entityToAdd.MilestoneId = dto.MilestoneId;
                 }
-                
+
                 var projectFindResponse = await _projectService.GetProjectByIdAsync(dto.ProjectId);
                 if (!projectFindResponse.IsSuccess)
                 {
                     return projectFindResponse.ToFailed<IssueDto>();
                 }
-                entityToAdd.ProjectId= dto.ProjectId;
+                entityToAdd.ProjectId = dto.ProjectId;
                 entityToAdd.OpenedAt = _systemClock.UtcNow;
                 entityToAdd.Status = Status.Open;
                 entityToAdd = await _issueRepository.AddAsync(entityToAdd);
@@ -88,11 +88,11 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while creating new issue {0} ", JsonConvert.SerializeObject(dto));
+                _logger.LogWarning(ex, "An error occured while creating new issue {0} ", JsonConvert.SerializeObject(dto));
                 return ApiResponse<IssueDto>.InternalError();
             }
         }
-      
+
         public async Task<ApiResponse> AssignIssueToUser(AssignIssueToUserRequest request)
         {
             try
@@ -108,25 +108,25 @@ namespace TimeTracking.Bl.Impl.Services
                         ResponseException = new ApiError(ErrorCode.IssueNotFound, ErrorCode.IssueNotFound.GetDescription())
                     };
                 }
-               
+
                 var userFoundResponse = await _userService.GetUsersById(request.UserId);
                 if (!userFoundResponse.IsSuccess)
                 {
                     return userFoundResponse;
                 }
-                
+
                 entityFound.AssignedToUserId = request.UserId;
                 entityFound.UpdatedAt = _systemClock.UtcNow;
                 await _issueRepository.UpdateAsync(entityFound);
-                return new ApiResponse<IssueDto>( _issueMapper.MapToModel(entityFound));
+                return new ApiResponse<IssueDto>(_issueMapper.MapToModel(entityFound));
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while assigning user {0} for issue {1} ", request.UserId,request.IssueId);
+                _logger.LogWarning(ex, "An error occured while assigning user {0} for issue {1} ", request.UserId, request.IssueId);
                 return ApiResponse<IssueDto>.InternalError();
             }
         }
-        
+
 
         public async Task<ApiResponse<IssueDto>> ChangeIssueStatus(Status status, Guid issueId)
         {
@@ -144,13 +144,13 @@ namespace TimeTracking.Bl.Impl.Services
                     };
                 }
 
-                entityFound=ChangeEntityByStatus(status,entityFound);
+                entityFound = ChangeEntityByStatus(status, entityFound);
                 await _issueRepository.UpdateAsync(entityFound);
-                return new ApiResponse<IssueDto>( _issueMapper.MapToModel(entityFound));
+                return new ApiResponse<IssueDto>(_issueMapper.MapToModel(entityFound));
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while updating status to {0} for issue {1} ", status,issueId);
+                _logger.LogWarning(ex, "An error occured while updating status to {0} for issue {1} ", status, issueId);
                 return ApiResponse<IssueDto>.InternalError();
             }
         }
@@ -170,7 +170,7 @@ namespace TimeTracking.Bl.Impl.Services
             issue.UpdatedAt = _systemClock.UtcNow;
             return issue;
         }
-        
+
         public async Task<ApiResponse<IssueDetailsDto>> GetIssueByIdAsync(Guid issueId)
         {
             try
@@ -189,13 +189,13 @@ namespace TimeTracking.Bl.Impl.Services
                 {
                     var issueDetailed = _issueDetailsMapper.MapToModel(issueWithDetails);
                     issueDetailed.TotalRemainingTimeInSeconds = (long)(issueWithDetails.ClosedAt - issueWithDetails.OpenedAt).TotalSeconds;
-                    issueDetailed.TotalSpentTimeInSeconds  =issueWithDetails.WorkLogs.Sum(e => e.TimeSpent.Seconds);
+                    issueDetailed.TotalSpentTimeInSeconds = issueWithDetails.WorkLogs.Sum(e => e.TimeSpent.Seconds);
                     return new ApiResponse<IssueDetailsDto>(issueDetailed);
                 }
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while getting issue by id {0} ", issueId);
+                _logger.LogWarning(e, "An error occured while getting issue by id {0} ", issueId);
                 return ApiResponse<IssueDetailsDto>.InternalError();
             }
         }

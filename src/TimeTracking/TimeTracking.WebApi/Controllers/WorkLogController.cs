@@ -32,11 +32,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
-        public async Task<ApiResponse<WorkLogDto>> CreateWorkLog([FromBody]WorkLogDto dto)
+        public async Task<ApiResponse<WorkLogDto>> CreateWorkLog([FromBody] WorkLogDto dto)
         {
             return await _workLogService.CreateWorkLog(dto);
-        }    
-        
+        }
+
         /// <summary>
         /// Get user activities by user's team
         /// </summary>
@@ -44,11 +44,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("get-user-activities")]
-        public  async Task<ApiResponse<UserActivityDto>> GetActivitiesForUser([FromQuery]ActivitiesRequest request)
+        public async Task<ApiResponse<UserActivityDto>> GetActivitiesForUser([FromQuery] ActivitiesRequest request)
         {
             return await _workLogService.GetAllActivitiesForUser(request);
         }
-        
+
         /// <summary>
         /// Updates worklog 
         /// </summary>
@@ -56,11 +56,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("update")]
-        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLog([FromBody]WorkLogUpdateRequest request)
+        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLog([FromBody] WorkLogUpdateRequest request)
         {
             return await _workLogService.UpdateWorkLog(request);
-        }     
-        
+        }
+
         /// <summary>
         /// Returns a worklog by id
         /// </summary>
@@ -68,11 +68,11 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{workLogId}")]
-        public async Task<ApiResponse<WorkLogDto>> GetWorkLog([FromRoute]Guid workLogId)
+        public async Task<ApiResponse<WorkLogDto>> GetWorkLog([FromRoute] Guid workLogId)
         {
             return await _workLogService.GetWorkLog(workLogId);
-        }        
-        
+        }
+
         /// <summary>
         /// Updates a work log status
         /// </summary>
@@ -81,9 +81,9 @@ namespace TimeTracking.WebApi.Controllers
         [Authorize(Roles = "ProjectManager,TeamLead")]
         [HttpPost]
         [Route("update-status")]
-        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus([FromBody]UpdateWorkLogStatusRequest request)
+        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus([FromBody] UpdateWorkLogStatusRequest request)
         {
-            return await _workLogService.UpdateWorkLogStatus(request.WorkLogId,request.IsApproved,request.Description);
+            return await _workLogService.UpdateWorkLogStatus(request.WorkLogId, request.IsApproved, request.Description);
         }
 
         /// <summary>
@@ -92,18 +92,18 @@ namespace TimeTracking.WebApi.Controllers
         /// <param name="pagedRequest"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged([FromRoute]PagedRequest pagedRequest)
+        public async Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged([FromRoute] PagedRequest pagedRequest)
         {
             return await _workLogService.GetAllWorkLogsPaged(pagedRequest);
         }
-        
+
         /// <summary>
         /// Deletes a work log by id
         /// </summary>
         /// <param name="workLogId"></param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<ApiResponse> DeleteWorklog([FromRoute]Guid workLogId)
+        public async Task<ApiResponse> DeleteWorklog([FromRoute] Guid workLogId)
         {
             return await _workLogService.DeleteWorkLog(workLogId);
         }

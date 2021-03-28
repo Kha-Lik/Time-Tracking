@@ -11,8 +11,8 @@ namespace TimeTracking.Models
         public Guid? TeamId { get; set; }
     }
 
-    public class TimeTrackingUserDetailsDto:TimeTrackingUserDto
+    public class TimeTrackingUserDetailsDto : TimeTrackingUserDto
     {
-        public  Guid UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

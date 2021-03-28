@@ -7,12 +7,12 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl
 {
-    public class TimeTrackingDbContext: DbContext
+    public class TimeTrackingDbContext : DbContext
     {
         public TimeTrackingDbContext(DbContextOptions<TimeTrackingDbContext> options)
-        :base(options)
+        : base(options)
         {
-            
+
         }
         public DbSet<Issue> Issues { get; set; }
         public DbSet<Milestone> Milestones { get; set; }
@@ -32,7 +32,7 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.Milestone)
                 .WithOne()
-                .HasForeignKey<Issue>(e=>e.MilestoneId);
+                .HasForeignKey<Issue>(e => e.MilestoneId);
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.Project)
                 .WithMany()
@@ -48,15 +48,15 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<Issue>()
                 .Property(e => e.Status)
                 .HasConversion<string>();
-            
+
             modelBuilder.Entity<Team>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Team>()
                 .HasOne(e => e.Project)
                 .WithMany()
-                .HasForeignKey(e=>e.ProjectId);
-            
-            
+                .HasForeignKey(e => e.ProjectId);
+
+
             modelBuilder.Entity<Project>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Project>()
@@ -71,7 +71,7 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<Project>()
                 .HasMany(e => e.Milestones)
                 .WithOne();
-            
+
             modelBuilder.Entity<Milestone>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Milestone>()
@@ -80,7 +80,7 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<Milestone>()
                 .HasOne(e => e.Project)
                 .WithMany()
-                .HasForeignKey(e=>e.ProjectId);
+                .HasForeignKey(e => e.ProjectId);
             modelBuilder.Entity<Milestone>()
                 .HasOne(e => e.CreatedByUser)
                 .WithOne()
@@ -88,7 +88,7 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<Milestone>()
                 .Property(e => e.State)
                 .HasConversion<string>();
-            
+
             modelBuilder.Entity<WorkLog>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<WorkLog>()
@@ -104,13 +104,13 @@ namespace TimeTracking.Dal.Impl
             modelBuilder.Entity<WorkLog>()
                 .Property(e => e.ActivityType)
                 .HasConversion<string>();
-            
+
             modelBuilder.Entity<TimeTrackingUser>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<TimeTrackingUser>()
                 .HasOne(e => e.Team)
                 .WithMany();
-         
+
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

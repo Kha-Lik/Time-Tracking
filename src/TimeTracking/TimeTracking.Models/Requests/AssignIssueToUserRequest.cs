@@ -2,9 +2,9 @@
 
 namespace TimeTracking.Models.Requests
 {
-    public class  AssignIssueToUserRequest
+    public class AssignIssueToUserRequest
     {
         public Guid IssueId { get; set; }
-        public Guid UserId { get;set; }
+        public Guid UserId { get; set; }
     }
 }

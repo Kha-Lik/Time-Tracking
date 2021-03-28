@@ -5,12 +5,12 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl.Repositories
 {
-    public class UserRepository:Repository<Guid,TimeTrackingUser,TimeTrackingDbContext>,IUserRepository
+    public class UserRepository : Repository<Guid, TimeTrackingUser, TimeTrackingDbContext>, IUserRepository
     {
         public UserRepository(TimeTrackingDbContext dbContext) : base(dbContext)
         {
         }
-        
-        
+
+
     }
 }

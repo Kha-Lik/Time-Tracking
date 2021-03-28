@@ -21,7 +21,7 @@ namespace TimeTracking.Common.RabbitMq
 
     }
 
-    public class RabbitMqOptions:RabbitMqConfiguration
+    public class RabbitMqOptions : RabbitMqConfiguration
     {
         public string Namespace { get; set; }
         public int Retries { get; set; }

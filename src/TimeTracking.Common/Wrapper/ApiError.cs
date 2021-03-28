@@ -12,9 +12,9 @@ namespace TimeTracking.Common.Wrapper
 
         public ApiError()
         {
-            
+
         }
-        public ApiError(ErrorCode errorCode,string errorMessage)
+        public ApiError(ErrorCode errorCode, string errorMessage)
         {
             this.ErrorCode = errorCode;
             this.ErrorMessage = errorMessage;

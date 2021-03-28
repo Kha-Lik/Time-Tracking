@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Mappers
 {
-    public class TimeTrackingUserDtoMapper:IModelMapper<TimeTrackingUser,TimeTrackingUserDetailsDto>
+    public class TimeTrackingUserDtoMapper : IModelMapper<TimeTrackingUser, TimeTrackingUserDetailsDto>
     {
         public TimeTrackingUserDetailsDto MapToModel(TimeTrackingUser entity)
         {

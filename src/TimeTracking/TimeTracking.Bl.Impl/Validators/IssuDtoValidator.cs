@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class IssueDtoValidator:AbstractValidator<IssueDto>
+    public class IssueDtoValidator : AbstractValidator<IssueDto>
     {
         public IssueDtoValidator()
         {
@@ -13,7 +13,7 @@ namespace TimeTracking.Bl.Impl.Validators
                 .NotNull();
             RuleFor(x => x.Title)
                 .NotEmpty()
-                .NotNull();     
+                .NotNull();
             RuleFor(x => x.Status)
                 .IsInEnum();
             RuleFor(x => x.Title)
@@ -22,10 +22,10 @@ namespace TimeTracking.Bl.Impl.Validators
             RuleFor(x => x.Description)
                 .NotEmpty()
                 .NotNull();
-            RuleFor(x => x.ReportedByUserId )
+            RuleFor(x => x.ReportedByUserId)
                 .NotEmpty()
                 .NotNull();
         }
-       
+
     }
 }

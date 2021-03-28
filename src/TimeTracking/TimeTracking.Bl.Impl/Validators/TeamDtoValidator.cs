@@ -3,7 +3,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class TeamDtoValidator:AbstractValidator<TeamDto>
+    public class TeamDtoValidator : AbstractValidator<TeamDto>
     {
         public TeamDtoValidator()
         {
@@ -14,8 +14,8 @@ namespace TimeTracking.Bl.Impl.Validators
             RuleFor(x => x.MembersCount)
                 .NotEmpty()
                 .NotNull();
-            
-            RuleFor(x=>x.ProjectId)
+
+            RuleFor(x => x.ProjectId)
                 .NotEmpty()
                 .NotNull();
         }

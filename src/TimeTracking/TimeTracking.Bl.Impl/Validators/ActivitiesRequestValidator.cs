@@ -4,18 +4,18 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Validators
 {
-    public class ActivitiesRequestValidator:AbstractValidator<ActivitiesRequest>
+    public class ActivitiesRequestValidator : AbstractValidator<ActivitiesRequest>
     {
         public ActivitiesRequestValidator()
         {
             RuleFor(x => x.ProjectId)
                 .NotEmpty()
                 .NotNull();
-            
-            RuleFor(r=>r.UserId)
+
+            RuleFor(r => r.UserId)
                 .NotEmpty()
                 .NotNull();
-                
+
         }
     }
 }

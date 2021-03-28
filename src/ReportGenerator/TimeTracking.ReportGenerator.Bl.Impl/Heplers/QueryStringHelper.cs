@@ -6,7 +6,7 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Heplers
 {
     public static class QueryStringHelper
     {
-        public  static string ToQueryString(this NameValueCollection nvc)
+        public static string ToQueryString(this NameValueCollection nvc)
         {
             var array = (
                 from key in nvc.AllKeys

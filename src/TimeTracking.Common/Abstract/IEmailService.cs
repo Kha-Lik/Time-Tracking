@@ -7,8 +7,8 @@ namespace TimeTracking.Common.Abstract
     public interface IEmailService
     {
         Task<bool> SendMessageWithPurpose<TModel>(MailModel model, EmailPurpose emailPurpose, TModel templateModel)
-            where  TModel : class;
+            where TModel : class;
 
-       Task<bool> SendMessage(MailModel model);
+        Task<bool> SendMessage(MailModel model);
     }
 }

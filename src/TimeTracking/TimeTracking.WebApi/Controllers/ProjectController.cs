@@ -16,7 +16,7 @@ namespace TimeTracking.WebApi.Controllers
     [Authorize]
     [ApiController]
     [Route("api/project")]
-    public class ProjectController:ControllerBase
+    public class ProjectController : ControllerBase
     {
         private readonly IProjectService _projectService;
 
@@ -32,18 +32,18 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("create")]
         [Authorize(Roles = "ProjectManager")]
-        public async Task<ApiResponse<ProjectDto>> CreateProjectAsync([FromBody]ProjectDto dto)
+        public async Task<ApiResponse<ProjectDto>> CreateProjectAsync([FromBody] ProjectDto dto)
         {
             return await _projectService.CreateProjectAsync(dto);
         }
-        
+
         /// <summary>
         /// Returns paged response with all projects
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ApiPagedResponse<ProjectDetailsDto>> GetAll([FromQuery]PagedRequest request)
+        public async Task<ApiPagedResponse<ProjectDetailsDto>> GetAll([FromQuery] PagedRequest request)
         {
             return await _projectService.GetAllProjectPagedAsync(request);
         }

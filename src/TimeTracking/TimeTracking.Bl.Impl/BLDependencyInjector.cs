@@ -38,25 +38,25 @@ namespace TimeTracking.Bl.Impl
         private static IServiceCollection AddMappers(this IServiceCollection services)
         {
             services.AddTransient<IModelMapper<Issue, IssueDetailsDto>, IssueDetailsMapper>();
-            services.AddTransient<IBaseMapper<Issue,IssueDto>, IssueMapper>();
-            
-            services.AddTransient<IBaseMapper<Milestone,MilestoneDto>, MileStoneMapper>();
-            services.AddTransient<IModelMapper<Milestone,MilestoneDetailsDto>,MilestoneDetailsMapper>();
-            
-            services.AddTransient<IBaseMapper<Project,ProjectDto>, ProjectMapper>();
-            services.AddTransient<IModelMapper<Project,ProjectDetailsDto>, ProjectDetailsMapper>();
-            
-            services.AddTransient<IBaseMapper<Team,TeamDto>, TeamMapper>();
-            services.AddTransient<IModelMapper<Team,TeamDetailsDto>, TeamDetailsMapper>();
-            
-            services.AddTransient<IBaseMapper<TimeTrackingUser,TimeTrackingUserDto>, TimeTrackingMapper>();
-            services.AddTransient<IModelMapper<TimeTrackingUser,TimeTrackingUserDetailsDto>,TimeTrackingUserDtoMapper>();
+            services.AddTransient<IBaseMapper<Issue, IssueDto>, IssueMapper>();
 
-            services.AddTransient<IBaseMapper<WorkLog,WorkLogDto>, WorkLogMapper>();
-            services.AddTransient<IModelMapper<WorkLog,WorkLogDetailsDto>,WorkLogDetailsMapper>();
-            
+            services.AddTransient<IBaseMapper<Milestone, MilestoneDto>, MileStoneMapper>();
+            services.AddTransient<IModelMapper<Milestone, MilestoneDetailsDto>, MilestoneDetailsMapper>();
+
+            services.AddTransient<IBaseMapper<Project, ProjectDto>, ProjectMapper>();
+            services.AddTransient<IModelMapper<Project, ProjectDetailsDto>, ProjectDetailsMapper>();
+
+            services.AddTransient<IBaseMapper<Team, TeamDto>, TeamMapper>();
+            services.AddTransient<IModelMapper<Team, TeamDetailsDto>, TeamDetailsMapper>();
+
+            services.AddTransient<IBaseMapper<TimeTrackingUser, TimeTrackingUserDto>, TimeTrackingMapper>();
+            services.AddTransient<IModelMapper<TimeTrackingUser, TimeTrackingUserDetailsDto>, TimeTrackingUserDtoMapper>();
+
+            services.AddTransient<IBaseMapper<WorkLog, WorkLogDto>, WorkLogMapper>();
+            services.AddTransient<IModelMapper<WorkLog, WorkLogDetailsDto>, WorkLogDetailsMapper>();
+
             return services;
         }
-        
+
     }
 }

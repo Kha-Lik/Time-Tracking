@@ -4,7 +4,7 @@ using TimeTracking.Models;
 
 namespace TimeTracking.Bl.Impl.Mappers
 {
-    public class WorkLogDetailsMapper:IModelMapper<WorkLog,WorkLogDetailsDto>
+    public class WorkLogDetailsMapper : IModelMapper<WorkLog, WorkLogDetailsDto>
     {
         public WorkLogDetailsDto MapToModel(WorkLog entity)
         {

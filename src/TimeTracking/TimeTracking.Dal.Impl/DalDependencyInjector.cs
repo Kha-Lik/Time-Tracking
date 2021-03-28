@@ -13,13 +13,13 @@ namespace TimeTracking.Dal.Impl
         {
             services.AddDbContext<TimeTrackingDbContext>(
                 options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                    b=> b.MigrationsAssembly(typeof(TimeTrackingDbContext).Assembly.FullName)));
+                    b => b.MigrationsAssembly(typeof(TimeTrackingDbContext).Assembly.FullName)));
 
             services.AddRepositories();
             return services;
         }
-        
-        private static  IServiceCollection AddRepositories(this IServiceCollection services)
+
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<IWorklogRepository, WorklogRepository>();

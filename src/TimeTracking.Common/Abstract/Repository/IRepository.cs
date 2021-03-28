@@ -20,10 +20,10 @@ namespace TimeTracking.Common.Abstract.Repository
         Task<int> DeleteAsync(TEntity t);
         Task<int> CountAsync();
 
-        IEnumerable<TEntity> Filter(Expression<Func<TEntity, bool>> filter = null, 
-            Func<IQueryable<TEntity>, 
-                IOrderedQueryable<TEntity>> orderBy = null, 
-            string includeProperties = "", 
+        IEnumerable<TEntity> Filter(Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>,
+                IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "",
             int? page = null,
             int? pageSize = null);
 

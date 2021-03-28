@@ -31,7 +31,7 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly IUserService _userService;
 
         public WorkLogService(ILogger<WorkLogService> logger,
-            IBaseMapper<WorkLog,WorkLogDto> worklogMapper,
+            IBaseMapper<WorkLog, WorkLogDto> worklogMapper,
             IUserProvider userProvider,
             IUserService userService,
             IWorklogRepository worklogRepository,
@@ -57,7 +57,7 @@ namespace TimeTracking.Bl.Impl.Services
                 if (!issueFoundResponse.IsSuccess)
                 {
                     return issueFoundResponse.ToFailed<WorkLogDto>();
-                    
+
                 }
                 var entityToAdd = _worklogMapper.MapToEntity(dto);
                 entityToAdd.IssueId = dto.IssueId;
@@ -74,7 +74,7 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while creating new worklog {0} ", JsonConvert.SerializeObject(dto));
+                _logger.LogWarning(ex, "An error occured while creating new worklog {0} ", JsonConvert.SerializeObject(dto));
                 return ApiResponse<WorkLogDto>.InternalError();
             }
         }
@@ -86,36 +86,36 @@ namespace TimeTracking.Bl.Impl.Services
                 var userFoundResponse = await _userService.GetUsersById(request.UserId);
                 if (!userFoundResponse.IsSuccess)
                     return userFoundResponse.ToFailed<UserActivityDto>();
-                
-                var workLogActivities = (await _worklogRepository.GetActivitiesWithDetailsByUserId(request.UserId, request.ProjectId ));
+
+                var workLogActivities = (await _worklogRepository.GetActivitiesWithDetailsByUserId(request.UserId, request.ProjectId));
                 var userActivity = new UserActivityDto()
                 {
                     UserId = request.UserId,
                     UserName = userFoundResponse.Data.FirstName,
                     UserSurname = userFoundResponse.Data.LastName,
                     UserEmail = userFoundResponse.Data.Email,
-                    ProjectName =workLogActivities.Select(e=>e.Issue.Project.Name).FirstOrDefault(),
+                    ProjectName = workLogActivities.Select(e => e.Issue.Project.Name).FirstOrDefault(),
                     TotalWorkLogInSeconds = (long)workLogActivities.Sum(e => e.TimeSpent.TotalSeconds),
-                    WorkLogItems = workLogActivities.Select(e=>_worklogDetailsMapper.MapToModel(e)).ToList(),
+                    WorkLogItems = workLogActivities.Select(e => _worklogDetailsMapper.MapToModel(e)).ToList(),
                 };
                 return new ApiResponse<UserActivityDto>(userActivity);
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while fetching workLog activities for user {0} ",request.UserId);
-                return  ApiResponse<UserActivityDto>.InternalError();
+                _logger.LogWarning(e, "An error occured while fetching workLog activities for user {0} ", request.UserId);
+                return ApiResponse<UserActivityDto>.InternalError();
             }
         }
 
         public async Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged(PagedRequest pagedRequest)
         {
-            var listOfRecords = await _worklogRepository.GetAllPagedAsync(pagedRequest.Page,pagedRequest.PageSize);
+            var listOfRecords = await _worklogRepository.GetAllPagedAsync(pagedRequest.Page, pagedRequest.PageSize);
             return new ApiPagedResponse<WorkLogDetailsDto>().FromPagedResult(listOfRecords,
                 _worklogDetailsMapper.MapToModel);
         }
 
 
-       
+
         public async Task<ApiResponse<WorkLogDto>> UpdateWorkLog(WorkLogUpdateRequest workLogUpdateRequest)
         {
             try
@@ -139,32 +139,32 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception e)
             {
-                _logger.LogError(e,"An error occured while updating workLog");
-                return  ApiResponse<WorkLogDto>.InternalError();
+                _logger.LogError(e, "An error occured while updating workLog");
+                return ApiResponse<WorkLogDto>.InternalError();
             }
         }
         public async Task<ApiResponse<WorkLogDto>> GetWorkLog(Guid workLogId)
         {
-   
-                var workLog = await _worklogRepository.GetByIdAsync(workLogId);
-                if (workLog == null)
+
+            var workLog = await _worklogRepository.GetByIdAsync(workLogId);
+            if (workLog == null)
+            {
+                return new ApiResponse<WorkLogDto>()
                 {
-                    return new ApiResponse<WorkLogDto>()
-                    {
-                        StatusCode = 400,
-                        IsSuccess = false,
-                        ResponseException = new ApiError(ErrorCode.WorkLogNotFound, ErrorCode.WorkLogNotFound.GetDescription())
-                    };
-                }
-                else
-                {
-                    var workLogDto = _worklogMapper.MapToModel(workLog);
-                    return new ApiResponse<WorkLogDto>(workLogDto);
-                }
+                    StatusCode = 400,
+                    IsSuccess = false,
+                    ResponseException = new ApiError(ErrorCode.WorkLogNotFound, ErrorCode.WorkLogNotFound.GetDescription())
+                };
+            }
+            else
+            {
+                var workLogDto = _worklogMapper.MapToModel(workLog);
+                return new ApiResponse<WorkLogDto>(workLogDto);
+            }
         }
 
-     
-        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description=null)
+
+        public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus(Guid workLogId, bool isApproved, string description = null)
         {
             try
             {
@@ -182,7 +182,7 @@ namespace TimeTracking.Bl.Impl.Services
                 if (!isApproved)
                 {
                     await _emailHelper.SendEmailWithValidationOfWorkLogFailed(workLog.TimeTrackingUser.Email,
-                        description);  
+                        description);
                 }
                 workLog.IsApproved = isApproved;
                 workLog = await _worklogRepository.UpdateAsync(workLog);
@@ -190,18 +190,18 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while updating workLog {0] status to {1} ", workLogId,isApproved);
-                return  ApiResponse<WorkLogDto>.InternalError();
+                _logger.LogWarning(e, "An error occured while updating workLog {0] status to {1} ", workLogId, isApproved);
+                return ApiResponse<WorkLogDto>.InternalError();
             }
         }
-        public  async Task<ApiResponse> DeleteWorkLog(Guid workLogId)
+        public async Task<ApiResponse> DeleteWorkLog(Guid workLogId)
         {
             try
             {
                 var workLogFound = await _worklogRepository.GetByIdAsync(workLogId);
-                if(workLogFound==null)
+                if (workLogFound == null)
                 {
-                    _logger.LogWarning("Worklog by id {0} was not found in database",workLogId);
+                    _logger.LogWarning("Worklog by id {0} was not found in database", workLogId);
                     return new ApiResponse<WorkLogDto>()
                     {
                         StatusCode = 400,
@@ -214,8 +214,8 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e,"An error occured while deleting workLog {0] ", workLogId);
-                return  ApiResponse<WorkLogDto>.InternalError();
+                _logger.LogWarning(e, "An error occured while deleting workLog {0] ", workLogId);
+                return ApiResponse<WorkLogDto>.InternalError();
             }
         }
     }

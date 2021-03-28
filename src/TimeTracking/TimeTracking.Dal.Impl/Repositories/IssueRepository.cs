@@ -9,7 +9,7 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl.Repositories
 {
-    public class IssueRepository:Repository<Guid,Issue,TimeTrackingDbContext>, IIssueRepository
+    public class IssueRepository : Repository<Guid, Issue, TimeTrackingDbContext>, IIssueRepository
     {
         public IssueRepository(TimeTrackingDbContext dbContext) : base(dbContext)
         {
@@ -21,20 +21,20 @@ namespace TimeTracking.Dal.Impl.Repositories
                 .Include(e => e.Milestone)
                 .Include(e => e.TimeTrackingUserReporter)
                 .Include(e => e.TimeTrackingUserAssigned)
-                .Include(e=>e.WorkLogs);
-                
+                .Include(e => e.WorkLogs);
+
             return query.FirstOrDefaultAsync();
         }
-        
+
         public Task<PagedResult<Issue>> GetAllIssueWithDetails(int page, int size)
         {
             var query = _dbContext.Issues
                 .Include(e => e.Milestone)
                 .Include(e => e.TimeTrackingUserReporter)
                 .Include(e => e.TimeTrackingUserAssigned)
-                .Include(e=>e.WorkLogs);
-                
-            return query.PaginateAsync(page,size);
+                .Include(e => e.WorkLogs);
+
+            return query.PaginateAsync(page, size);
         }
     }
 }

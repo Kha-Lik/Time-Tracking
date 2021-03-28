@@ -24,8 +24,8 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly IProjectRepository _projectRepository;
 
         public TeamService(ILogger<TeamService> logger,
-            IBaseMapper<Team,TeamDto> teamMapper,
-            IModelMapper<Team,TeamDetailsDto> teamDetailsMapper,
+            IBaseMapper<Team, TeamDto> teamMapper,
+            IModelMapper<Team, TeamDetailsDto> teamDetailsMapper,
             ITeamRepository teamRepository,
             IProjectRepository projectRepository)
         {
@@ -39,7 +39,7 @@ namespace TimeTracking.Bl.Impl.Services
         {
             try
             {
-                var projectFound =  await _projectRepository.GetByIdAsync(dto.ProjectId);
+                var projectFound = await _projectRepository.GetByIdAsync(dto.ProjectId);
                 if (projectFound == null)
                 {
                     _logger.LogWarning("Failed to found project by id {0}", dto.ProjectId);
@@ -50,7 +50,7 @@ namespace TimeTracking.Bl.Impl.Services
                         ResponseException = new ApiError(ErrorCode.ProjectNotFound, ErrorCode.ProjectNotFound.GetDescription())
                     };
                 }
-                var entityToAdd = _teamMapper.MapToEntity(dto); 
+                var entityToAdd = _teamMapper.MapToEntity(dto);
                 entityToAdd = await _teamRepository.AddAsync(entityToAdd);
                 if (entityToAdd != null) return new ApiResponse<TeamDto>(dto);
                 _logger.LogWarning("Failed to create entity {0}", JsonConvert.SerializeObject(dto));
@@ -63,12 +63,12 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception ex)
             {
-                _logger.LogWarning(ex,"An error occured while creating new team {0} ", JsonConvert.SerializeObject(dto));
+                _logger.LogWarning(ex, "An error occured while creating new team {0} ", JsonConvert.SerializeObject(dto));
                 return ApiResponse<TeamDto>.InternalError();
             }
         }
-        
-        
+
+
         public async Task<ApiResponse<TeamDetailsDto>> GetTeamById(Guid teamId)
         {
             var teamFounded = await _teamRepository.GetByIdWithDetails(teamId);
@@ -84,7 +84,7 @@ namespace TimeTracking.Bl.Impl.Services
             }
             return new ApiResponse<TeamDetailsDto>(_teamDetailsMapper.MapToModel(teamFounded));
         }
-        
+
         public async Task<ApiPagedResponse<TeamDetailsDto>> GetAllTeamAsync(PagedRequest request)
         {
             var listOfRecords = await _teamRepository.GetAllPagedAsync(request.Page, request.PageSize);

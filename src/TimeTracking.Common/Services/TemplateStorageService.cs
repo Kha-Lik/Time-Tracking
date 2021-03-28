@@ -6,7 +6,7 @@ using TimeTracking.Common.Enums;
 
 namespace TimeTracking.Common.Services
 {
-    public class TemplateStorageService:IWriteableTemplateStorageService,IReadOnlyTemplateStorageService
+    public class TemplateStorageService : IWriteableTemplateStorageService, IReadOnlyTemplateStorageService
     {
         private readonly IFileSystem _fileSystem;
 
@@ -32,7 +32,7 @@ namespace TimeTracking.Common.Services
 
         private void InitDictionary()
         {
-      
+
             TryUpSertTemplate(EmailPurpose.EmailConfirmation.ToString(),
                 GetFile("Views/Emails/ConfirmEmail.cshtml"));
             TryUpSertTemplate(EmailPurpose.ResetPassword.ToString(),
@@ -43,7 +43,7 @@ namespace TimeTracking.Common.Services
 
         string GetFile(string path)
         {
-            var dir = _fileSystem.Path.Combine( _fileSystem.Directory.GetParent( _fileSystem.Directory.GetCurrentDirectory()).Parent.ToString(),"TimeTracking.Templates");
+            var dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory()).Parent.ToString(), "TimeTracking.Templates");
             return _fileSystem.Path.Combine(dir, path.Replace('/', _fileSystem.Path.DirectorySeparatorChar));
         }
         public bool TryUpSertTemplate(string templateType, string path)
@@ -63,7 +63,7 @@ namespace TimeTracking.Common.Services
 
         private bool CheckPathIsValid(string path)
         {
-            if(!_fileSystem.File.Exists(path))
+            if (!_fileSystem.File.Exists(path))
             {
                 return false;
             }

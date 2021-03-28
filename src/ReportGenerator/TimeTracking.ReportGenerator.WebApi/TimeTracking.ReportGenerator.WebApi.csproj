@@ -6,10 +6,12 @@
     <UserSecretsId>f5039328-c732-4e6e-abda-6b1efbd8f80e</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="LightInject.Microsoft.AspNetCore.Hosting" Version="2.3.5" />
     <PackageReference Include="MicroElements.Swashbuckle.FluentValidation.WebApi" Version="0.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TimeTracking.IocContainer\TimeTracking.IocContainer.csproj" />
     <ProjectReference Include="..\TimeTracking.ReportGenerator.Bl.Abstract\TimeTracking.ReportGenerator.Bl.Abstract.csproj" />
     <ProjectReference Include="..\TimeTracking.ReportGenerator.Bl.Impl\TimeTracking.ReportGenerator.Bl.Impl.csproj" />
     <ProjectReference Include="..\TimeTracking.ReportGenerator.Dal.Abstract\TimeTracking.ReportGenerator.Dal.Abstract.csproj" />

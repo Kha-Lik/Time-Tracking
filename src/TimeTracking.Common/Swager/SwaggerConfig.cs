@@ -13,7 +13,7 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace TimeTracking.Common.Swager
 {
-    public static  class SwaggerConfig
+    public static class SwaggerConfig
     {
         public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services, string title)
         {
@@ -25,8 +25,11 @@ namespace TimeTracking.Common.Swager
             services.AddSwaggerGen(swaggerGenOptions =>
             {
                 swaggerGenOptions.SwaggerDoc("v1",
-                    new OpenApiInfo { Title = title, 
-                    Version = "v1" });
+                    new OpenApiInfo
+                    {
+                        Title = title,
+                        Version = "v1"
+                    });
                 swaggerGenOptions.AddFluentValidationRules();
                 // The name of this security definition is linked to the Id below
                 swaggerGenOptions.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
