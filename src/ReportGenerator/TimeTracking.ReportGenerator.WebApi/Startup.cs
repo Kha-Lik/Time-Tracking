@@ -18,8 +18,6 @@ using TimeTracking.Common.HttpClientHandler;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.Services;
 using TimeTracking.Common.Swager;
-using TimeTracking.IocContainer;
-using TimeTracking.IocContainer.TimeTrackingIoc.Extensions;
 using TimeTracking.ReportGenerator.Bl.Abstract;
 using TimeTracking.ReportGenerator.Bl.Impl;
 using TimeTracking.ReportGenerator.Bl.Impl.Services;

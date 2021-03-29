@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using TimeTracking.Common.HttpClientHandler;
 using TimeTracking.Common.Jwt;
-using TimeTracking.IocContainer;
 using TimeTracking.ReportGenerator.Bl.Abstract;
 using TimeTracking.ReportGenerator.Bl.Impl.Services;
 using TimeTracking.ReportGenerator.Bl.Impl.Settings;

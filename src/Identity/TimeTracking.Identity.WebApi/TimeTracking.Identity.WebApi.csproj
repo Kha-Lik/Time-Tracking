@@ -7,7 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimeTracking.Identity.BL.Impl\TimeTracking.Identity.BL.Impl.csproj" />
-    <ProjectReference Include="..\TimeTracking.Identity.BL\TimeTracking.Identity.BL.csproj" />
     <ProjectReference Include="..\TimeTracking.Identity.Dal.Impl\TimeTracking.Identity.Dal.Impl.csproj" />
   </ItemGroup>
   <ItemGroup>

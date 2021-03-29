@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using TimeTracking.Common.Pagination;
 
 namespace TimeTracking.Common.Abstract.Repository
@@ -28,5 +29,10 @@ namespace TimeTracking.Common.Abstract.Repository
             int? pageSize = null);
 
         bool Exist(Expression<Func<TEntity, bool>> predicate);
+    }
+    
+    public interface IDbContext
+    {
+        DbSet<T> Set<T>() where T : class;
     }
 }

@@ -23,7 +23,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Controllers/AccountController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Controllers/DevicesController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Controllers/DevicesTemplatesController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Controllers/HubsController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Models/DeviceViewModels/CreationDeviceViewModel.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Program.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/Views/Devices/CreateDevice.cshtml">
           <value>
             <set />
           </value>
@@ -48,7 +78,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice.Web/appsettings.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice/BL/Abstract/Services/IDataReceiverDeviceService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice/BL/Services/ActiveHubsService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice/BL/Services/DataReceiverDeviceService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/BackOffice/Clap.BackOffice/Models/Models/DeviceModel.cs">
           <value>
             <set />
           </value>
@@ -73,6 +123,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Auth.Bl.Impl/Validators/Manual/RegistrationRequestUniquenessValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Abstract/Services/IDeviceService.cs">
           <value>
             <set />
@@ -83,7 +138,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Abstract/Services/ISmartObjectService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/BlDependencyInstaller.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Helpers/CultureInfoHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Mappers/DeviceTypeInfoMapper.cs">
           <value>
             <set />
           </value>
@@ -108,12 +178,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Services.Crud/TermsAndPolicyDocumentsService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Services/HubConnectionService.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Validators/DeviceValidator.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Bl.Impl/Validators/LocationTypeRequestValidator.cs">
           <value>
             <set />
           </value>
@@ -133,6 +213,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Abstract/IRepository/ISmartObjectTypeRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Abstract/IRepository/IUserDeviceRepository.cs">
           <value>
             <set />
@@ -144,6 +229,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/BackendDataReceiverDbContext.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Dal.Ef.Postgres/Cotton.BackendDataReceiver.Dal.Ef.Postgres.csproj">
           <value>
             <set />
           </value>
@@ -303,7 +393,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Models/Models/SmartObjectTypeDto.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Models/Request/LocationTypeRequest.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Models/Response/CreatedDeviceResponse.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Web.Controllers/DeviceController.cs">
           <value>
             <set />
           </value>
@@ -323,7 +428,147 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Web/Properties/launchSettings.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Web/Startup.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.BackendDataReceiver.Web/appsettings.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/Cotton.Common.Utils/Helpers/CultureInfoHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService.Api/Cotton.NotificationService.Api.csproj">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService.Api/Program.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService.Api/Startup.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService.Api/appsettings.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Bl/Impl/BlDependencyInstaller.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Bl/Impl/Services/NotificationService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Abstract/INotifyMessageRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Abstract/INotifyMessageTemplateRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Abstract/ISendNotifyMessageInfoRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/DalDependencyInstaller.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Impl.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Impl/Repositories/NotifyMessageRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Impl/Repositories/NotifyMessageTemplateRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/Impl/Repositories/SendNotifyMessageInfoRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Dal/NotificationServiceContext.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Entities/NotifyMessage.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Entities/NotifyMessageTemplate.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Entities/SendNotifyMessageInfo.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Migrations/20210329134112_InitialNotificationSchema.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Migrations/20210329134256_SmartMigrationTable.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/src/NotificationService/Cotton.NotificationService/Migrations/20210329234355_InitialNotificationSchema.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Data/SmartObjectLocalizationsDbSet.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Data/UserDbSet.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Repositories/BackendDataReceiverDbContextTestsBase.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Repositories/SmartObjectLocationRepositoryTests.cs">
           <value>
             <set />
           </value>
@@ -378,7 +623,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Services/SmartObjectService/GetLocationTypesLocalizedTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Services/SmartObjectService/ObjectServiceTestsBase.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Cotton/backend-data-receiver/tests/Clap.UnitTests/Services/SmartObjectService/SmartObjectTypeServiceTests.cs">
           <value>
             <set />
           </value>
@@ -394,6 +649,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/TimeTracking.Identity.Dal/Implementation.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/TimeTracking.IocContainer.Tests/ContainerTests.cs">
           <value>
             <set />
           </value>
@@ -1373,6 +1633,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/ExtensionMethods.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/Program.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/Properties/launchSettings.json">
           <value>
             <set />
@@ -2083,6 +2353,211 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/Class1.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ConstructorResolver.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/Container.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ContainerExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ContainerScopeExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/Exceptions/IocContainerResolverException.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IContainer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IOC/EX.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IOC/IOC.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IOC/IOcFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IOC/IRegister.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IOC/ServiceContainer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IServiceProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IServiceTypeMap.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IocContainer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IocContainerServiceProviderFabric.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IocContainerServiceProviderFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/IocRequiredServiceProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/RegistrationBuilderExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/Resolver.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ResolverHelpers/CollectionResolverHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ResolverHelpers/LoggerResolverHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ResolverHelpers/LoggerResolverРудзук.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ResolverHelpers/OptionsResolverHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ResolverHelpers/ReflectionUtil.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ScopedIocContainer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ServiceCollectionExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ServiceContainer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ServiceProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ServiceTypeLifeTime.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/ServiceTypeMap.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc.AspNetCoreIntegration/HostBuilderExtension.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc.AspNetCoreIntegration/TimeTrackingControllerFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc.AspNetCoreIntegration/TimeTrackingIocContainerServiceProviderFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc.AspNetCoreIntegration/TimeTrackingIocServiceProvider.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Extensions/ServiceProviderExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Implementations.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Implementations/ILifetimeOwner.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Implementations/LifetimeOwner.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Implementations/TypeExporer.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking.IocContainer/TimeTrackingIoc/Options/InjectionsOptions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking.Models/IssueDetailsDto.cs">
           <value>
             <set />
@@ -2259,6 +2734,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/TimeTracking.WebApi/appsettings.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/TimeTracking/TimeTracking.Bl.Abstract/Services/IContainer.cs">
           <value>
             <set />
           </value>
@@ -2638,7 +3118,152 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/Data/IssuesDbSet.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/DbOptionsFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/Repositories/IssueRepositoryTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/TestBase.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/TestHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../Предмети/Web/WebProjectLab/BankTransactionsWeb/src/BankTransactionWeb/Views/Error/HandleErrorCode.cshtml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarybll1/Business/AutomapperProfile.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarybll1/Business/Services/CardService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarybll1/Data/Entities/Card.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarybll1/Data/Repositories/HistoryRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/Entities/Book.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/Entities/Card.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/LibraryDbContext.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/Repositories/BookRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/Repositories/CardRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Data/Repositories/HistoryRepository.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarydal1/Library.Tests/DataTests/BooksRepositoryTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Business/Interfaces/IStatisticService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Business/Models/StatisticFilterModel.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Business/Services/ReaderService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Business/Services/StatisticService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Data/Entities/Card.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Data/LibraryDbContext.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/Library.Tests/IntegrationTests/StatisticIntegrationTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/Controllers/BooksController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/Controllers/CardController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/Controllers/HistoryController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/Controllers/ReaderController.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/Startup.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Предмети/Курс_3/Epam/Labs/librarypl1/WebApi/appsettings.Development.json">
           <value>
             <set />
           </value>

@@ -3,23 +3,28 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TimeTracking.Common.Abstract.Repository;
 using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl
 {
-    public class TimeTrackingDbContext : DbContext
+    public class TimeTrackingDbContext : DbContext,IDbContext
     {
+        public TimeTrackingDbContext()
+        {
+            
+        }
         public TimeTrackingDbContext(DbContextOptions<TimeTrackingDbContext> options)
         : base(options)
         {
 
         }
-        public DbSet<Issue> Issues { get; set; }
-        public DbSet<Milestone> Milestones { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Team> Teams { get; set; }
-        public DbSet<WorkLog> WorkLogs { get; set; }
-        public DbSet<TimeTrackingUser> Users { get; set; }
+        public virtual DbSet<Issue> Issues { get; set; }
+        public virtual DbSet<Milestone> Milestones { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<WorkLog> WorkLogs { get; set; }
+        public virtual DbSet<TimeTrackingUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

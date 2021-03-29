@@ -10,7 +10,7 @@ using TimeTracking.Common.Pagination;
 namespace TimeTracking.Common.Repository
 {
     public abstract class Repository<TKey, TEntity, TContext> : IRepository<TKey, TEntity> where TEntity : class
-        where TContext : DbContext
+        where TContext : DbContext,IDbContext
     {
         protected readonly TContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
