@@ -71,5 +71,9 @@ namespace TimeTracking.Common.Wrapper
         ClientError,
         [Description("An user to role failed")]
         AddToRoleFailed,
+        [Description("Project creation  failed")]
+        ProjectCreationFailed,
+        [Description("Team creation  failed")]
+        TeamCreationFailed,
     }
 }
