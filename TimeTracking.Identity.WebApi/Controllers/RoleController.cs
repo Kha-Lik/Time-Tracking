@@ -7,7 +7,7 @@ using TimeTracking.Identity.BL.Abstract.Services;
 using TimeTracking.Identity.Models.Requests;
 
 namespace TimeTracking.Identity.WebApi.Controllers
-{    
+{
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Produces("application/json")]
@@ -28,7 +28,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("add-to-role")]
-        public async Task<ApiResponse> AddToRole([FromBody]AddToRoleRequest request)
+        public async Task<ApiResponse> AddToRole([FromBody] AddToRoleRequest request)
         {
             return await _roleService.AddUserToRoleAsync(request);
         }

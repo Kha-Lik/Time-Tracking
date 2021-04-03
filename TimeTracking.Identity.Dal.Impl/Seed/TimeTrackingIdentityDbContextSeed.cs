@@ -23,30 +23,30 @@ namespace TimeTracking.Identity.Dal.Impl.Seed
             var rolesNames = Enum.GetNames(typeof(AuthorizationData.Roles));
             foreach (var stringRole in rolesNames)
             {
-                await EnsureUser(userManager,stringRole);
+                await EnsureUser(userManager, stringRole);
             }
         }
-        
-        private static async Task EnsureUser(UserManager<User> userManager,string role)
+
+        private static async Task EnsureUser(UserManager<User> userManager, string role)
         {
-            var user = await userManager.FindByNameAsync(AuthorizationData.DefaultUsername+role);
+            var user = await userManager.FindByNameAsync(AuthorizationData.DefaultUsername + role);
 
             if (user == null)
             {
                 user = new User()
                 {
-                    UserName = AuthorizationData.DefaultUsername+role,
-                    FirstName =  AuthorizationData.DefaultUsername+role,
-                    LastName =  AuthorizationData.DefaultUsername+role,
-                    Email = AuthorizationData.DefaultEmail+role,
+                    UserName = AuthorizationData.DefaultUsername + role,
+                    FirstName = AuthorizationData.DefaultUsername + role,
+                    LastName = AuthorizationData.DefaultUsername + role,
+                    Email = AuthorizationData.DefaultEmail + role,
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
                 };
-                await userManager.CreateAsync( user, AuthorizationData.DefaultPassword+role);
-                await userManager.AddToRoleAsync( user, role);
+                await userManager.CreateAsync(user, AuthorizationData.DefaultPassword + role);
+                await userManager.AddToRoleAsync(user, role);
             }
-            
+
         }
-     
+
     }
 }

@@ -29,11 +29,11 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("register")]
-        public async Task<ApiResponse> Register([FromBody]RegistrationRequest request)
+        public async Task<ApiResponse> Register([FromBody] RegistrationRequest request)
         {
-           return await _userIdentityService.RegisterAsync(request);
+            return await _userIdentityService.RegisterAsync(request);
         }
-        
+
         /// <summary>
         /// Confirms a user email address
         /// </summary>
@@ -41,7 +41,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("confirm-email")]
-        public async Task<ApiResponse> ConfirmEmail([FromQuery]EmailConfirmationRequest request)
+        public async Task<ApiResponse> ConfirmEmail([FromQuery] EmailConfirmationRequest request)
         {
             if (request == null)
             {
@@ -57,7 +57,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns>Returns jwt token, refresh token and expiration time</returns>
         [HttpPost]
         [Route("token")]
-        public async Task<AuthResponse> CreateToken([FromBody]TokenExchangeRequest request)
+        public async Task<AuthResponse> CreateToken([FromBody] TokenExchangeRequest request)
         {
             return await _tokenService.LoginAsync(request);
         }
@@ -69,7 +69,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("refresh")]
-        public async Task<AuthResponse> RefreshToken([FromBody]RefreshTokenRequest request)
+        public async Task<AuthResponse> RefreshToken([FromBody] RefreshTokenRequest request)
         {
             return await _tokenService.RefreshTokenAsync(request.RefreshToken);
         }
@@ -81,7 +81,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("forgot-password")]
-        public async Task<ApiResponse> ForgotPassword([FromBody]ForgotPasswordRequest request)
+        public async Task<ApiResponse> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
             return await _userIdentityService.ForgotPasswordAsync(request);
         }
@@ -93,7 +93,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("reset-password")]
-        public async Task<ApiResponse> ResetPassword([FromBody]ResetPasswordRequest request)
+        public async Task<ApiResponse> ResetPassword([FromBody] ResetPasswordRequest request)
         {
             return await _userIdentityService.ResetPasswordAsync(request);
         }
@@ -105,11 +105,11 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("resend-email-verification-code")]
-        public async Task<ApiResponse> ResendVerificationEmail([FromBody]ResendEmailRequest request)
+        public async Task<ApiResponse> ResendVerificationEmail([FromBody] ResendEmailRequest request)
         {
             return await _userIdentityService.ResentEmailAsync(request);
         }
-        
+
         /// <summary>
         /// Revokes sent token
         /// </summary>
@@ -117,7 +117,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("revoke-token")]
-        public async Task<AuthResponse> RevokeToken([FromBody]RevokeTokenRequest request)
+        public async Task<AuthResponse> RevokeToken([FromBody] RevokeTokenRequest request)
         {
             return await _tokenService.RevokeTokenAsync(request.Token);
         }

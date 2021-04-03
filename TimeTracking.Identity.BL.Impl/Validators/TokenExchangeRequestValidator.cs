@@ -11,7 +11,7 @@ namespace TimeTracking.Identity.BL.Impl.Validators
                 .NotNull()
                 .NotEmpty()
                 .EmailAddress();
-            
+
             RuleFor(x => x.Password)
                 .NotNull()
                 .NotEmpty()

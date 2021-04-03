@@ -2512,33 +2512,6 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "TimeTracking.Identity.BL/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "FluentValidation.AspNetCore": "9.5.1",
-          "MicroElements.Swashbuckle.FluentValidation.WebApi": "0.1.0",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.12",
-          "Microsoft.Extensions.Identity.Core": "3.1.11",
-          "Microsoft.IdentityModel.JsonWebTokens": "5.5.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.11",
-          "System.IO.Abstractions": "13.2.24",
-          "System.IdentityModel.Tokens.Jwt": "5.5.0",
-          "TimeTracking.Identity.Dal.Abstract": "1.0.0",
-          "TimeTracking.Identity.Dal.Impl": "1.0.0",
-          "TimeTracking.Identity.Entities": "1.0.0",
-          "TimeTracking.Identity.Models": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/TimeTracking.Identity.BL.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TimeTracking.Identity.BL.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "TimeTracking.Identity.BL.Abstract/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2573,23 +2546,6 @@
         },
         "runtime": {
           "bin/placeholder/TimeTracking.Identity.BL.Impl.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "TimeTracking.Identity.Dal.Abstract/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "FluentValidation.AspNetCore": "9.5.1",
-          "MicroElements.Swashbuckle.FluentValidation.WebApi": "0.1.0"
-        },
-        "compile": {
-          "bin/placeholder/TimeTracking.Identity.Dal.Abstract.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TimeTracking.Identity.Dal.Abstract.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -8052,11 +8008,6 @@
       "path": "../../TimeTracking.Contracts/TimeTracking.Contracts.csproj",
       "msbuildProject": "../../TimeTracking.Contracts/TimeTracking.Contracts.csproj"
     },
-    "TimeTracking.Identity.BL/1.0.0": {
-      "type": "project",
-      "path": "../TimeTracking.Identity.BL/TimeTracking.Identity.BL.csproj",
-      "msbuildProject": "../TimeTracking.Identity.BL/TimeTracking.Identity.BL.csproj"
-    },
     "TimeTracking.Identity.BL.Abstract/1.0.0": {
       "type": "project",
       "path": "../TimeTracking.Identity.BL.Abstract/TimeTracking.Identity.BL.Abstract.csproj",
@@ -8066,11 +8017,6 @@
       "type": "project",
       "path": "../TimeTracking.Identity.BL.Impl/TimeTracking.Identity.BL.Impl.csproj",
       "msbuildProject": "../TimeTracking.Identity.BL.Impl/TimeTracking.Identity.BL.Impl.csproj"
-    },
-    "TimeTracking.Identity.Dal.Abstract/1.0.0": {
-      "type": "project",
-      "path": "../TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj",
-      "msbuildProject": "../TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj"
     },
     "TimeTracking.Identity.Dal.Impl/1.0.0": {
       "type": "project",
@@ -8107,7 +8053,6 @@
       "SonarAnalyzer.CSharp >= 8.18.0.27296",
       "Swashbuckle.AspNetCore >= 6.1.0",
       "Swashbuckle.AspNetCore.Newtonsoft >= 6.1.0",
-      "TimeTracking.Identity.BL >= 1.0.0",
       "TimeTracking.Identity.BL.Impl >= 1.0.0",
       "TimeTracking.Identity.Dal.Impl >= 1.0.0"
     ]
@@ -8142,9 +8087,6 @@
           "projectReferences": {
             "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj": {
               "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj"
-            },
-            "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL\\TimeTracking.Identity.BL.csproj": {
-              "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL\\TimeTracking.Identity.BL.csproj"
             },
             "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj": {
               "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj"

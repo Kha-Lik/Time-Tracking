@@ -8,7 +8,7 @@ namespace TimeTracking.Identity.Entities
     public class RefreshToken
     {
         public string Token { get; set; }
-        public DateTimeOffset  Expires { get; set; }
+        public DateTimeOffset Expires { get; set; }
         [NotMapped]
         public bool IsExpired => DateTimeOffset.UtcNow >= Expires;
         public DateTimeOffset Created { get; set; }

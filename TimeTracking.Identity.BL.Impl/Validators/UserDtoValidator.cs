@@ -3,18 +3,18 @@ using TimeTracking.Identity.Models.Dtos;
 
 namespace TimeTracking.Identity.BL.Impl.Validators
 {
-    public class UserDtoValidator:AbstractValidator<UserDto>
+    public class UserDtoValidator : AbstractValidator<UserDto>
     {
         public UserDtoValidator()
         {
-            RuleFor(x=>x.Email)
+            RuleFor(x => x.Email)
                 .NotEmpty()
                 .NotNull()
                 .EmailAddress();
 
             RuleFor(x => x.Id)
                 .NotEmpty();
-            
+
             RuleFor(x => x.Phone)
                 .NotEmpty()
                 .NotNull()
@@ -23,7 +23,7 @@ namespace TimeTracking.Identity.BL.Impl.Validators
             RuleFor(x => x.FirstName)
                 .NotEmpty()
                 .NotNull();
-            
+
             RuleFor(x => x.LastName)
                 .NotEmpty()
                 .NotNull();

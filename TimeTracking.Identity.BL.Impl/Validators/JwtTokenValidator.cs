@@ -19,8 +19,8 @@ namespace TimeTracking.Identity.BL.Impl.Validators
             _jwtSecurityTokenHandler = jwtSecurityTokenHandler;
             _logger = logger;
         }
-      
-        
+
+
         public ClaimsPrincipal ValidateToken(string token, TokenValidationParameters tokenValidationParameters)
         {
             try

@@ -23,7 +23,7 @@ namespace TimeTracking.Identity.WebApi.Internal
                 var port = Convert.ToUInt16(rabbitMqConfiguration.Port);
 
                 //consumers registration
-                
+
                 x.AddBus(provider =>
                 {
                     var bus = Bus.Factory.CreateUsingRabbitMq(cfg =>
@@ -31,7 +31,7 @@ namespace TimeTracking.Identity.WebApi.Internal
                         // configure health checks for this bus instance
                         cfg.UseHealthCheck(provider);
 
-                        cfg.Host(new Uri($"rabbitmq://{host}:{port}") ,host =>
+                        cfg.Host(new Uri($"rabbitmq://{host}:{port}"), host =>
                         {
                             host.Username(userName);
                             host.Password(password);

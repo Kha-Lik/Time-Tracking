@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace TimeTracking.Identity.Entities
 {
-    public class User:IdentityUser<Guid>
+    public class User : IdentityUser<Guid>
     {
         [Required]
         public string FirstName { get; set; }

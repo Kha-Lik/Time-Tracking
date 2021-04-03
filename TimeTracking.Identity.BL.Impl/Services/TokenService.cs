@@ -29,7 +29,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             _jwtFactory = jwtFactory;
             _logger = logger;
         }
-        
+
         public async Task<AuthResponse> LoginAsync(TokenExchangeRequest request)
         {
             var authResponse = new AuthResponse();
@@ -46,7 +46,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 return authResponse;
             }
             // Used as user lock
-            if (user.LockoutEnd>=DateTimeOffset.UtcNow)
+            if (user.LockoutEnd >= DateTimeOffset.UtcNow)
             {
                 authResponse.Message = $"This account has been locked.";
                 return authResponse;
@@ -70,7 +70,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     var updateResponse = await _userManager.UpdateAsync(user);
                     if (!updateResponse.Succeeded)
                     {
-                        _logger.LogWarning("Updating user with id {0} failed with reason {1}",user.Id,updateResponse.ToString());
+                        _logger.LogWarning("Updating user with id {0} failed with reason {1}", user.Id, updateResponse.ToString());
                         authResponse.Message = $"Failed to generate refresh token.";
                     }
                 }
@@ -82,8 +82,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
             authResponse.Message = $"Incorrect Credentials for user {user.Email}.";
             return authResponse;
         }
-         
-         public async Task<AuthResponse> RefreshTokenAsync(string token)
+
+        public async Task<AuthResponse> RefreshTokenAsync(string token)
         {
             var authenticationModel = new AuthResponse();
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token));
@@ -101,13 +101,13 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 return authenticationModel;
             }
             refreshToken.Revoked = DateTime.UtcNow;
-            
+
             var newRefreshToken = _jwtFactory.GenerateRefreshToken();
             user.RefreshTokens.Add(newRefreshToken);
             var updateResponse = await _userManager.UpdateAsync(user);
             if (!updateResponse.Succeeded)
             {
-                _logger.LogWarning("Updating user with id {0} failed with reason {1}",user.Id,updateResponse.ToString());
+                _logger.LogWarning("Updating user with id {0} failed with reason {1}", user.Id, updateResponse.ToString());
                 authenticationModel.Message = $"Failed to generate refresh token.";
             }
 
@@ -135,13 +135,13 @@ namespace TimeTracking.Identity.BL.Impl.Services
             var updateResponse = await _userManager.UpdateAsync(user);
             if (!updateResponse.Succeeded)
             {
-                _logger.LogWarning("Updating user with id {0} failed with reason {1}",user.Id,updateResponse.ToString());
+                _logger.LogWarning("Updating user with id {0} failed with reason {1}", user.Id, updateResponse.ToString());
                 return authResponse;
             }
 
             authResponse.Message = "Token revoked successfully";
             return authResponse;
         }
-   
+
     }
 }

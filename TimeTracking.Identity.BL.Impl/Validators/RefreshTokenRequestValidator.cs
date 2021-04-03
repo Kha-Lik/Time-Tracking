@@ -4,7 +4,7 @@ using TimeTracking.Identity.Models.Requests;
 
 namespace TimeTracking.Identity.BL.Impl.Validators
 {
-    public class RefreshTokenRequestValidator:AbstractValidator<RefreshTokenRequest>
+    public class RefreshTokenRequestValidator : AbstractValidator<RefreshTokenRequest>
     {
         public RefreshTokenRequestValidator()
         {

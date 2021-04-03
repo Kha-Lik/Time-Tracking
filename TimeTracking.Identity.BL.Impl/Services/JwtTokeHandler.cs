@@ -27,7 +27,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
         {
             return _jwtSecurityTokenHandler.WriteToken(jwt);
         }
-        
+
         public ClaimsPrincipal GetPrincipalFromToken(string token, string signingKey)
         {
             return _jwtTokenValidator.ValidateToken(token, new TokenValidationParameters
@@ -39,6 +39,6 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 ValidateLifetime = false //check expired tokens
             });
         }
-      
+
     }
 }

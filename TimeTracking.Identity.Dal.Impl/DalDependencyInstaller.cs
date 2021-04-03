@@ -15,13 +15,13 @@ namespace TimeTracking.Identity.Dal.Impl
             services.AddDbContext<TimeTrackingIdentityDbContext>(options =>
                 options.UseNpgsql(
                     configuration.GetConnectionString("DefaultConnection"),
-                    b=> b.MigrationsAssembly(typeof(TimeTrackingIdentityDbContext).Assembly.FullName)));
-            
-            services.AddIdentity<User,Role>(options =>
-                    options.SignIn.RequireConfirmedAccount = true)
+                    b => b.MigrationsAssembly(typeof(TimeTrackingIdentityDbContext).Assembly.FullName)));
+
+            services.AddIdentity<User, Role>(options =>
+                     options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<TimeTrackingIdentityDbContext>()
                 .AddDefaultTokenProviders();
-            
+
             return services;
         }
     }

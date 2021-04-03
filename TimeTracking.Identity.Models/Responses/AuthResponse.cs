@@ -7,9 +7,9 @@ namespace TimeTracking.Identity.Models.Responses
         public string Token { get; set; } = null!;
         public string RefreshToken { get; set; } = null!;
         [DataMember(EmitDefaultValue = false)]
-        public  long ExpiredAt { get; set; }
+        public long ExpiredAt { get; set; }
         [DataMember(EmitDefaultValue = false)]
-        public  string? Message { get; set; }
+        public string? Message { get; set; }
     }
 }
 #nullable restore

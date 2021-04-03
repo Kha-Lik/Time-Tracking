@@ -27,7 +27,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
         private readonly IEmailHelperService _emailHelperService;
         private readonly IBaseMapper<User, UserDto> _userMapper;
         private readonly IPublishEndpoint _publish;
-        private  readonly ILogger<UserIdentityService> _logger;
+        private readonly ILogger<UserIdentityService> _logger;
 
         public UserIdentityService(UserManager<User> userManager,
             ISystemClock systemClock,
@@ -58,12 +58,12 @@ namespace TimeTracking.Identity.BL.Impl.Services
                         ErrorMessage = result.ToString(),
                     });
             }
-            
-          /*  var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
-            if (!sendEmailConfirmResult.IsSuccess)
-            {
-                return sendEmailConfirmResult;
-            }*/
+
+            /*  var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
+              if (!sendEmailConfirmResult.IsSuccess)
+              {
+                  return sendEmailConfirmResult;
+              }*/
             await _publish.Publish<UserSignedUp>(new
             {
                 UserId = userToAdd.Id,
@@ -74,7 +74,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             });
             return ApiResponse.Success();
         }
-        
+
 
         public async Task<ApiResponse> ForgotPasswordAsync(ForgotPasswordRequest request)
         {
@@ -119,10 +119,10 @@ namespace TimeTracking.Identity.BL.Impl.Services
 
         public async Task<ApiResponse> ResentEmailAsync(ResendEmailRequest request)
         {
-            
+
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
-            { 
+            {
                 return new ApiResponse<User>(new ApiError()
                 {
                     ErrorCode = ErrorCode.UserNotFound,
@@ -154,7 +154,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             var user = await _userManager.FindByIdAsync(userId.ToString());
             if (user == null)
             {
-                _logger.LogWarning( "Could not find user by id {0}",userId);
+                _logger.LogWarning("Could not find user by id {0}", userId);
                 return new ApiResponse<User>(new ApiError()
                 {
                     ErrorCode = ErrorCode.UserNotFound,
@@ -163,7 +163,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             }
             return new ApiResponse<User>(user);
         }
-        
+
         public async Task<ApiResponse> ConfirmEmailAsync(EmailConfirmationRequest request)
         {
             var userFoundedResponse = await FindUserByIdAsync(request.UserId);
@@ -171,15 +171,15 @@ namespace TimeTracking.Identity.BL.Impl.Services
             {
                 return userFoundedResponse;
             }
-            
-            var result = await _userManager.ConfirmEmailAsync(userFoundedResponse.Data,request.Code);
+
+            var result = await _userManager.ConfirmEmailAsync(userFoundedResponse.Data, request.Code);
             if (result.Succeeded)
             {
-                
+
                 var addToRoleAsync = await _userManager.AddToRoleAsync(userFoundedResponse.Data, AuthorizationData.DefaultRole.ToString());
                 if (!addToRoleAsync.Succeeded)
                 {
-                    _logger.LogError("Failed to add user to to role with reason {0}",addToRoleAsync.ToString());
+                    _logger.LogError("Failed to add user to to role with reason {0}", addToRoleAsync.ToString());
                     return new ApiResponse(
                         new ApiError()
                         {
@@ -189,9 +189,9 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 }
                 return ApiResponse.Success();
             }
-               
-            _logger.LogWarning( "Email confirmation failed for user with id {0} by reason {1}",
-                request.UserId,result.Errors.ToString());
+
+            _logger.LogWarning("Email confirmation failed for user with id {0} by reason {1}",
+                request.UserId, result.Errors.ToString());
             return new ApiResponse()
             {
                 ResponseException = new ApiError()
@@ -205,7 +205,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
 
         public async Task<ApiResponse<List<UserDto>>> GetAllUsers()
         {
-           return new ApiResponse<List<UserDto>>(await _userManager.Users.Select(user => _userMapper.MapToModel(user)).ToListAsync());
+            return new ApiResponse<List<UserDto>>(await _userManager.Users.Select(user => _userMapper.MapToModel(user)).ToListAsync());
         }
 
         public async Task<ApiResponse<UserDto>> GetUsersById(Guid userId)

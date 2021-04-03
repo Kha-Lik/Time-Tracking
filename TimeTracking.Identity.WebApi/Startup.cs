@@ -71,7 +71,7 @@ namespace TimeTracking.Identity.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<TokenExchangeRequestValidator>();
                 });
 
-       
+
             services.AddRabbitMqConfiguration(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.AddBlLogicServices(Configuration);
@@ -97,20 +97,20 @@ namespace TimeTracking.Identity.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseCors("CurrentCorsPolicy");
-        
+
             app.UseSwagger();
 
-           // specifying the Swagger JSON endpoint.
-           if (env.IsDevelopment())
-           {
-               app.UseSwaggerUI(c =>
-               {
-                   c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web App V1");
-               });
-           }
-          
+            // specifying the Swagger JSON endpoint.
+            if (env.IsDevelopment())
+            {
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web App V1");
+                });
+            }
+
             app.UseRouting();
 
             app.UseAuthentication();

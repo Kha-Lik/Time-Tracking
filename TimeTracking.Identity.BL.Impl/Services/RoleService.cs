@@ -18,7 +18,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
         private readonly RoleManager<Role> _roleManager;
         private readonly ILogger<RoleService> _logger;
 
-        public RoleService(UserManager<User>  userManager,
+        public RoleService(UserManager<User> userManager,
             RoleManager<Role> roleManager,
             ILogger<RoleService> logger)
         {
@@ -53,7 +53,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             var addUserResponse = await _userManager.AddToRoleAsync(user, model.RoleName);
             if (!addUserResponse.Succeeded)
             {
-                _logger.LogWarning("Failed to add user {0} to role by reason {1}",model.UserId, addUserResponse.Errors);
+                _logger.LogWarning("Failed to add user {0} to role by reason {1}", model.UserId, addUserResponse.Errors);
                 return new ApiResponse(
                     new ApiError()
                     {
