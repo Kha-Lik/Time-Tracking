@@ -11,7 +11,7 @@ namespace TimeTracking.Common
 {
     public class DIContainer
     {
-        private IServiceCollection _services;
+        private readonly IServiceCollection _services;
 
         public DIContainer()
         {
@@ -33,6 +33,8 @@ namespace TimeTracking.Common
                 case ServiceLifetime.Transient:
                     _services.AddTransient<TInterface, TImplementation>();
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(lifetime), lifetime, null);
             }
         }
 
@@ -60,12 +62,17 @@ namespace TimeTracking.Common
             _services.AddMassTransit(configure);
         }
 
-        public void PopulateTo(IServiceCollection services)
+        public void Populate(IServiceCollection services)
         {
-            foreach (var service in _services)
+            foreach (var service in services)
             {
-                services.Add(service);
+                _services.Add(service);
             }
+        }
+
+        public IServiceCollection GetServices()
+        {
+            return _services;
         }
     }
 }
