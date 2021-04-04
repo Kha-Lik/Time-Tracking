@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using TimeTracking.Common.Pagination;
 using TimeTracking.Dal.Impl;
 using TimeTracking.Dal.Impl.Repositories;
 using TimeTracking.UnitTests.Data;
@@ -22,7 +19,7 @@ namespace TimeTracking.UnitTests.Repositories
         [SetUp]
         public void SetUp()
         {
-            this._dbOptions = DbOptionsFactory.GetTimeTrackingDbOptions();
+            _dbOptions = DbOptionsFactory.GetTimeTrackingDbOptions();
         }
 
         [TestCase("EC3CB528-45E3-4ABA-8E6E-DB40D0C0A400")]

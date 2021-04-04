@@ -18,7 +18,6 @@ using TimeTracking.Entities;
 using TimeTracking.Models;
 using TimeTracking.Models.Requests;
 using TimeTracking.UnitTests.Data;
-
 namespace TimeTracking.UnitTests.Services
 {
     [TestFixture]
@@ -90,7 +89,6 @@ namespace TimeTracking.UnitTests.Services
         [Test]
         public async Task CreateIssue_WhenIssueModelPassedAndProjectNotFound_ShouldReturnProjectNotFound()
         {
-            //TODO 2 test cases
             IssueDto issuePassed= IssuesDbSet.IssueBuilder().Create<IssueDto>();
             var foundedMilestone = new ApiResponse<MilestoneDetailsDto>(){IsSuccess = true};
             var projectNotFoundResponse = new ApiResponse<ProjectDetailsDto>() {IsSuccess = false};

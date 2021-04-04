@@ -793,6 +793,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/ResponseVerificationHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/TimeTracking.Identity.Dal/Implementation.cs">
           <value>
             <set />
@@ -1033,6 +1038,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Abstract/Services/IJwtTokenHandler.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Abstract/Services/IUserIdentityService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/BLDependencyInstaller.cs">
           <value>
             <set />
@@ -1043,12 +1058,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Helpers/DateTimeHelpers.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Mappers/UserDtoMapper.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Services/EmailHelperService.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/Identity/TimeTracking.Identity.BL.Impl/Services/JwtTokeHandler.cs">
           <value>
             <set />
           </value>
@@ -3268,7 +3293,52 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/test/Identity.UnitTests/EmailHelperServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/Identity.UnitTests/JwtFactoryTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/Identity.UnitTests/MockHelpers.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/Identity.UnitTests/RoleServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/Identity.UnitTests/UserIdentityServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/Repositories/ReportServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/Repositories/WorkLogClientServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/ResponseVerificationHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/Services/IssueServiceTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/UnitTest1.cs">
           <value>
             <set />
           </value>
