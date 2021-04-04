@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Security.Principal;
@@ -15,11 +16,13 @@ using TimeTracking.Common.Jwt;
 using TimeTracking.Identity.BL.Abstract;
 using TimeTracking.Identity.BL.Abstract.Factories;
 using TimeTracking.Identity.BL.Abstract.Services;
+using TimeTracking.Identity.BL.Impl.Helpers;
 using TimeTracking.Identity.BL.Impl.Settings;
 using TimeTracking.Identity.Entities;
 using TimeTracking.Identity.Models;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
+[assembly:InternalsVisibleTo("Identity.UnitTests")]
 namespace TimeTracking.Identity.BL.Impl.Factories
 {
     internal sealed class JwtFactory : IJwtFactory
@@ -74,7 +77,7 @@ namespace TimeTracking.Identity.BL.Impl.Factories
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, await _jwtSettings.JtiGenerator()),
-                    new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_jwtSettings.IssuedAt).ToString(),
+                    new Claim(JwtRegisteredClaimNames.Iat, DateTimeHelpers.ToUnixEpochDate(_jwtSettings.IssuedAt).ToString(),
                         ClaimValueTypes.Integer64),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(Constants.Strings.JwtClaimIdentifiers.Id, user.Id.ToString()),
@@ -83,19 +86,6 @@ namespace TimeTracking.Identity.BL.Impl.Factories
                 .Union(roleClaims);
             return claims;
         }
-
-
-        /// <summary>
-        ///  Coverts <param name="date"/> covered to seconds since Unix epoch (Jan 1, 1970, midnight UTC)  
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns>Converted data in seconds since Unix epoch</returns>
-        private static long ToUnixEpochDate(DateTime date)
-          => (long)Math.Round((date.ToUniversalTime() -
-                               new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero))
-                              .TotalSeconds);
-
-
 
         private static void ThrowIfInvalidOptions(JwtSettings options)
         {

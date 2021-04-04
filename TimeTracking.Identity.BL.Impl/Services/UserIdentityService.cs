@@ -5,8 +5,10 @@ using System.Net;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TimeTracking.Common.Helpers;
 using TimeTracking.Common.Mappers;
@@ -33,8 +35,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
             ISystemClock systemClock,
             IEmailHelperService emailHelperService,
             IBaseMapper<User, UserDto> userMapper,
-            ILogger<UserIdentityService> logger,
-            IPublishEndpoint publish)
+            IPublishEndpoint publish,
+            ILogger<UserIdentityService> logger)
         {
             _userManager = userManager;
             _systemClock = systemClock;
@@ -59,11 +61,12 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     });
             }
 
-            /*  var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
-              if (!sendEmailConfirmResult.IsSuccess)
-              {
-                  return sendEmailConfirmResult;
-              }*/
+            var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
+            if (!sendEmailConfirmResult.IsSuccess)
+            {
+                return sendEmailConfirmResult;
+            }
+    
             await _publish.Publish<UserSignedUp>(new
             {
                 UserId = userToAdd.Id,
@@ -210,16 +213,9 @@ namespace TimeTracking.Identity.BL.Impl.Services
 
         public async Task<ApiResponse<UserDto>> GetUsersById(Guid userId)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(e => e.Id == userId);
-            if (user == null)
-            {
-                return new ApiResponse<UserDto>(new ApiError()
-                {
-                    ErrorCode = ErrorCode.UserNotFound,
-                    ErrorMessage = ErrorCode.UserNotFound.GetDescription(),
-                });
-            }
-            return new ApiResponse<UserDto>(_userMapper.MapToModel(user));
+            var findUserByIdAsync = await FindUserByIdAsync(userId);
+            if (!findUserByIdAsync.IsSuccess) return findUserByIdAsync.ToFailed<UserDto>();
+            return new ApiResponse<UserDto>(_userMapper.MapToModel(findUserByIdAsync.Data));
         }
     }
 }

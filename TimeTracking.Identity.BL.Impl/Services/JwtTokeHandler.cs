@@ -39,6 +39,5 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 ValidateLifetime = false //check expired tokens
             });
         }
-
     }
 }

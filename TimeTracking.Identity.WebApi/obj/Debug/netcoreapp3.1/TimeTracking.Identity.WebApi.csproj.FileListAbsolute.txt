@@ -115,11 +115,9 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Deb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Common.dll
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Abstract.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Models.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Templates.dll
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Common.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Abstract.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Models.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\bin\Debug\netcoreapp3.1\TimeTracking.Templates.pdb
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.WebApi\obj\Debug\netcoreapp3.1\TimeTracking.Identity.WebApi.MvcApplicationPartsAssemblyInfo.cs
