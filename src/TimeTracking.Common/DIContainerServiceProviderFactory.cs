@@ -19,7 +19,7 @@ namespace TimeTracking.Common
             if (containerBuilder == null)
                 throw new ArgumentNullException(nameof(containerBuilder));
 
-            return containerBuilder.GetServices().BuildServiceProvider();
+            return containerBuilder.Services.BuildServiceProvider();
         }
     }
 }

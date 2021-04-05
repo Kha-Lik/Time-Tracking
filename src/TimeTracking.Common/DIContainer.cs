@@ -9,70 +9,18 @@ using System.Text;
 
 namespace TimeTracking.Common
 {
-    public class DIContainer
+    public class DIContainer : IDIContainer
     {
-        private readonly IServiceCollection _services;
-
         public DIContainer()
         {
-            _services = new ServiceCollection();
+            Services = new ServiceCollection();
         }
 
-        public void AddDependency<TInterface, TImplementation>(ServiceLifetime lifetime = ServiceLifetime.Transient)
-            where TInterface : class
-            where TImplementation : class, TInterface
-        {
-            switch (lifetime)
-            {
-                case ServiceLifetime.Singleton:
-                    _services.AddSingleton<TInterface, TImplementation>();
-                    break;
-                case ServiceLifetime.Scoped:
-                    _services.AddScoped<TInterface, TImplementation>();
-                    break;
-                case ServiceLifetime.Transient:
-                    _services.AddTransient<TInterface, TImplementation>();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(lifetime), lifetime, null);
-            }
-        }
+        public IServiceCollection Services { get; }
 
-        public void AddDbContext<TDbContext>(ServiceLifetime lifetime = ServiceLifetime.Scoped)
-            where TDbContext : DbContext
+        public void AddService(ServiceDescriptor descriptor)
         {
-            _services.AddDbContext<TDbContext>(lifetime);
-        }
-
-        public void AddConfiguration<TOptions>(IConfiguration configuration)
-            where TOptions : class
-        {
-            _services.Configure<TOptions>(configuration);
-        }
-
-        public void AddHttpClient<TInterface, TImplementation>(ServiceLifetime lifetime = ServiceLifetime.Transient)
-            where TInterface : class
-            where TImplementation : class, TInterface 
-        {
-            _services.AddHttpClient<TInterface, TImplementation>();
-        }
-
-        public void AddMassTransitAction(Action<IServiceCollectionBusConfigurator> configure = null)
-        {
-            _services.AddMassTransit(configure);
-        }
-
-        public void Populate(IServiceCollection services)
-        {
-            foreach (var service in services)
-            {
-                _services.Add(service);
-            }
-        }
-
-        public IServiceCollection GetServices()
-        {
-            return _services;
+            Services.Add(descriptor);
         }
     }
 }
