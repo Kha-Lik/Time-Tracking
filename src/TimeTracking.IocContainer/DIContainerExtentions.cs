@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TimeTracking.Common
+namespace TimeTracking.IocContainer
 {
     public static class DIContainerExtentions
     {

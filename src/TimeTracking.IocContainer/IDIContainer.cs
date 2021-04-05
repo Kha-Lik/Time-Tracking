@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 
-namespace TimeTracking.Common
+namespace TimeTracking.IocContainer
 {
     public interface IDIContainer
     {
