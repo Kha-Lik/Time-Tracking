@@ -23,7 +23,7 @@ namespace TimeTracking.UnitTests
                 hashCode.Add(obj.Id);
                 hashCode.Add(obj.Title);
                 hashCode.Add(obj.Description);
-                hashCode.Add((int) obj.Status);
+                hashCode.Add((int)obj.Status);
                 hashCode.Add(obj.CreatedAt);
                 hashCode.Add(obj.OpenedAt);
                 hashCode.Add(obj.UpdatedAt);
@@ -54,7 +54,7 @@ namespace TimeTracking.UnitTests
             {
                 var hashCode = new HashCode();
                 hashCode.Add(obj.Id);
-                hashCode.Add((int) obj.State);
+                hashCode.Add((int)obj.State);
                 hashCode.Add(obj.Title);
                 hashCode.Add(obj.Description);
                 hashCode.Add(obj.OpenedAt);
@@ -87,8 +87,8 @@ namespace TimeTracking.UnitTests
         }
 
         public static IEqualityComparer<Project> ProjectComparer { get; } = new ProjectEqualityComparer();
-        
-        
+
+
         private sealed class WorkLogEqualityComparer : IEqualityComparer<WorkLog>
         {
             public bool Equals(WorkLog x, WorkLog y)
@@ -96,7 +96,7 @@ namespace TimeTracking.UnitTests
                 if (ReferenceEquals(x, y)) return true;
                 if (ReferenceEquals(x, null)) return false;
                 if (ReferenceEquals(y, null)) return false;
-               
+
                 return x.Id.Equals(y.Id) && x.Description == y.Description && x.TimeSpent.Equals(y.TimeSpent) && x.IsApproved == y.IsApproved && x.StartDate.Equals(y.StartDate) && x.ActivityType == y.ActivityType && x.CreatedAt.Equals(y.CreatedAt) && x.UpdatedAt.Equals(y.UpdatedAt) && x.UserId.Equals(y.UserId) && x.IssueId.Equals(y.IssueId);
             }
 
@@ -108,7 +108,7 @@ namespace TimeTracking.UnitTests
                 hashCode.Add(obj.TimeSpent);
                 hashCode.Add(obj.IsApproved);
                 hashCode.Add(obj.StartDate);
-                hashCode.Add((int) obj.ActivityType);
+                hashCode.Add((int)obj.ActivityType);
                 hashCode.Add(obj.CreatedAt);
                 hashCode.Add(obj.UpdatedAt);
                 hashCode.Add(obj.UserId);
@@ -138,7 +138,7 @@ namespace TimeTracking.UnitTests
 
         public static IEqualityComparer<TimeTrackingUser> TimeTrackingUserComparer { get; } = new TimeTrackingUserEqualityComparer();
 
-        
+
         private sealed class TeamEqualityComparer : IEqualityComparer<Team>
         {
             public bool Equals(Team x, Team y)

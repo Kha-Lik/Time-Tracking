@@ -25,11 +25,11 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-        
-        public  static IPostprocessComposer<Project> ProjectBuilder()
+
+        public static IPostprocessComposer<Project> ProjectBuilder()
         {
-            return  Fixture.Build<Project>()
-                .Without(x=>x.Issues)
+            return Fixture.Build<Project>()
+                .Without(x => x.Issues)
                 .Without(x => x.Teams)
                 .Without(x => x.Milestones);
         }

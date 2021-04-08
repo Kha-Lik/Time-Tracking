@@ -27,10 +27,10 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-        
-        public  static IPostprocessComposer<Team> TeamBuilder()
+
+        public static IPostprocessComposer<Team> TeamBuilder()
         {
-            return  Fixture.Build<Team>()
+            return Fixture.Build<Team>()
                 .Without(x => x.Project)
                 .Without(x => x.Users);
         }

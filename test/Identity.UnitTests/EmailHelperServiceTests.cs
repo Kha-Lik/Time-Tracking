@@ -17,7 +17,7 @@ using TimeTracking.Templates.Models;
 namespace Identity.UnitTests
 {
     [TestFixture]
-    public class EmailHelperServiceTests: AutoMockContext<EmailHelperService>
+    public class EmailHelperServiceTests : AutoMockContext<EmailHelperService>
     {
         private static Fixture Fixture = new Fixture();
 
@@ -51,7 +51,7 @@ namespace Identity.UnitTests
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.EmailSendFailed);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.EmailSendFailed.GetDescription());
         }
-        
+
         [Test]
         public async Task SendEmailConfirmationEmail_WhenSendSuccess_ReturnEmailSendFailedResponse()
         {
@@ -77,7 +77,7 @@ namespace Identity.UnitTests
             response.StatusCode.Should().Be(200);
             response.IsSuccess.Should().BeTrue();
         }
-        
+
 
         #endregion
         /*   public async Task<ApiResponse> SendResetPasswordConfirmationEmail(User user)
@@ -135,6 +135,6 @@ namespace Identity.UnitTests
             }
             return ApiResponse.Success();
         }*/
-        
+
     }
 }

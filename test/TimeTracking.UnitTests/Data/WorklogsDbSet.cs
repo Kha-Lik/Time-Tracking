@@ -49,7 +49,7 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-        public  static IPostprocessComposer<WorkLog> WorkLogBuilder()
+        public static IPostprocessComposer<WorkLog> WorkLogBuilder()
         {
             return Fixture.Build<WorkLog>()
                 .Without(x => x.Issue)

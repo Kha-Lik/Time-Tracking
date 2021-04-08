@@ -29,7 +29,7 @@ namespace TimeTracking.Common.Pagination
             int currentPage, int resultsPerPage,
             int totalPages, long totalResults)
             => new PagedResult<T>(items, currentPage, resultsPerPage, totalPages, totalResults);
-        
+
         public static PagedResult<T> PaginateFromBase(PagedDataBase result, IEnumerable<T> items)
             => new PagedResult<T>(items, result.CurrentPage, result.ResultsPerPage,
                 result.TotalPages, result.TotalResults);
