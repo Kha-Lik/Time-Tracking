@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TimeTracking.Common;
+using TimeTracking.IocContainer;
 
 namespace TimeTracking.ReportGenerator.WebApi
 {
@@ -19,8 +21,7 @@ namespace TimeTracking.ReportGenerator.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.UseLightInject()
-                //.UseServiceProviderFactory(new IocContainerServiceProviderFactory())
+                .UseServiceProviderFactory(new DIContainerServiceProviderFactory())
                 .ConfigureLogging(l => l.AddConsole(o =>
                 {
                     o.DisableColors = true;

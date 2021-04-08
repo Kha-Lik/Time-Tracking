@@ -11,7 +11,7 @@ namespace TimeTracking.UnitTests.Data
     {
         private static Fixture Fixture = new Fixture();
 
-        private static IQueryable<TimeTrackingUser> _userDbSet;
+        private static  IQueryable<TimeTrackingUser> _userDbSet;
 
         public static IQueryable<TimeTrackingUser> Get()
         {
@@ -31,11 +31,11 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-
-        public static IPostprocessComposer<TimeTrackingUser> TimeTrackingUserBuilder()
+        
+        public  static IPostprocessComposer<TimeTrackingUser> TimeTrackingUserBuilder()
         {
-            return Fixture.Build<TimeTrackingUser>()
-                .Without(x => x.Team)
+            return  Fixture.Build<TimeTrackingUser>()
+                .Without(x=>x.Team)
                 .Without(x => x.CreatedMilestones)
                 .Without(x => x.ReportedIssues)
                 .Without(x => x.WorkLogs)

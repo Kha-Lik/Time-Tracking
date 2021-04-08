@@ -29,12 +29,12 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-
-        public static IPostprocessComposer<Milestone> MilestoneBuilder()
+        
+        public  static IPostprocessComposer<Milestone> MilestoneBuilder()
         {
-            return Fixture.Build<Milestone>()
-                .Without(x => x.Issues)
-                .Without(x => x.CreatedByUser)
+            return  Fixture.Build<Milestone>()
+                .Without(x=>x.Issues)
+                .Without(x=>x.CreatedByUser)
                 .Without(x => x.State)
                 .Without(x => x.Project);
         }

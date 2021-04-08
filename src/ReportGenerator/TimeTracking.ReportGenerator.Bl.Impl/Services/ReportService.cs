@@ -48,7 +48,15 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Services
             catch (Exception e)
             {
                 _logger.LogError(e, "");
-                return ApiResponse<ReportExporterResponse>.InternalError();
+                return new ApiResponse<ReportExporterResponse>()
+                {
+                    IsSuccess = false,
+                    StatusCode = 400,
+                    ResponseException = new ApiError()
+                    {
+                        ErrorMessage = "Failed to generate report",
+                    }
+                };
             }
         }
     }
