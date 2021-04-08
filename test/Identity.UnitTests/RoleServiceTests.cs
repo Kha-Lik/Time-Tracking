@@ -26,7 +26,7 @@ namespace Identity.UnitTests
             _mockUserManger = MockHelpers.MockUserManager<User>();
             _mockRoleManger = MockHelpers.MockRoleManager<Role>();
             var logger = new Mock<ILogger<RoleService>>();
-            this.sut = new RoleService(_mockUserManger.Object,_mockRoleManger.Object,logger.Object);
+            this.sut = new RoleService(_mockUserManger.Object, _mockRoleManger.Object, logger.Object);
         }
 
         [Test]
@@ -38,8 +38,8 @@ namespace Identity.UnitTests
                 RoleName = "engineer"
             };
             this._mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
-                .ReturnsAsync((User) null);
-            
+                .ReturnsAsync((User)null);
+
             var result = await sut.AddUserToRoleAsync(request);
 
             result.IsSuccess.Should().BeFalse();
@@ -47,7 +47,7 @@ namespace Identity.UnitTests
             result.ResponseException!.ErrorCode.Should().Be(ErrorCode.UserNotFound);
             result.ResponseException.ErrorMessage.Should().Be($"No Accounts Registered with id {request.UserId}.");
         }
-        
+
         [Test]
         public async Task AddUserToRoleAsync_WhenRoleNotFound_ShouldReturnUserNotFound()
         {
@@ -60,7 +60,7 @@ namespace Identity.UnitTests
                 .ReturnsAsync(new User());
             this._mockRoleManger.Setup(t => t.RoleExistsAsync(request.RoleName))
                 .ReturnsAsync(false);
-            
+
             var result = await sut.AddUserToRoleAsync(request);
 
             result.IsSuccess.Should().BeFalse();
@@ -68,7 +68,7 @@ namespace Identity.UnitTests
             result.ResponseException!.ErrorCode.Should().Be(ErrorCode.RoleNotFound);
             result.ResponseException.ErrorMessage.Should().Be($"Role {request.RoleName} not found.");
         }
-        
+
         [Test]
         public async Task AddUserToRoleAsync_WhenAddToRoleFailed_ShouldReturnAddToRoleFailed()
         {
@@ -84,7 +84,7 @@ namespace Identity.UnitTests
                 .ReturnsAsync(true);
             this._mockUserManger.Setup(e => e.AddToRoleAsync(user, request.RoleName))
                 .ReturnsAsync(IdentityResult.Failed());
-            
+
             var result = await sut.AddUserToRoleAsync(request);
 
             result.IsSuccess.Should().BeFalse();
@@ -92,8 +92,8 @@ namespace Identity.UnitTests
             result.ResponseException!.ErrorCode.Should().Be(ErrorCode.AddToRoleFailed);
             result.ResponseException.ErrorMessage.Should().Be($"Add user {request.UserId} to role {request.RoleName} failed.");
         }
-        
-        
+
+
         [Test]
         public async Task AddUserToRoleAsync_WhenAddToRoleSuccess_ShouldReturnSuccess()
         {
@@ -109,7 +109,7 @@ namespace Identity.UnitTests
                 .ReturnsAsync(true);
             this._mockUserManger.Setup(e => e.AddToRoleAsync(user, request.RoleName))
                 .ReturnsAsync(IdentityResult.Success);
-            
+
             var result = await sut.AddUserToRoleAsync(request);
 
             result.IsSuccess.Should().BeTrue();

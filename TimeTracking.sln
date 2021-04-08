@@ -1,73 +1,70 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31105.61
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{3B2AA40A-DAF5-47B9-9DEA-097785F69791}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportGenerator", "ReportGenerator", "{A4E1197C-D5B1-40A0-919B-562D70131767}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Common", "src\TimeTracking.Common\TimeTracking.Common.csproj", "{DEB2030E-368A-49AA-8C13-CA69653868E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Common", "src\TimeTracking.Common\TimeTracking.Common.csproj", "{DEB2030E-368A-49AA-8C13-CA69653868E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.WebApi", "src\Identity\TimeTracking.Identity.WebApi\TimeTracking.Identity.WebApi.csproj", "{9CC511B9-29DD-48C1-A9C4-832AFFDE8D31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.WebApi", "src\Identity\TimeTracking.Identity.WebApi\TimeTracking.Identity.WebApi.csproj", "{9CC511B9-29DD-48C1-A9C4-832AFFDE8D31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.Models", "src\Identity\TimeTracking.Identity.Models\TimeTracking.Identity.Models.csproj", "{A7C1604D-C606-41AC-9D88-1C80BE0ED91F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.Models", "src\Identity\TimeTracking.Identity.Models\TimeTracking.Identity.Models.csproj", "{A7C1604D-C606-41AC-9D88-1C80BE0ED91F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.Entities", "src\Identity\TimeTracking.Identity.Entities\TimeTracking.Identity.Entities.csproj", "{0FD1C76A-5BB5-4B21-926A-0EDD07283480}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.Entities", "src\Identity\TimeTracking.Identity.Entities\TimeTracking.Identity.Entities.csproj", "{0FD1C76A-5BB5-4B21-926A-0EDD07283480}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.Dal.Abstract", "src\Identity\TimeTracking.Identity.Dal.Abstract\TimeTracking.Identity.Dal.Abstract.csproj", "{DC0E8214-D4DE-4D4E-AAE0-92D3FF729C38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.Dal.Abstract", "src\Identity\TimeTracking.Identity.Dal.Abstract\TimeTracking.Identity.Dal.Abstract.csproj", "{DC0E8214-D4DE-4D4E-AAE0-92D3FF729C38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.Dal.Impl", "src\Identity\TimeTracking.Identity.Dal.Impl\TimeTracking.Identity.Dal.Impl.csproj", "{2580E68D-807A-4CCA-BFCE-F7130DAA7917}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.Dal.Impl", "src\Identity\TimeTracking.Identity.Dal.Impl\TimeTracking.Identity.Dal.Impl.csproj", "{2580E68D-807A-4CCA-BFCE-F7130DAA7917}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Dal.Abstract", "src\ReportGenerator\TimeTracking.ReportGenerator.Dal.Abstract\TimeTracking.ReportGenerator.Dal.Abstract.csproj", "{041F7DA5-409A-4DA9-9F42-28B0E975695A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Dal.Abstract", "src\ReportGenerator\TimeTracking.ReportGenerator.Dal.Abstract\TimeTracking.ReportGenerator.Dal.Abstract.csproj", "{041F7DA5-409A-4DA9-9F42-28B0E975695A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Dal.Impl", "src\ReportGenerator\TimeTracking.ReportGenerator.Dal.Impl\TimeTracking.ReportGenerator.Dal.Impl.csproj", "{094F3E22-D27C-4949-A1AA-F495113DE874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Dal.Impl", "src\ReportGenerator\TimeTracking.ReportGenerator.Dal.Impl\TimeTracking.ReportGenerator.Dal.Impl.csproj", "{094F3E22-D27C-4949-A1AA-F495113DE874}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.WebApi", "src\ReportGenerator\TimeTracking.ReportGenerator.WebApi\TimeTracking.ReportGenerator.WebApi.csproj", "{8D945A0E-44C8-44B1-9809-8BD2FD5F08AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.WebApi", "src\ReportGenerator\TimeTracking.ReportGenerator.WebApi\TimeTracking.ReportGenerator.WebApi.csproj", "{8D945A0E-44C8-44B1-9809-8BD2FD5F08AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Bl.Abstract", "src\ReportGenerator\TimeTracking.ReportGenerator.Bl.Abstract\TimeTracking.ReportGenerator.Bl.Abstract.csproj", "{25A52E6F-FF82-4B97-BD9A-FF3153891C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Bl.Abstract", "src\ReportGenerator\TimeTracking.ReportGenerator.Bl.Abstract\TimeTracking.ReportGenerator.Bl.Abstract.csproj", "{25A52E6F-FF82-4B97-BD9A-FF3153891C55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Bl.Impl", "src\ReportGenerator\TimeTracking.ReportGenerator.Bl.Impl\TimeTracking.ReportGenerator.Bl.Impl.csproj", "{8DB61FA0-9E2D-4A98-BB24-F99F66FF004F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Bl.Impl", "src\ReportGenerator\TimeTracking.ReportGenerator.Bl.Impl\TimeTracking.ReportGenerator.Bl.Impl.csproj", "{8DB61FA0-9E2D-4A98-BB24-F99F66FF004F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Entities", "src\ReportGenerator\TimeTracking.ReportGenerator.Entities\TimeTracking.ReportGenerator.Entities.csproj", "{EBA837E9-E76C-44F0-883C-DEA0D103EB45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Entities", "src\ReportGenerator\TimeTracking.ReportGenerator.Entities\TimeTracking.ReportGenerator.Entities.csproj", "{EBA837E9-E76C-44F0-883C-DEA0D103EB45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.ReportGenerator.Models", "src\ReportGenerator\TimeTracking.ReportGenerator.Models\TimeTracking.ReportGenerator.Models.csproj", "{1384F19F-880D-4394-852C-12B2D831D7F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.ReportGenerator.Models", "src\ReportGenerator\TimeTracking.ReportGenerator.Models\TimeTracking.ReportGenerator.Models.csproj", "{1384F19F-880D-4394-852C-12B2D831D7F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Templates", "src\TimeTracking.Templates\TimeTracking.Templates.csproj", "{00392998-8805-48F8-A977-F66C8E804FD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Templates", "src\TimeTracking.Templates\TimeTracking.Templates.csproj", "{00392998-8805-48F8-A977-F66C8E804FD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Bl.Impl", "src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj", "{E82E3E5E-1CFA-4690-81E7-660758BB8E6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Bl.Impl", "src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj", "{E82E3E5E-1CFA-4690-81E7-660758BB8E6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeTracking", "TimeTracking", "{A53C8BAE-437D-4A51-BA33-577986775920}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Bl.Abstract", "src\TimeTracking\TimeTracking.Bl.Abstract\TimeTracking.Bl.Abstract.csproj", "{BFF356D0-48AD-4DEC-8267-BC4B5B3356FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Bl.Abstract", "src\TimeTracking\TimeTracking.Bl.Abstract\TimeTracking.Bl.Abstract.csproj", "{BFF356D0-48AD-4DEC-8267-BC4B5B3356FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Dal.Abstract", "src\TimeTracking\TimeTracking.Dal.Abstract\TimeTracking.Dal.Abstract.csproj", "{C42F42D5-E004-4439-B64C-6632695AF0D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Dal.Abstract", "src\TimeTracking\TimeTracking.Dal.Abstract\TimeTracking.Dal.Abstract.csproj", "{C42F42D5-E004-4439-B64C-6632695AF0D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Dal.Impl", "src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj", "{57B03930-EB83-4B05-9470-B69245C689A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Dal.Impl", "src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj", "{57B03930-EB83-4B05-9470-B69245C689A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Models", "src\TimeTracking\TimeTracking.Models\TimeTracking.Models.csproj", "{4A018882-7E73-4843-AB10-2D97F4D6F087}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Models", "src\TimeTracking\TimeTracking.Models\TimeTracking.Models.csproj", "{4A018882-7E73-4843-AB10-2D97F4D6F087}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Entities", "src\TimeTracking\TimeTracking.Entities\TimeTracking.Entities.csproj", "{5B9330D4-6CE4-406F-985B-AA80582DA8DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Entities", "src\TimeTracking\TimeTracking.Entities\TimeTracking.Entities.csproj", "{5B9330D4-6CE4-406F-985B-AA80582DA8DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.WebApi", "src\TimeTracking\TimeTracking.WebApi\TimeTracking.WebApi.csproj", "{FAA11607-2A2F-4E4A-A06F-5BB254621B30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.WebApi", "src\TimeTracking\TimeTracking.WebApi\TimeTracking.WebApi.csproj", "{FAA11607-2A2F-4E4A-A06F-5BB254621B30}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Contracts", "src\TimeTracking.Contracts\TimeTracking.Contracts.csproj", "{1E3039E2-E0B5-47D0-9569-621B0CA9246B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Contracts", "src\TimeTracking.Contracts\TimeTracking.Contracts.csproj", "{1E3039E2-E0B5-47D0-9569-621B0CA9246B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.BL.Impl", "src\Identity\TimeTracking.Identity.BL.Impl\TimeTracking.Identity.BL.Impl.csproj", "{9F988902-97BD-4F0D-8E8D-C5CAA4CD530C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.BL.Impl", "src\Identity\TimeTracking.Identity.BL.Impl\TimeTracking.Identity.BL.Impl.csproj", "{9F988902-97BD-4F0D-8E8D-C5CAA4CD530C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.Identity.BL.Abstract", "src\Identity\TimeTracking.Identity.BL.Abstract\TimeTracking.Identity.BL.Abstract.csproj", "{79CA69DD-87CE-4B85-A49D-A6262848198B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Identity.BL.Abstract", "src\Identity\TimeTracking.Identity.BL.Abstract\TimeTracking.Identity.BL.Abstract.csproj", "{79CA69DD-87CE-4B85-A49D-A6262848198B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportGenerator.UnitTests", "test\ReportGenerator.UnitTests\ReportGenerator.UnitTests.csproj", "{0E6537B6-A9D2-4731-831D-5656332B48E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.IocContainer", "src\TimeTracking.IocContainer\TimeTracking.IocContainer.csproj", "{50076149-A15A-4B72-A86C-BDB0A0963492}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.IocContainer.Tests", "TimeTracking.IocContainer.Tests\TimeTracking.IocContainer.Tests.csproj", "{5AE1C74C-0B43-4888-9A42-BD74CD1F2C18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportGenerator.UnitTests", "test\ReportGenerator.UnitTests\ReportGenerator.UnitTests.csproj", "{0E6537B6-A9D2-4731-831D-5656332B48E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{57007294-08DD-4F44-9164-DD0FF9DA4389}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.UnitTests", "test\Identity.UnitTests\Identity.UnitTests.csproj", "{8383FAD2-867B-499D-9E65-F56B98161454}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.UnitTests", "test\Identity.UnitTests\Identity.UnitTests.csproj", "{8383FAD2-867B-499D-9E65-F56B98161454}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.UnitTests", "test\TimeTracking.UnitTests\TimeTracking.UnitTests.csproj", "{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracking.IocContainer", "src\TimeTracking.IocContainer\TimeTracking.IocContainer.csproj", "{E4165CC9-965C-4CBE-94CC-6794B745C608}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IocContainer.UnitTests", "IocContainer.UnitTests\IocContainer.UnitTests.csproj", "{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.UnitTests", "test\TimeTracking.UnitTests\TimeTracking.UnitTests.csproj", "{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{1ED6BC6E-2DBD-4CCA-B21F-2D91D7AE5BF6}"
 EndProject
@@ -173,6 +170,14 @@ Global
 		{79CA69DD-87CE-4B85-A49D-A6262848198B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79CA69DD-87CE-4B85-A49D-A6262848198B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79CA69DD-87CE-4B85-A49D-A6262848198B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50076149-A15A-4B72-A86C-BDB0A0963492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50076149-A15A-4B72-A86C-BDB0A0963492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50076149-A15A-4B72-A86C-BDB0A0963492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50076149-A15A-4B72-A86C-BDB0A0963492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE1C74C-0B43-4888-9A42-BD74CD1F2C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE1C74C-0B43-4888-9A42-BD74CD1F2C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE1C74C-0B43-4888-9A42-BD74CD1F2C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE1C74C-0B43-4888-9A42-BD74CD1F2C18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E6537B6-A9D2-4731-831D-5656332B48E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E6537B6-A9D2-4731-831D-5656332B48E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E6537B6-A9D2-4731-831D-5656332B48E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -185,17 +190,6 @@ Global
 		{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4165CC9-965C-4CBE-94CC-6794B745C608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4165CC9-965C-4CBE-94CC-6794B745C608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4165CC9-965C-4CBE-94CC-6794B745C608}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4165CC9-965C-4CBE-94CC-6794B745C608}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9CC511B9-29DD-48C1-A9C4-832AFFDE8D31} = {3B2AA40A-DAF5-47B9-9DEA-097785F69791}
@@ -222,9 +216,6 @@ Global
 		{0E6537B6-A9D2-4731-831D-5656332B48E4} = {57007294-08DD-4F44-9164-DD0FF9DA4389}
 		{8383FAD2-867B-499D-9E65-F56B98161454} = {57007294-08DD-4F44-9164-DD0FF9DA4389}
 		{D0A3E5B0-8316-45DB-AA7A-0039B9B1C69B} = {57007294-08DD-4F44-9164-DD0FF9DA4389}
-		{3D5B7F89-75B5-4E95-B463-B3BF73D48CCE} = {57007294-08DD-4F44-9164-DD0FF9DA4389}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E89289-3726-4048-A45D-7F2A1816884F}
+		{1ED6BC6E-2DBD-4CCA-B21F-2D91D7AE5BF6} = {57007294-08DD-4F44-9164-DD0FF9DA4389}
 	EndGlobalSection
 EndGlobal

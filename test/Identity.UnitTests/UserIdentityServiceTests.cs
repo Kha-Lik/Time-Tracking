@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
@@ -15,6 +17,8 @@ using TimeTracking.Common.Mappers;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Contracts.Events;
 using TimeTracking.Identity.BL.Impl.Services;
+using TimeTracking.Identity.Dal.Abstract;
+using TimeTracking.Identity.Dal.Impl.Seed.Data;
 using TimeTracking.Identity.Entities;
 using TimeTracking.Identity.Models.Dtos;
 using TimeTracking.Identity.Models.Requests;
@@ -31,6 +35,7 @@ namespace Identity.UnitTests
         private Mock<IBaseMapper<User, UserDto>> mockUserMapper;
         private Mock<IPublishEndpoint> mockPublishEndpoint;
         private UserIdentityService sut;
+        private Mock<IUserRepository> _mockUserRepository;
 
         [SetUp]
         public void SetUp()
@@ -41,12 +46,15 @@ namespace Identity.UnitTests
             this.mockUserMapper = new Mock<IBaseMapper<User, UserDto>>();
             this.mockPublishEndpoint = new Mock<IPublishEndpoint>();
             var logger = new Mock<ILogger<UserIdentityService>>();
-            this.sut = new UserIdentityService(_mockUserManger.Object,
+            _mockUserRepository = new Mock<IUserRepository>();
+            this.sut = new UserIdentityService(
+                _mockUserManger.Object,
+                _mockUserRepository.Object,
                 _mockSystemClock.Object,
                 mockEmailHelperService.Object,
                 mockUserMapper.Object,
-                mockPublishEndpoint.Object,
-                logger.Object);
+                logger.Object,
+                mockPublishEndpoint.Object);
         }
 
 
@@ -70,7 +78,6 @@ namespace Identity.UnitTests
 
             var response = await sut.RegisterAsync(request);
 
-            mockEmailHelperService.Verify(e => e.SendEmailConfirmationEmail(It.IsAny<User>()));
             response.IsSuccess.Should().BeTrue();
             response.StatusCode.Should().Be(200);
         }
@@ -117,7 +124,6 @@ namespace Identity.UnitTests
 
             var response = await sut.RegisterAsync(request);
 
-            mockEmailHelperService.Verify(e => e.SendEmailConfirmationEmail(It.IsAny<User>()));
             response.IsSuccess.Should().BeFalse();
             response.Should().BeEquivalentTo(emailFailedResponse);
         }
@@ -134,15 +140,15 @@ namespace Identity.UnitTests
                 Email = "email"
             };
             _mockUserManger.Setup(e => e.FindByEmailAsync(request.Email))
-                .ReturnsAsync((User) null);
-         
+                .ReturnsAsync((User)null);
+
             var response = await sut.ForgotPasswordAsync(request);
 
             response.IsSuccess.Should().BeFalse();
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.EmailConfirmationFailed);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.EmailConfirmationFailed.GetDescription());
         }
-        
+
         [Test]
         public async Task ForgotPasswordAsync_WhenEmailNotConfirmed_ShouldReturnEmailConfirmationFailed()
         {
@@ -159,7 +165,7 @@ namespace Identity.UnitTests
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.EmailConfirmationFailed);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.EmailConfirmationFailed.GetDescription());
         }
-        
+
         [Test]
         public async Task ForgotPasswordAsync_WhenEmailConfirmedAndUserFound_ShouldSendResetPasswordConfirmationEmail()
         {
@@ -172,10 +178,10 @@ namespace Identity.UnitTests
                 .ReturnsAsync(true);
             _mockUserManger.Setup(e => e.FindByEmailAsync(request.Email))
                 .ReturnsAsync(user);
-            
+
             var response = await sut.ForgotPasswordAsync(request);
 
-            mockEmailHelperService.Verify(e=>e.SendResetPasswordConfirmationEmail(user));
+            mockEmailHelperService.Verify(e => e.SendResetPasswordConfirmationEmail(user));
         }
 
         #endregion
@@ -191,7 +197,7 @@ namespace Identity.UnitTests
                 UserId = Guid.NewGuid()
             };
             _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
-                .ReturnsAsync((User) null);
+                .ReturnsAsync((User)null);
 
             var response = await sut.ResetPasswordAsync(request);
 
@@ -199,7 +205,7 @@ namespace Identity.UnitTests
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.UserNotFound);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.UserNotFound.GetDescription());
         }
-        
+
         [Test]
         public async Task ResetPasswordAsync_WhenPasswordResetFailed_ShouldReturnResetPasswordFailed()
         {
@@ -207,7 +213,7 @@ namespace Identity.UnitTests
             {
                 Password = "password",
                 UserId = Guid.NewGuid(),
-                Code ="verification code",
+                Code = "verification code",
             };
             _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
                 .ReturnsAsync(new User());
@@ -220,7 +226,7 @@ namespace Identity.UnitTests
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.ResetPasswordFailed);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.ResetPasswordFailed.GetDescription());
         }
-        
+
         [Test]
         public async Task ResetPasswordAsync_WhenPasswordResetSuccess_ShouldReturnSuccessResult()
         {
@@ -228,7 +234,7 @@ namespace Identity.UnitTests
             {
                 Password = "password",
                 UserId = Guid.NewGuid(),
-                Code ="verification code",
+                Code = "verification code",
             };
             _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
                 .ReturnsAsync(new User());
@@ -248,13 +254,13 @@ namespace Identity.UnitTests
         [Test]
         public async Task ResentEmailAsync_WhenFailedToFindUSerByEmail_ShouldReturnUserNotFound()
         {
-            
+
             var request = new ResendEmailRequest()
             {
-               Email = "email",
+                Email = "email",
             };
             _mockUserManger.Setup(e => e.FindByEmailAsync(request.Email))
-                .ReturnsAsync((User) null);
+                .ReturnsAsync((User)null);
 
             var response = await sut.ResentEmailAsync(request);
 
@@ -276,9 +282,9 @@ namespace Identity.UnitTests
 
             var response = await sut.ResentEmailAsync(request);
 
-            mockEmailHelperService.Verify(e=>e.SendEmailConfirmationEmail(user));
+            mockEmailHelperService.Verify(e => e.SendEmailConfirmationEmail(user));
         }
-        
+
         #endregion
 
         #region ConfirmEmailAsync
@@ -291,49 +297,155 @@ namespace Identity.UnitTests
                 Code = "code",
                 UserId = Guid.NewGuid(),
             };
+            _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
+                .ReturnsAsync((User)null);
 
             var response = await sut.ConfirmEmailAsync(request);
+
+            response.IsSuccess.Should().BeFalse();
+            response.ResponseException!.ErrorCode.Should().Be(ErrorCode.UserNotFound);
+            response.ResponseException.ErrorMessage.Should().Be(ErrorCode.UserNotFound.GetDescription());
         }
-/*   public async Task<ApiResponse> ConfirmEmailAsync(EmailConfirmationRequest request)
+
+        [Test]
+        public async Task ConfirmEmailAsync_WhenConfirmEmailFailed_ShouldReturnEmailConfirmationFailed()
         {
-            var userFoundedResponse = await FindUserByIdAsync(request.UserId);
-            if (!userFoundedResponse.IsSuccess)
+            var request = new EmailConfirmationRequest()
             {
-                return userFoundedResponse;
-            }
-
-            var result = await _userManager.ConfirmEmailAsync(userFoundedResponse.Data, request.Code);
-            if (result.Succeeded)
-            {
-
-                var addToRoleAsync = await _userManager.AddToRoleAsync(userFoundedResponse.Data, AuthorizationData.DefaultRole.ToString());
-                if (!addToRoleAsync.Succeeded)
-                {
-                    _logger.LogError("Failed to add user to to role with reason {0}", addToRoleAsync.ToString());
-                    return new ApiResponse(
-                        new ApiError()
-                        {
-                            ErrorCode = ErrorCode.AddUserToRoleFailed,
-                            ErrorMessage = $"User registration failed with.",
-                        });
-                }
-                return ApiResponse.Success();
-            }
-
-            _logger.LogWarning("Email confirmation failed for user with id {0} by reason {1}",
-                request.UserId, result.Errors.ToString());
-            return new ApiResponse()
-            {
-                ResponseException = new ApiError()
-                {
-                    ErrorCode = ErrorCode.EmailConfirmationFailed,
-                    ErrorMessage = ErrorCode.EmailConfirmationFailed.GetDescription(),
-                },
-                StatusCode = 400,
+                Code = "code",
+                UserId = Guid.NewGuid(),
             };
-        }*/
-        
+            _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
+                .ReturnsAsync((new User()));
+            _mockUserManger.Setup(e => e.ConfirmEmailAsync(It.IsAny<User>(), request.Code))
+                .ReturnsAsync(IdentityResult.Failed());
 
+            var response = await sut.ConfirmEmailAsync(request);
+
+            response.IsSuccess.Should().BeFalse();
+            response.ResponseException!.ErrorCode.Should().Be(ErrorCode.EmailConfirmationFailed);
+            response.ResponseException.ErrorMessage.Should().Be(ErrorCode.EmailConfirmationFailed.GetDescription());
+        }
+
+        [Test]
+        public async Task ConfirmEmailAsync_WhenAddToRoleFailed_ShouldReturnAddUserToRoleFailed()
+        {
+            var request = new EmailConfirmationRequest()
+            {
+                Code = "code",
+                UserId = Guid.NewGuid(),
+            };
+            var user = new User();
+            _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
+                .ReturnsAsync(user);
+            _mockUserManger.Setup(e => e.ConfirmEmailAsync(It.IsAny<User>(), request.Code))
+                .ReturnsAsync(IdentityResult.Success);
+            _mockUserManger.Setup(e => e.AddToRoleAsync(user, AuthorizationData.DefaultRole.ToString()))
+                .ReturnsAsync(IdentityResult.Failed());
+
+            var response = await sut.ConfirmEmailAsync(request);
+
+            response.IsSuccess.Should().BeFalse();
+            response.ResponseException!.ErrorCode.Should().Be(ErrorCode.AddUserToRoleFailed);
+            response.ResponseException.ErrorMessage.Should().Be(ErrorCode.AddUserToRoleFailed.GetDescription());
+        }
+        #endregion
+
+        [Test]
+        public async Task ConfirmEmailAsync_WhenAddToRoleSuccess_ShouldReturnSuccessResponse()
+        {
+            var request = new EmailConfirmationRequest()
+            {
+                Code = "code",
+                UserId = Guid.NewGuid(),
+            };
+            var user = new User();
+            _mockUserManger.Setup(e => e.FindByIdAsync(request.UserId.ToString()))
+                .ReturnsAsync(user);
+            _mockUserManger.Setup(e => e.ConfirmEmailAsync(It.IsAny<User>(), request.Code))
+                .ReturnsAsync(IdentityResult.Success);
+            _mockUserManger.Setup(e => e.AddToRoleAsync(user, AuthorizationData.DefaultRole.ToString()))
+                .ReturnsAsync(IdentityResult.Success);
+
+            var response = await sut.ConfirmEmailAsync(request);
+
+            response.IsSuccess.Should().BeTrue();
+            response.StatusCode.Should().Be(200);
+        }
+
+        #region GetAllUsers
+
+        public async Task GetAllUsers_WhenCalled_ShouldReturnMappedUsers()
+        {
+            var calls = 0;
+            var users = Fixture.CreateMany<UserDto>().ToArray();
+            mockUserMapper.Setup(e => e.MapToModel(It.IsAny<User>()))
+                .Returns(() => users[calls])
+                .Callback(() => calls++);
+
+            var response = await sut.GetAllUsers();
+
+            response.Data.Should().BeEquivalentTo(users);
+            response.StatusCode.Should().Be(200);
+        }
+
+        #endregion
+
+        #region GetUsersById
+
+        [Test]
+        public async Task GetUsersById_WhenUSerNotFound_ReturnsUSerNotFoundResponse()
+        {
+            var userId = Guid.NewGuid();
+            _mockUserManger.Setup(e => e.FindByIdAsync(userId.ToString()))
+                .ReturnsAsync((User)null);
+            var mappedUser = Fixture.Create<UserDto>();
+            mockUserMapper.Setup(e => e.MapToModel(It.IsAny<User>()))
+                .Returns(mappedUser);
+
+            var response = await sut.GetUsersById(userId);
+
+            response.IsSuccess.Should().BeFalse();
+            response.ResponseException!.ErrorCode.Should().Be(ErrorCode.UserNotFound);
+            response.ResponseException.ErrorMessage.Should().Be(ErrorCode.UserNotFound.GetDescription());
+        }
+
+        [Test]
+        public async Task GetUsersById_WhenUserFound_ReturnsUSerMappedInResponse()
+        {
+            var userId = Guid.NewGuid();
+            _mockUserManger.Setup(e => e.FindByIdAsync(userId.ToString()))
+                .ReturnsAsync(new User());
+            var mappedUser = Fixture.Create<UserDto>();
+            mockUserMapper.Setup(e => e.MapToModel(It.IsAny<User>()))
+                .Returns(mappedUser);
+
+            var response = await sut.GetUsersById(userId);
+
+            response.IsSuccess.Should().BeTrue();
+            response.Data.Should().BeEquivalentTo(mappedUser);
+        }
+
+        #endregion
+
+        #region  GetAllUsers
+
+        [Test]
+        public async Task GetAllUsers_WhenRequested_ShouldReturnListOfAllUsers()
+        {
+            var calls = 0;
+            var users = Fixture.CreateMany<User>().ToList();
+            var itemsAfterMap = Fixture.CreateMany<UserDto>().ToList();
+            _mockUserRepository.Setup(e => e.GetAllAsync())
+                .ReturnsAsync(users);
+            mockUserMapper.Setup(s => s.MapToModel(It.IsAny<User>()))
+                .Returns(() => itemsAfterMap[calls])
+                .Callback(() => calls++);
+
+            var response = await sut.GetAllUsers();
+
+            response.Data.Should().BeEquivalentTo(itemsAfterMap);
+        }
         #endregion
     }
 }

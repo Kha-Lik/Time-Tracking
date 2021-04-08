@@ -7,7 +7,7 @@ namespace TimeTracking.Entities
 {
     public class Team : IKeyEntity<Guid>
     {
-       
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -17,8 +17,8 @@ namespace TimeTracking.Entities
         public Guid ProjectId { get; set; }
         [ForeignKey(nameof(ProjectId))]
         public Project Project { get; set; }
-        
-        public  ICollection<TimeTrackingUser> Users { get; set; }
+
+        public ICollection<TimeTrackingUser> Users { get; set; }
         #endregion
     }
 }

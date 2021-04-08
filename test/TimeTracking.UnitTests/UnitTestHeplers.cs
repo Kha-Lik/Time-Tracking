@@ -7,7 +7,7 @@ namespace TimeTracking.UnitTests
 {
     public static class UnitTestHelpers
     {
-        public  static  void EnsurePagedResult<T>(this PagedResult<T> result,int count, int size, int page)
+        public static void EnsurePagedResult<T>(this PagedResult<T> result, int count, int size, int page)
         {
             result.CurrentPage.Should().Be(page);
             result.TotalResults.Should().Be(count);

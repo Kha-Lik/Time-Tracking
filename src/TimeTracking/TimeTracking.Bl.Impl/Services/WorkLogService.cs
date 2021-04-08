@@ -161,7 +161,7 @@ namespace TimeTracking.Bl.Impl.Services
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e, "An error occured while getting worklog by id {0} ",workLogId);
+                _logger.LogWarning(e, "An error occured while getting worklog by id {0} ", workLogId);
                 return ApiResponse<WorkLogDto>.InternalError();
             }
         }

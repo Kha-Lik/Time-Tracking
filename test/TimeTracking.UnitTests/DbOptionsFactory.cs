@@ -29,6 +29,6 @@ namespace TimeTracking.UnitTests
             context.Users.AddRange(UsersDbSet.Get().ToList());
             context.SaveChanges();
         }
-           
+
     }
 }
