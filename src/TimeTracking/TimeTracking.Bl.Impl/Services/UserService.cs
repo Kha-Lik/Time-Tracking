@@ -93,7 +93,7 @@ namespace TimeTracking.Bl.Impl.Services
                     {
                         ErrorCode = ErrorCode.UserNotFound,
                         ErrorMessage = ErrorCode.UserNotFound.GetDescription(),
-                    }, statusCode: 400);
+                    },statusCode:400);
                 }
 
                 return new ApiResponse<TimeTrackingUserDetailsDto>(_userDetailsMapper.MapToModel(user));

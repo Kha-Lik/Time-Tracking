@@ -63,7 +63,7 @@ namespace TimeTracking.Common.Wrapper
         WorkLogCreationFailed,
         [Description("WorkLog not found")]
         WorkLogNotFound,
-        [Description("Refresh token revokation failed")]
+        [Description("Refresh token revoaktion failed")]
         RefreshTokenRevocationFailed,
         [Description("Failed to send email")]
         EmailSendFailed,

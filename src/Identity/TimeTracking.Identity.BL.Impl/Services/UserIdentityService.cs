@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using MassTransit;
-using MassTransit.Initializers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +13,6 @@ using TimeTracking.Common.Mappers;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Contracts.Events;
 using TimeTracking.Identity.BL.Abstract.Services;
-using TimeTracking.Identity.Dal.Abstract;
 using TimeTracking.Identity.Dal.Impl.Seed.Data;
 using TimeTracking.Identity.Entities;
 using TimeTracking.Identity.Models.Dtos;
@@ -25,7 +23,6 @@ namespace TimeTracking.Identity.BL.Impl.Services
     public class UserIdentityService : IUserIdentityService
     {
         private readonly UserManager<User> _userManager;
-        private readonly IUserRepository _userRepository;
         private readonly ISystemClock _systemClock;
         private readonly IEmailHelperService _emailHelperService;
         private readonly IBaseMapper<User, UserDto> _userMapper;
@@ -33,7 +30,6 @@ namespace TimeTracking.Identity.BL.Impl.Services
         private readonly ILogger<UserIdentityService> _logger;
 
         public UserIdentityService(UserManager<User> userManager,
-            IUserRepository userRepository,
             ISystemClock systemClock,
             IEmailHelperService emailHelperService,
             IBaseMapper<User, UserDto> userMapper,
@@ -41,7 +37,6 @@ namespace TimeTracking.Identity.BL.Impl.Services
             IPublishEndpoint publish)
         {
             _userManager = userManager;
-            _userRepository = userRepository;
             _systemClock = systemClock;
             _emailHelperService = emailHelperService;
             _userMapper = userMapper;
@@ -64,12 +59,11 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     });
             }
 
-            var sendEmailConfirmResult = await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
-            if (!sendEmailConfirmResult.IsSuccess)
-            {
-                return sendEmailConfirmResult;
-            }
-
+            /*  var sendEmailConfirmResult =  await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
+              if (!sendEmailConfirmResult.IsSuccess)
+              {
+                  return sendEmailConfirmResult;
+              }*/
             await _publish.Publish<UserSignedUp>(new
             {
                 UserId = userToAdd.Id,
@@ -190,7 +184,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
                         new ApiError()
                         {
                             ErrorCode = ErrorCode.AddUserToRoleFailed,
-                            ErrorMessage = ErrorCode.AddUserToRoleFailed.GetDescription(),
+                            ErrorMessage = $"User registration failed with.",
                         });
                 }
                 return ApiResponse.Success();
@@ -206,22 +200,26 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     ErrorMessage = ErrorCode.EmailConfirmationFailed.GetDescription(),
                 },
                 StatusCode = 400,
-                IsSuccess = false,
             };
         }
 
         public async Task<ApiResponse<List<UserDto>>> GetAllUsers()
         {
-            return new ApiResponse<List<UserDto>>(
-                (await _userRepository.GetAllAsync())
-                .Select(user => _userMapper.MapToModel(user)).ToList());
+            return new ApiResponse<List<UserDto>>(await _userManager.Users.Select(user => _userMapper.MapToModel(user)).ToListAsync());
         }
 
         public async Task<ApiResponse<UserDto>> GetUsersById(Guid userId)
         {
-            var userFounded = await FindUserByIdAsync(userId);
-            return !userFounded.IsSuccess ? userFounded.ToFailed<UserDto>()
-                : new ApiResponse<UserDto>(_userMapper.MapToModel(userFounded.Data));
+            var user = await _userManager.Users.FirstOrDefaultAsync(e => e.Id == userId);
+            if (user == null)
+            {
+                return new ApiResponse<UserDto>(new ApiError()
+                {
+                    ErrorCode = ErrorCode.UserNotFound,
+                    ErrorMessage = ErrorCode.UserNotFound.GetDescription(),
+                });
+            }
+            return new ApiResponse<UserDto>(_userMapper.MapToModel(user));
         }
     }
 }

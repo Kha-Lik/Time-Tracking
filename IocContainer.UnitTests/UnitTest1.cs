@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace UnitTests.Common
+namespace IocContainer.UnitTests
 {
     public class Tests
     {

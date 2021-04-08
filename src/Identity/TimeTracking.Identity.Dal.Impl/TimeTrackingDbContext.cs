@@ -1,12 +1,11 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TimeTracking.Common.Abstract.Repository;
 using TimeTracking.Identity.Entities;
 
 namespace TimeTracking.Identity.Dal.Impl
 {
-    public class TimeTrackingIdentityDbContext : IdentityDbContext<User, Role, Guid>, IDbContext
+    public class TimeTrackingIdentityDbContext : IdentityDbContext<User, Role, Guid>
     {
         public TimeTrackingIdentityDbContext(DbContextOptions<TimeTrackingIdentityDbContext> options) : base(options)
         {

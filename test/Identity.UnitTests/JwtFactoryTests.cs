@@ -25,7 +25,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace Identity.UnitTests
 {
     [TestFixture]
-    public class JwtFactoryTests : AutoMockContext<EmailHelperService>
+    public class JwtFactoryTests: AutoMockContext<EmailHelperService>
     {
         private static Fixture Fixture = new Fixture();
         private Mock<ISystemClock> systemClock;
@@ -40,7 +40,7 @@ namespace Identity.UnitTests
             this.userManager = MockHelpers.MockUserManager<User>();
             this.systemClock = new Mock<ISystemClock>();
             this.tokenHandler = new Mock<IJwtTokenHandler>();
-            this.sut = new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, settings);
+            this.sut = new JwtFactory(tokenHandler.Object,userManager.Object,systemClock.Object,settings);
         }
         [Test]
         public async Task GenerateEncodedAccessToken_WhenUSerValidPassed_shouldReturnValidToken()
@@ -56,7 +56,7 @@ namespace Identity.UnitTests
             this.userManager.Setup(e => e.GetRolesAsync(user))
                 .ReturnsAsync(rolesArray);
             this.tokenHandler.Setup(e => e.WriteToken(It.IsAny<JwtSecurityToken>()))
-                .Returns((JwtSecurityToken s) => new JwtSecurityTokenHandler().WriteToken(s));
+                .Returns((JwtSecurityToken s)=>new JwtSecurityTokenHandler().WriteToken(s));
             this.settings = new JwtSettings()
             {
                 Issuer = "validIsssue",
@@ -64,12 +64,12 @@ namespace Identity.UnitTests
                 Audience = "some aud",
                 Key = "super secret key",//CHECK KEY WITH CONFIG!!!
                 RefreshTokenValidFor = TimeSpan.FromDays(3),
-            };
+            }; 
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-
+            
             var token = await sut.GenerateEncodedAccessToken(user);
-
+            
             token.Should().NotBeNull();
             token.ExpiredAt.Should().Be((long)settings.AccessTokenValidFor.TotalSeconds);
             var jwt = new JwtSecurityToken(token.Token);
@@ -88,53 +88,53 @@ namespace Identity.UnitTests
         }
 
         [Test]
-        public void CallConstructor_WhenAccessTokenValidForLessOrEqualToZero_ShouldThrowArgumentException()
+        public  void CallConstructor_WhenAccessTokenValidForLessOrEqualToZero_ShouldThrowArgumentException()
         {
             this.settings = new JwtSettings()
             {
                 AccessTokenValidFor = TimeSpan.Zero
             };
-            Func<JwtFactory> func = () => new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, settings);
+            Func<JwtFactory> func =() => new JwtFactory(tokenHandler.Object,userManager.Object,systemClock.Object,settings);
 
             func.Should().Throw<ArgumentException>()
                 .WithMessage($"Must be a non-zero TimeSpan. (Parameter '{nameof(JwtSettings.AccessTokenValidFor)}')")
                 .Which.ParamName.Should().Be(nameof(JwtSettings.AccessTokenValidFor));
         }
-
+        
         [Test]
-        public void CallConstructor_WhenSettingAreNull_SArgumentNullException()
+        public  void CallConstructor_WhenSettingAreNull_SArgumentNullException()
         {
             JwtSettings options = null;
-            Func<JwtFactory> func = () => new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, options);
+            Func<JwtFactory> func =() => new JwtFactory(tokenHandler.Object,userManager.Object,systemClock.Object,options);
 
             func.Should().Throw<ArgumentNullException>()
                 .Which.ParamName.Should().Be(nameof(options));
         }
-
+       
         [Test]
-        public void CallConstructor_WhenSettingKetIsNull_ShouldThrowArgumentNullException()
+        public  void CallConstructor_WhenSettingKetIsNull_ShouldThrowArgumentNullException()
         {
             JwtSettings options = new JwtSettings()
             {
                 AccessTokenValidFor = TimeSpan.MaxValue,
                 Key = null,
             };
-
-            Func<JwtFactory> func = () => new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, options);
+            
+            Func<JwtFactory> func =() => new JwtFactory(tokenHandler.Object,userManager.Object,systemClock.Object,options);
 
             func.Should().Throw<ArgumentNullException>()
                 .Which.ParamName.Should().Be(nameof(JwtSettings.Key));
         }
-
+        
         [Test]
-        public void CallConstructor_WhenSettingJtiGeneratorIsNull_ShouldThrowArgumentNullException()
-        {
-
-            var options = MockFor<JwtSettings>();
-            options.Setup(e => e.JtiGenerator)
-                 .Returns((Func<Task<string>>)null);
-
-            Func<JwtFactory> func = () => new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, options.Object);
+        public  void CallConstructor_WhenSettingJtiGeneratorIsNull_ShouldThrowArgumentNullException()
+        { 
+            
+           var options = MockFor<JwtSettings>();
+           options.Setup(e => e.JtiGenerator)
+                .Returns((Func<Task<string>>) null);
+            
+            Func<JwtFactory> func =() => new JwtFactory(tokenHandler.Object,userManager.Object,systemClock.Object,options.Object);
 
             func.Should().Throw<ArgumentNullException>()
                 .Which.ParamName.Should().Be(nameof(JwtSettings.Key));
@@ -142,18 +142,18 @@ namespace Identity.UnitTests
 
 
         [Theory]
-        public void GenerateRefreshToken_WhenSizeSet_ShoulReturnRefreshToken()
+        public  void GenerateRefreshToken_WhenSizeSet_ShoulReturnRefreshToken()
         {
             var size = 32;
             var dataTimeOffset = Fixture.Create<DateTimeOffset>();
-            systemClock.Setup(e => e.UtcNow)
+            systemClock.Setup(e=>e.UtcNow)
                 .Returns(dataTimeOffset);
-
-            var result = sut.GenerateRefreshToken(size);
+            
+            var result =  sut.GenerateRefreshToken(size);
 
             result.Should().NotBeNull();
             result.Created.Should().Be(dataTimeOffset);
-            result.Expires.Should().Be(dataTimeOffset + settings.RefreshTokenValidFor);
+            result.Expires.Should().Be(dataTimeOffset+settings.RefreshTokenValidFor);
             result.Token.Should().NotBeNullOrEmpty();
         }
 

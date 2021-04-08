@@ -16,30 +16,30 @@ using TimeTracking.ReportGenerator.Models.Responces;
 namespace ReportGenerator.UnitTests.Repositories
 {
     [TestFixture]
-    public class ReportServiceTests : AutoMockContext<ReportService>
+    public class ReportServiceTests: AutoMockContext<ReportService>
     {
 
         private static Fixture Fixture = new Fixture();
-
+        
         [Test]
         public async Task GenerateReportAsync_WhenHttpClientFailedResponseReturned_ShoulReturnHttpClientFailedResponse()
         {
             var parameters = Fixture.Freeze<ReportConfiguration>();
-            var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = false };
+            var workLogResponse = new ApiResponse<UserActivityDto>() {IsSuccess = false};
             MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
 
             var response = await ClassUnderTest.GenerateReportAsync(parameters);
-
+            
             response.Should().BeEquivalentTo(workLogResponse.ToFailed<ReportExporterResponse>());
 
         }
-
+        
         [Test]
         public async Task GenerateReportAsync_WhenExceptionThrown_ShouldReturnInternalError()
         {
             var parameters = Fixture.Freeze<ReportConfiguration>();
-            var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = true, Data = Fixture.Create<UserActivityDto>() };
+            var workLogResponse = new ApiResponse<UserActivityDto>() {IsSuccess = true,Data = Fixture.Create<UserActivityDto>()};
             MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
             MockFor<IReportExporter>()
@@ -47,16 +47,16 @@ namespace ReportGenerator.UnitTests.Repositories
                 .Throws(new Exception());
 
             var response = await ClassUnderTest.GenerateReportAsync(parameters);
-
+            
             response.VerifyInternalError();
         }
-
+        
         [Test]
         public async Task GenerateReportAsync_WhenResponseGenerate_ShouldReturnGeneratedResponse()
         {
             var parameters = Fixture.Freeze<ReportConfiguration>();
             var reportGeneratedResponse = Fixture.Create<ReportExporterResponse>();
-            var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = true, Data = Fixture.Create<UserActivityDto>() };
+            var workLogResponse = new ApiResponse<UserActivityDto>() {IsSuccess = true,Data = Fixture.Create<UserActivityDto>()};
             MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
             MockFor<IReportExporter>()
@@ -64,7 +64,7 @@ namespace ReportGenerator.UnitTests.Repositories
                 .Returns(reportGeneratedResponse);
 
             var response = await ClassUnderTest.GenerateReportAsync(parameters);
-
+            
             response.VerifySuccessResponseWithData(reportGeneratedResponse);
 
         }
