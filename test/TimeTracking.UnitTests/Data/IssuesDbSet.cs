@@ -24,7 +24,7 @@ namespace TimeTracking.UnitTests.Data
                     .With(x => x.AssignedToUserId,new Guid("403FD7F2-027B-42B6-875A-72555E999D61"))
                     .With(x => x.ReportedByUserId,new Guid("403FD7F2-027B-42B6-875A-72555E999D61"))
                     .Create(),
-
+                
                 IssueBuilder()
                     .With(i => i.Id, new Guid("BB25D21B-2CD9-4EA3-A82F-1E9EB669E6FA"))
                     .With(x => x.MilestoneId,new Guid("9245950B-0F82-4B9E-9AF7-DEC9ACF171FA"))
@@ -34,10 +34,10 @@ namespace TimeTracking.UnitTests.Data
                     .Create(),
             }.AsQueryable();
         }
-
-        public static IPostprocessComposer<Issue> IssueBuilder()
+        
+        public  static IPostprocessComposer<Issue> IssueBuilder()
         {
-            return Fixture.Build<Issue>()
+            return  Fixture.Build<Issue>()
                 .Without(x => x.Milestone)
                 .Without(x => x.Project)
                 .Without(x => x.WorkLogs)

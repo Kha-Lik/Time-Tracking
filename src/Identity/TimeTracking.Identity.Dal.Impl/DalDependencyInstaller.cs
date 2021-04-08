@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TimeTracking.Identity.Dal.Abstract;
-using TimeTracking.Identity.Dal.Impl.Repositories;
 using TimeTracking.Identity.Entities;
 
 namespace TimeTracking.Identity.Dal.Impl
@@ -24,8 +22,6 @@ namespace TimeTracking.Identity.Dal.Impl
                 .AddEntityFrameworkStores<TimeTrackingIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
             return services;
         }
     }

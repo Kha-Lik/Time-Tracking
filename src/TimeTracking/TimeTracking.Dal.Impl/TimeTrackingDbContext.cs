@@ -8,11 +8,11 @@ using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl
 {
-    public class TimeTrackingDbContext : DbContext, IDbContext
+    public class TimeTrackingDbContext : DbContext,IDbContext
     {
         public TimeTrackingDbContext()
         {
-
+            
         }
         public TimeTrackingDbContext(DbContextOptions<TimeTrackingDbContext> options)
         : base(options)
@@ -30,20 +30,20 @@ namespace TimeTracking.Dal.Impl
         {
             base.OnModelCreating(modelBuilder);
 
-
-
-
-
+           
+            
+           
+            
             modelBuilder.Entity<Issue>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.TimeTrackingUserAssigned)
-                .WithMany(e => e.AssignedIssues)
-                .HasForeignKey(e => e.AssignedToUserId);
+                .WithMany(e=>e.AssignedIssues)
+                .HasForeignKey(e=>e.AssignedToUserId);
             modelBuilder.Entity<Issue>()
                 .HasOne(e => e.TimeTrackingUserReporter)
-                .WithMany(e => e.ReportedIssues)
-                .HasForeignKey(e => e.ReportedByUserId);
+                .WithMany(e=>e.ReportedIssues)
+                .HasForeignKey(e=>e.ReportedByUserId);
             modelBuilder.Entity<Issue>()
                 .HasMany(e => e.WorkLogs)
                 .WithOne(w => w.Issue)
@@ -58,12 +58,12 @@ namespace TimeTracking.Dal.Impl
                 .HasMany(e => e.Users)
                 .WithOne(e => e.Team)
                 .HasForeignKey(e => e.TeamId);
-
+            
             modelBuilder.Entity<Project>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Project>()
                 .HasIndex(e => e.Name)
-                .IsUnique(true);
+                .IsUnique(true);  
             modelBuilder.Entity<Project>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Project)
@@ -99,11 +99,11 @@ namespace TimeTracking.Dal.Impl
                 .HasKey(e => e.Id);
             modelBuilder.Entity<TimeTrackingUser>()
                 .HasMany(e => e.WorkLogs)
-                .WithOne(e => e.TimeTrackingUser)
+                .WithOne(e=>e.TimeTrackingUser)
                 .HasForeignKey(e => e.UserId);
             modelBuilder.Entity<TimeTrackingUser>()
                 .HasMany(e => e.CreatedMilestones)
-                .WithOne(e => e.CreatedByUser)
+                .WithOne(e=>e.CreatedByUser)
                 .HasForeignKey(e => e.CreatedByUserId);
 
         }

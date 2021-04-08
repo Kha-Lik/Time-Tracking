@@ -8,14 +8,14 @@ using Moq;
 
 namespace Identity.UnitTests
 {
-    public static class MockHelpers
+     public static class MockHelpers
     {
         public static StringBuilder LogMessage = new StringBuilder();
 
-        public static Mock<UserManager<TUser>> MockUserManager<TUser>(IUserStore<TUser> store = null) where TUser : class
+        public static Mock<UserManager<TUser>> MockUserManager<TUser>() where TUser : class
         {
-            store ??= new Mock<IUserStore<TUser>>().Object;
-            var mgr = new Mock<UserManager<TUser>>(store, null, null, null, null, null, null, null, null);
+            var store = new Mock<IUserStore<TUser>>();
+            var mgr = new Mock<UserManager<TUser>>(store.Object, null, null, null, null, null, null, null, null);
             mgr.Object.UserValidators.Add(new UserValidator<TUser>());
             mgr.Object.PasswordValidators.Add(new PasswordValidator<TUser>());
             return mgr;
@@ -23,7 +23,7 @@ namespace Identity.UnitTests
 
         public static Mock<RoleManager<TRole>> MockRoleManager<TRole>(IRoleStore<TRole> store = null) where TRole : class
         {
-            store ??= new Mock<IRoleStore<TRole>>().Object;
+            store = store ?? new Mock<IRoleStore<TRole>>().Object;
             var roles = new List<IRoleValidator<TRole>>();
             roles.Add(new RoleValidator<TRole>());
             return new Mock<RoleManager<TRole>>(store, roles, new UpperInvariantLookupNormalizer(),
@@ -32,7 +32,7 @@ namespace Identity.UnitTests
 
         public static UserManager<TUser> TestUserManager<TUser>(IUserStore<TUser> store = null) where TUser : class
         {
-            store ??= new Mock<IUserStore<TUser>>().Object;
+            store = store ?? new Mock<IUserStore<TUser>>().Object;
             var options = new Mock<IOptions<IdentityOptions>>();
             var idOptions = new IdentityOptions();
             idOptions.Lockout.AllowedForNewUsers = false;
