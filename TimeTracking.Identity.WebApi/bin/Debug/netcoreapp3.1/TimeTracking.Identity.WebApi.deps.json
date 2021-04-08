@@ -2306,6 +2306,20 @@
           "TimeTracking.Identity.BL.Impl.dll": {}
         }
       },
+      "TimeTracking.Identity.Dal.Abstract/1.0.0": {
+        "dependencies": {
+          "FluentValidation.AspNetCore": "9.5.1",
+          "MicroElements.Swashbuckle.FluentValidation.WebApi": "0.1.0",
+          "TimeTracking.Common": "1.0.0",
+          "TimeTracking.Identity.Entities": "1.0.0"
+        },
+        "runtime": {
+          "TimeTracking.Identity.Dal.Abstract.dll": {}
+        },
+        "compile": {
+          "TimeTracking.Identity.Dal.Abstract.dll": {}
+        }
+      },
       "TimeTracking.Identity.Dal.Impl/1.0.0": {
         "dependencies": {
           "FluentValidation.AspNetCore": "9.5.1",
@@ -2314,6 +2328,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "3.1.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.11",
           "TimeTracking.Common": "1.0.0",
+          "TimeTracking.Identity.Dal.Abstract": "1.0.0",
           "TimeTracking.Identity.Entities": "1.0.0"
         },
         "runtime": {
@@ -5131,6 +5146,11 @@
       "sha512": ""
     },
     "TimeTracking.Identity.BL.Impl/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TimeTracking.Identity.Dal.Abstract/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

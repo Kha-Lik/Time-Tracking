@@ -277,3 +277,5 @@ D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\D
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\Views\_ViewImports.cshtml
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\Views\_ViewStart.cshtml
 D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\ReportsTemplates\time-log.xlsx
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Abstract.dll
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal.Impl\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.Abstract.pdb

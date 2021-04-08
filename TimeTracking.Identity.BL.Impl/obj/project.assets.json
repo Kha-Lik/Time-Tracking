@@ -1656,6 +1656,25 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "TimeTracking.Identity.Dal.Abstract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "FluentValidation.AspNetCore": "9.5.1",
+          "MicroElements.Swashbuckle.FluentValidation.WebApi": "0.1.0",
+          "TimeTracking.Common": "1.0.0",
+          "TimeTracking.Identity.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TimeTracking.Identity.Dal.Abstract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TimeTracking.Identity.Dal.Abstract.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "TimeTracking.Identity.Dal.Impl/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1666,6 +1685,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "3.1.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.11",
           "TimeTracking.Common": "1.0.0",
+          "TimeTracking.Identity.Dal.Abstract": "1.0.0",
           "TimeTracking.Identity.Entities": "1.0.0"
         },
         "compile": {
@@ -5280,6 +5300,11 @@
       "type": "project",
       "path": "../TimeTracking.Identity.BL.Abstract/TimeTracking.Identity.BL.Abstract.csproj",
       "msbuildProject": "../TimeTracking.Identity.BL.Abstract/TimeTracking.Identity.BL.Abstract.csproj"
+    },
+    "TimeTracking.Identity.Dal.Abstract/1.0.0": {
+      "type": "project",
+      "path": "../TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj",
+      "msbuildProject": "../TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj"
     },
     "TimeTracking.Identity.Dal.Impl/1.0.0": {
       "type": "project",
