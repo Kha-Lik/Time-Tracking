@@ -1,0 +1,12 @@
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.deps.json
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.dll
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.pdb
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.dll
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.pdb
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.csprojAssemblyReference.cache
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.AssemblyInfoInputs.cache
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.AssemblyInfo.cs
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.csproj.CoreCompileInputs.cache
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.csproj.CopyComplete
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.dll
+D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Dal\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Dal.pdb

@@ -1,0 +1,768 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj": {}
+  },
+  "projects": {
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\TimeTracking.Identity.BL.Abstract.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\TimeTracking.Identity.BL.Abstract.csproj",
+        "projectName": "TimeTracking.Identity.BL.Abstract",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\TimeTracking.Identity.BL.Abstract.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\TimeTracking.Identity.Models.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\TimeTracking.Identity.Models.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[5.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj",
+        "projectName": "TimeTracking.Identity.BL.Impl",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\TimeTracking.Identity.BL.Impl.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Impl\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\TimeTracking.Identity.BL.Abstract.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.BL.Abstract\\TimeTracking.Identity.BL.Abstract.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\TimeTracking.Contracts.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\TimeTracking.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[13.2.24, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\TimeTracking.Identity.Dal.Abstract.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\TimeTracking.Identity.Dal.Abstract.csproj",
+        "projectName": "TimeTracking.Identity.Dal.Abstract",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\TimeTracking.Identity.Dal.Abstract.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj",
+        "projectName": "TimeTracking.Identity.Dal.Impl",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\TimeTracking.Identity.Dal.Impl.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Impl\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\TimeTracking.Identity.Dal.Abstract.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Dal.Abstract\\TimeTracking.Identity.Dal.Abstract.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj"
+              },
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj",
+        "projectName": "TimeTracking.Identity.Entities",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\TimeTracking.Identity.Entities.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "SonarAnalyzer.CSharp": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.18.0.27296, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\TimeTracking.Identity.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\TimeTracking.Identity.Models.csproj",
+        "projectName": "TimeTracking.Identity.Models",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\TimeTracking.Identity.Models.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\Identity\\TimeTracking.Identity.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "SonarAnalyzer.CSharp": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.18.0.27296, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj",
+        "projectName": "TimeTracking.Common",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\TimeTracking.Templates.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\TimeTracking.Templates.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FluentEmail.Core": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "FluentEmail.Razor": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "FluentEmail.Smtp": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.5.1, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "SonarAnalyzer.CSharp": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.18.0.27296, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "Swashbuckle.AspNetCore.Newtonsoft": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "System.IO.Abstractions": {
+              "target": "Package",
+              "version": "[13.2.24, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\TimeTracking.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\TimeTracking.Contracts.csproj",
+        "projectName": "TimeTracking.Contracts",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\TimeTracking.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj": {
+                "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Common\\TimeTracking.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Swashbuckle.AspNetCore.Newtonsoft": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\TimeTracking.Templates.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\TimeTracking.Templates.csproj",
+        "projectName": "TimeTracking.Templates",
+        "projectPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\TimeTracking.Templates.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\TRPZLabs\\TimeTrackingWebApp\\src\\TimeTracking.Templates\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.1.6, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation.WebApi": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Swashbuckle.AspNetCore.Newtonsoft": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

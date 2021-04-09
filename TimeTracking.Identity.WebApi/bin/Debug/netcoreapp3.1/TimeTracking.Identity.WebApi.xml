@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TimeTracking.Identity.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.Register(TimeTracking.Identity.Models.Requests.RegistrationRequest)">
+            <summary>
+            Register user account
+            </summary>
+            <param name="request">RegistrationRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.ConfirmEmail(TimeTracking.Identity.Models.Requests.EmailConfirmationRequest)">
+            <summary>
+            Confirms a user email address
+            </summary>
+            <param name="request">EmailConfirmationRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.CreateToken(TimeTracking.Identity.Models.Requests.TokenExchangeRequest)">
+            <summary>
+            Token exchange request
+            </summary>
+            <param name="request">TokenExchangeRequest</param>
+            <returns>Returns jwt token, refresh token and expiration time</returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.RefreshToken(TimeTracking.Identity.Models.Requests.RefreshTokenRequest)">
+            <summary>
+            Refresh token 
+            </summary>
+            <param name="request">RefreshTokenRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.ForgotPassword(TimeTracking.Identity.Models.Requests.ForgotPasswordRequest)">
+            <summary>
+            Forgot email sends request and send  an email with a link containing reset token
+            </summary>
+            <param name="request">ForgotPasswordRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.ResetPassword(TimeTracking.Identity.Models.Requests.ResetPasswordRequest)">
+            <summary>
+            Reset account password with reset token
+            </summary>
+            <param name="request">ResetPasswordRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.ResendVerificationEmail(TimeTracking.Identity.Models.Requests.ResendEmailRequest)">
+            <summary>
+            Resend email verification email with token link
+            </summary>
+            <param name="request">ResendEmailRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.AuthController.RevokeToken(TimeTracking.Identity.Models.Requests.RevokeTokenRequest)">
+            <summary>
+            Revokes sent token
+            </summary>
+            <param name="request">ResendEmailRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.RoleController.AddToRole(TimeTracking.Identity.Models.Requests.AddToRoleRequest)">
+            <summary>
+            Add user to role
+            </summary>
+            <param name="request">AddToRoleRequest</param>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.UserController.GetAll">
+            <summary>
+            Get all users 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TimeTracking.Identity.WebApi.Controllers.UserController.Get(System.Guid)">
+            <summary>
+            Get user by id
+            </summary>
+            <param name="userId">user id</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
