@@ -25,7 +25,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace Identity.UnitTests
 {
     [TestFixture]
-    public class JwtFactoryTests : AutoMockContext<EmailHelperService>
+    public class JwtFactoryTests : AutoMockContext<JwtFactory>
     {
         private static Fixture Fixture = new Fixture();
         private Mock<ISystemClock> systemClock;
@@ -40,6 +40,14 @@ namespace Identity.UnitTests
             this.userManager = MockHelpers.MockUserManager<User>();
             this.systemClock = new Mock<ISystemClock>();
             this.tokenHandler = new Mock<IJwtTokenHandler>();
+            this.settings = new JwtSettings()
+            {
+                Issuer = "validIsssue",
+                AccessTokenValidFor = TimeSpan.FromDays(3),
+                Audience = "some aud",
+                Key = "super secret key",//CHECK KEY WITH CONFIG!!!
+                RefreshTokenValidFor = TimeSpan.FromDays(3),
+            };
             this.sut = new JwtFactory(tokenHandler.Object, userManager.Object, systemClock.Object, settings);
         }
         [Test]
@@ -66,7 +74,7 @@ namespace Identity.UnitTests
                 RefreshTokenValidFor = TimeSpan.FromDays(3),
             };
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Key));
-            var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+            //var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
             var token = await sut.GenerateEncodedAccessToken(user);
 
@@ -75,7 +83,7 @@ namespace Identity.UnitTests
             var jwt = new JwtSecurityToken(token.Token);
             jwt.Issuer.Should().Be(settings.Issuer);
             jwt.Audiences.Should().Contain(settings.Audience);
-            jwt.SigningCredentials.Should().Be(signingCredentials);
+            //jwt.SigningCredentials.Should().BeEquivalentTo(signingCredentials);
             //validate claims
             jwt.Claims.Should().Contain(c => c.Type == JwtRegisteredClaimNames.Iss && c.Value == settings.Issuer);
             jwt.Claims.Should().Contain(c => c.Type == JwtRegisteredClaimNames.Sub && c.Value == user.UserName);

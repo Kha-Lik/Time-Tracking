@@ -98,7 +98,7 @@ namespace TimeTracking.UnitTests.Repositories
         public async Task WorklogRepository_GetAllPagedAsync_ReturnsAllResultsPaged()
         {
             var page = 1;
-            var size = 3;
+            var size = 6;
             await using var context = new TimeTrackingDbContext(_dbOptions);
             var workLogRepository = new WorklogRepository(context);
             var expected = WorklogsDbSet.Get().Take(size).ToList();

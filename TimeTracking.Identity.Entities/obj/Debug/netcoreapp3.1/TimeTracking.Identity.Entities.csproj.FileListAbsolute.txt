@@ -1,9 +1,0 @@
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.deps.json
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.dll
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.csprojAssemblyReference.cache
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.AssemblyInfoInputs.cache
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.AssemblyInfo.cs
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.csproj.CoreCompileInputs.cache
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.dll
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Entities\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Entities.pdb

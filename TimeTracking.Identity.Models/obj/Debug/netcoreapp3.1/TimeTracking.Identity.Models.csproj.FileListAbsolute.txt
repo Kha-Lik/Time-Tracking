@@ -1,9 +1,0 @@
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Models.deps.json
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Models.dll
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\bin\Debug\netcoreapp3.1\TimeTracking.Identity.Models.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.AssemblyInfoInputs.cache
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.AssemblyInfo.cs
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.csproj.CoreCompileInputs.cache
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.dll
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.pdb
-D:\TRPZLabs\TimeTrackingWebApp\src\Identity\TimeTracking.Identity.Models\obj\Debug\netcoreapp3.1\TimeTracking.Identity.Models.csprojAssemblyReference.cache

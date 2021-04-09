@@ -423,6 +423,21 @@ namespace TimeTracking.UnitTests.Services
             var request = Fixture.Create<WorkLogUpdateRequest>();
             var worklog = new WorkLog();
             MockFor<IWorklogRepository>().Setup(x => x.GetByIdAsync(request.WorkLogId))
+                .ThrowsAsync(new Exception());
+
+            var response = await ClassUnderTest.UpdateWorkLog(request);
+
+
+            response.VerifyInternalError();
+
+        }
+
+        [Test]
+        public async Task UpdateWorkLog_WhenFound_ShouldUpdateWorkLog()
+        {
+            var request = Fixture.Create<WorkLogUpdateRequest>();
+            var worklog = new WorkLog();
+            MockFor<IWorklogRepository>().Setup(x => x.GetByIdAsync(request.WorkLogId))
                 .ReturnsAsync(worklog);
 
             var response = await ClassUnderTest.UpdateWorkLog(request);
@@ -432,20 +447,7 @@ namespace TimeTracking.UnitTests.Services
             worklog.StartDate = request.StartDate;
             worklog.TimeSpent = request.TimeSpent;
             MockFor<IWorklogRepository>().Verify(w => w.UpdateAsync(worklog));
-            response.VerifyInternalError();
-
-        }
-
-        [Test]
-        public async Task UpdateWorkLog_WhenFound_ShouldUpdateWorkLog()
-        {
-            var request = Fixture.Create<WorkLogUpdateRequest>();
-            MockFor<IWorklogRepository>().Setup(x => x.GetByIdAsync(request.WorkLogId))
-                .ThrowsAsync(new Exception());
-
-            var response = await ClassUnderTest.UpdateWorkLog(request);
-
-            response.VerifyInternalError();
+            response.VerifySuccessResponse();
 
         }
         #endregion

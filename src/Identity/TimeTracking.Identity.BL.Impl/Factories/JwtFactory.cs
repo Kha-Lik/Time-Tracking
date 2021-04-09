@@ -24,7 +24,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 [assembly: InternalsVisibleTo("Identity.UnitTests")]
 namespace TimeTracking.Identity.BL.Impl.Factories
 {
-    internal sealed class JwtFactory : IJwtFactory
+    public sealed class JwtFactory : IJwtFactory
     {
         private readonly IJwtTokenHandler _jwtTokenHandler;
         private readonly UserManager<User> _userManager;

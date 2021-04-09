@@ -12,9 +12,9 @@ namespace Identity.UnitTests
     {
         public static StringBuilder LogMessage = new StringBuilder();
 
-        public static Mock<UserManager<TUser>> MockUserManager<TUser>(IUserStore<TUser> store = null) where TUser : class
+        public static Mock<UserManager<TUser>> MockUserManager<TUser>() where TUser : class
         {
-            store ??= new Mock<IUserStore<TUser>>().Object;
+            var store = new Mock<IUserStore<TUser>>().Object;
             var mgr = new Mock<UserManager<TUser>>(store, null, null, null, null, null, null, null, null);
             mgr.Object.UserValidators.Add(new UserValidator<TUser>());
             mgr.Object.PasswordValidators.Add(new PasswordValidator<TUser>());

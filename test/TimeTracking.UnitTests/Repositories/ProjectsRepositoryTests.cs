@@ -96,7 +96,7 @@ namespace TimeTracking.UnitTests.Repositories
         public async Task ProjectRepository_GetAllPagedAsync_ReturnsAllResultsPaged()
         {
             var page = 1;
-            var size = 1;
+            var size = 2;
             await using var context = new TimeTrackingDbContext(_dbOptions);
             var projectRepository = new ProjectRepository(context);
             var expected = ProjectsDbSet.Get().Take(size).ToList();
