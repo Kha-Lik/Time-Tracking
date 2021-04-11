@@ -5,7 +5,7 @@ using AutoFixture;
 using AutoFixture.Dsl;
 using TimeTracking.Entities;
 
-namespace TimeTracking.UnitTests.Data
+namespace TimeTracking.Tests.Common.Data
 {
     public class ProjectsDbSet
     {

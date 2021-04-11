@@ -2,25 +2,25 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-
-        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="AutoFixture.AutoMoq" Version="4.15.0" />
-        <PackageReference Include="AutoMockHelper" Version="1.1.2" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.4" />
-        <PackageReference Include="Moq" Version="4.16.1" />
-        <PackageReference Include="Moq.EntityFrameworkCore" Version="5.0.0.2" />
-        <PackageReference Include="NUnit" Version="3.12.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.14" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.12" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="NUnit" Version="3.13.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj" />
+      <ProjectReference Include="..\..\src\Identity\TimeTracking.Identity.WebApi\TimeTracking.Identity.WebApi.csproj" />
       <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj" />
+      <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.WebApi\TimeTracking.WebApi.csproj" />
       <ProjectReference Include="..\TimeTracking.Tests.Common\TimeTracking.Tests.Common.csproj" />
     </ItemGroup>
 

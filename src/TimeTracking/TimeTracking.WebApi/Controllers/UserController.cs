@@ -11,6 +11,9 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    /// <summary>
+    /// User controller
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/user")]
@@ -18,6 +21,10 @@ namespace TimeTracking.WebApi.Controllers
     {
         private readonly IUserService _userService;
 
+        /// <summary>
+        /// User constroller constuctor
+        /// </summary>
+        /// <param name="userService"></param>
         public UserController(IUserService userService)
         {
             _userService = userService;
@@ -42,7 +49,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("all-users")]
-        public async Task<ApiPagedResponse<TimeTrackingUserDetailsDto>> GetAll([FromRoute] PagedRequest request)
+        public async Task<ApiPagedResponse<TimeTrackingUserDetailsDto>> GetAll([FromQuery] PagedRequest request)
         {
             return await _userService.GetAllUsers(request);
         }

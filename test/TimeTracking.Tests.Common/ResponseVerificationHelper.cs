@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using TimeTracking.Common.Helpers;
 using TimeTracking.Common.Pagination;
 using TimeTracking.Common.Wrapper;
-using TimeTracking.Models;
 
-namespace TimeTracking.UnitTests
+namespace TimeTracking.Tests.Common
 {
     public static class ResponseVerificationHelper
     {
@@ -57,6 +57,24 @@ namespace TimeTracking.UnitTests
             response.TotalPages.Should().Be(expectedResult.TotalPages);
             response.TotalResults.Should().Be(expectedResult.TotalResults);
             response.Data.Should().BeEquivalentTo(mappedResult);
+        }
+        
+        public static void EnsurePagedResult<T>(this PagedResult<T> result, int count, int size, int page)
+        {
+            result.CurrentPage.Should().Be(page);
+            result.TotalResults.Should().Be(count);
+            result.ResultsPerPage.Should().Be(size);
+            result.TotalPages.Should().Be((int)Math.Ceiling((decimal)count / size));
+            result.Items.Count().Should().Be(size);
+        }
+        
+        public static void EnsurePagedResult<TDto>(this ApiPagedResponse<TDto> result, int count, int size, int page)
+            where TDto : class, new()
+        {
+            result.CurrentPage.Should().Be(page);
+            result.TotalResults.Should().Be(count);
+            result.ResultsPerPage.Should().Be(size);
+            result.TotalPages.Should().Be((int)Math.Ceiling((decimal)count / size));
         }
     }
 }

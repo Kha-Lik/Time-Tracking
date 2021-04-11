@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TimeTracking.Entities;
 
-namespace TimeTracking.UnitTests
+namespace TimeTracking.Tests.Common
 {
     public static class EqualityComparers
     {

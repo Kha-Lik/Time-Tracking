@@ -11,13 +11,20 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    /// <summary>
+    /// issue controller
+    /// </summary>
     [Authorize]
     [ApiController]
-    [Route("issue")]
+    [Route("api/issue")]
     public class IssueController : ControllerBase
     {
         private readonly IIssueService _issueService;
 
+        /// <summary>
+        /// Issue controller
+        /// </summary>
+        /// <param name="issueService"></param>
         public IssueController(IIssueService issueService)
         {
             _issueService = issueService;
@@ -32,7 +39,7 @@ namespace TimeTracking.WebApi.Controllers
         [HttpPost]
         [Route("assign-to-user")]
         [Authorize(Roles = "ProjectManager,TeamLead")]
-        public async Task<ApiResponse> AssignIssueToUser([FromQuery] AssignIssueToUserRequest request)
+        public async Task<ApiResponse<IssueDto>> AssignIssueToUser([FromBody] AssignIssueToUserRequest request)
         {
             return await _issueService.AssignIssueToUser(request);
         }
@@ -44,7 +51,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("change-status")]
-        public async Task<ApiResponse> ChangeIssueStatus([FromQuery] ChangeIssueStatusRequest request)
+        public async Task<ApiResponse<IssueDto>> ChangeIssueStatus([FromBody] ChangeIssueStatusRequest request)
         {
             return await _issueService.ChangeIssueStatus(request.Status, request.IssueId);
         }
@@ -80,7 +87,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ApiPagedResponse<IssueDetailsDto>> GetAllIssuesAsync([FromRoute] PagedRequest request)
+        public async Task<ApiPagedResponse<IssueDetailsDto>> GetAllIssuesAsync([FromQuery] PagedRequest request)
         {
             return await _issueService.GetAllIssuesAsync(request);
         }

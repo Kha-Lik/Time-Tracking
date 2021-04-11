@@ -19,8 +19,6 @@ namespace TimeTracking.ReportGenerator.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.UseLightInject()
-                //.UseServiceProviderFactory(new IocContainerServiceProviderFactory())
                 .ConfigureLogging(l => l.AddConsole(o =>
                 {
                     o.DisableColors = true;
@@ -29,7 +27,6 @@ namespace TimeTracking.ReportGenerator.WebApi
                 {
                     webHostBuilder
                         .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseIISIntegration()
                         .UseStartup<Startup>();
                 })
                 ;

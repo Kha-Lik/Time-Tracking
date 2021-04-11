@@ -9,6 +9,9 @@ using TimeTracking.Models;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    /// <summary>
+    /// team controller
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/team")]
@@ -18,7 +21,7 @@ namespace TimeTracking.WebApi.Controllers
 
 
         /// <summary>
-        /// Team controller
+        /// Team controller constructor
         /// </summary>
         /// <param name="teamService"></param>
         public TeamController(ITeamService teamService)
