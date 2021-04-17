@@ -106,7 +106,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 };
             }
 
-            _logger.LogWarning("Updating user with id {0} failed with reason {1}", user.Id, updateResponse.ToString());
+            _logger.LogWarning("Updating user with id {0} failed with reason {1}",
+                user.Id, updateResponse.ToString());
             return new AuthResponse()
             {
                 Message = "Failed to generate refresh token.",
@@ -158,7 +159,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 };
             }
 
-            _logger.LogWarning("Updating user with id {0} failed with reason {1}", user.Id, updateResponse.ToString());
+            _logger.LogWarning("Updating user with id {0} failed with reason {1}",
+                user.Id, updateResponse.ToString());
             return new AuthResponse()
             {
                 Message = ErrorCode.RefreshTokenRevocationFailed.GetDescription(),

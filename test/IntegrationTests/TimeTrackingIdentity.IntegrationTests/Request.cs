@@ -2,40 +2,35 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using TimeTracking.Dal.Impl;
-using TimeTracking.Tests.Common;
 
-namespace TimeTracking.IntegrationTests
+namespace TimeTrackingIdentity.IntegrationTests
 {
     [TestFixture]
     public class Request<TStartup> : IDisposable where TStartup : class
     {
         protected HttpClient _client;
-        private CustomWebApplicationFactory<TStartup> _factory;
-        
+        private IdentityWebApplicationFactory _factory;
+
         [SetUp]
         public virtual void SetUp()
         {
-            _factory = new CustomWebApplicationFactory<TStartup>();
+            _factory = new IdentityWebApplicationFactory();
             _client = _factory.CreateClient();
         }
 
         public T GetService<T>()
         {
-            var scope =  _factory.Services.CreateScope();
+            var scope = _factory.Services.CreateScope();
             return scope.ServiceProvider.GetService<T>();
         }
 
-        //public JwtAuthentication Jwt => new JwtAuthentication(ConfigurationSingleton.GetConfiguration());
-
-        public  void ReSeedDatabase()
+        public async Task ReSeedDatabase()
         {
-            _factory.ReSeedDatabase(_factory.Services);
+            await _factory.ReSeedDatabase(_factory.Services);
         }
+
         public async Task<HttpResponseMessage> Get(string url)
         {
             return await _client.GetAsync(url);

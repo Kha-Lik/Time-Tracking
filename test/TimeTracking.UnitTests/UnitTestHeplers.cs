@@ -7,6 +7,6 @@ namespace TimeTracking.UnitTests
 {
     public static class UnitTestHelpers
     {
-        
+
     }
 }

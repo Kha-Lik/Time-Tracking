@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace TimeTracking.IntegrationTests.Extensions
+namespace TimeTracking.Tests.Common.Extensions
 {
     public static class HttpResponseMessageExtensions
     {

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TimeTracking.Dal.Impl;
+using TimeTracking.Identity.Dal.Impl;
 using TimeTracking.Tests.Common.Data;
 
 namespace TimeTracking.Tests.Common
@@ -16,5 +17,6 @@ namespace TimeTracking.Tests.Common
             context.Users.AddRange(UsersDbSet.Get().ToList());
             context.SaveChanges();
         }
+
     }
 }

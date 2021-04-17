@@ -108,7 +108,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 return userFoundedResponse;
             }
             var result =
-                await _userManager.ResetPasswordAsync(userFoundedResponse.Data, WebUtility.UrlDecode(request.Code), request.Password);
+                await _userManager.ResetPasswordAsync(userFoundedResponse.Data,
+                    WebUtility.UrlDecode(request.Code), request.Password);
             if (result.Succeeded)
             {
                 return ApiResponse.Success();
@@ -182,10 +183,12 @@ namespace TimeTracking.Identity.BL.Impl.Services
             if (result.Succeeded)
             {
 
-                var addToRoleAsync = await _userManager.AddToRoleAsync(userFoundedResponse.Data, AuthorizationData.DefaultRole.ToString());
+                var addToRoleAsync = await _userManager.AddToRoleAsync(userFoundedResponse.Data,
+                    AuthorizationData.DefaultRole.ToString());
                 if (!addToRoleAsync.Succeeded)
                 {
-                    _logger.LogError("Failed to add user to to role with reason {0}", addToRoleAsync.ToString());
+                    _logger.LogError("Failed to add user to to role with reason {0}",
+                        addToRoleAsync.ToString());
                     return new ApiResponse(
                         new ApiError()
                         {

@@ -7,6 +7,9 @@ using TimeTracking.Identity.Models.Responses;
 
 namespace TimeTracking.Identity.WebApi.Controllers
 {
+    /// <summary>
+    /// Auth controller
+    /// </summary>
     [ApiController]
     [Produces("application/json")]
     [Route("api/auth")]
@@ -15,6 +18,11 @@ namespace TimeTracking.Identity.WebApi.Controllers
         private readonly IUserIdentityService _userIdentityService;
         private readonly ITokenService _tokenService;
 
+        /// <summary>
+        /// Auth controller constructor
+        /// </summary>
+        /// <param name="userIdentityService"></param>
+        /// <param name="tokenService"></param>
         public AuthController(IUserIdentityService userIdentityService,
             ITokenService tokenService)
         {

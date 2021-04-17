@@ -9,6 +9,9 @@ using TimeTracking.Identity.Models.Dtos;
 
 namespace TimeTracking.Identity.WebApi.Controllers
 {
+    /// <summary>
+    /// User controller
+    /// </summary>
     [Authorize]
     [Produces("application/json")]
     [ApiController]
@@ -17,6 +20,10 @@ namespace TimeTracking.Identity.WebApi.Controllers
     {
         private readonly IUserIdentityService _userIdentityService;
 
+        /// <summary>
+        /// User controllers constructor
+        /// </summary>
+        /// <param name="userIdentityService"></param>
         public UserController(IUserIdentityService userIdentityService)
         {
             _userIdentityService = userIdentityService;

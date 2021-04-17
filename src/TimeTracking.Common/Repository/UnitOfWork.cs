@@ -62,35 +62,4 @@ namespace TimeTracking.Common.Repository
         }
     }
 
-    /*        public virtual async Task SaveChangesAsync()
-              {
-                try
-                {
-                    Validate();
-                    var result =await _dbContext.SaveChangesAsync();
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
-
-            private void Validate()
-            {
-                var entities = _dbContext.ChangeTracker.Entries()
-                    .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified)
-                    .Select(e => e.Entity)
-                    .ToList();
-
-                foreach (var entity in entities)
-                {
-                    var validationContext = new ValidationContext(entity);
-                    Validator.ValidateObject(entity, validationContext, validateAllProperties: true);
-                }
-            }
-
-    */
-
 }

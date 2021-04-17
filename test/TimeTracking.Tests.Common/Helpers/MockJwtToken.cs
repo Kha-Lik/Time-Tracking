@@ -5,12 +5,12 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 
-namespace TimeTracking.IntegrationTests.Helpers
+namespace TimeTracking.Tests.Common.Helpers
 {
     internal static class MockJwtTokens
     {
         public static string Issuer { get; } = Guid.NewGuid().ToString();
-        public static string Audince{ get; } = Guid.NewGuid().ToString();
+        public static string Audince { get; } = Guid.NewGuid().ToString();
         public static SecurityKey SecurityKey { get; }
         private static SigningCredentials SigningCredentials { get; }
 
@@ -25,7 +25,7 @@ namespace TimeTracking.IntegrationTests.Helpers
             SigningCredentials = new SigningCredentials(SecurityKey, SecurityAlgorithms.HmacSha256);
         }
 
-        public static string GenerateJwtToken(IEnumerable<Claim> claims=null)
+        public static string GenerateJwtToken(IEnumerable<Claim> claims = null)
         {
             return tokenHandler.WriteToken(
                 new JwtSecurityToken(Issuer, null, claims, null,

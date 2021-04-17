@@ -3333,6 +3333,121 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/ReportGenerator.IntegrationTests/ReportControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/ReportGenerator.IntegrationTests/ReportGenerator.IntegrationTests.csproj">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/ReportGenerator.IntegrationTests/ReportGeneratorWebAppFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/IssueControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/MilestoneControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/ProjectControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/TeamControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/UserControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/ControllersTests/WorkLogControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/CustomWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/Request.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/RequestBase.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTracking.IntegrationTests/TimeTrackingWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/ControllerTests/AuthControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/ControllerTests/RoleControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/ControllerTests/UserControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/CustomWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/IdentityWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/Request.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/IntegrationTests/TimeTrackingIdentity.IntegrationTests/TimeTrackingIdentity.IntegrationTests.csproj">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.IntegrationTests/ApiRoutes.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.IntegrationTests/CustomWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/ReportGenerator.IntegrationTests/ReportControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/test/ReportGenerator.UnitTests/Repositories/ReportServiceTests.cs">
           <value>
             <set />
@@ -3468,12 +3583,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/Extensions/HttpExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/Extensions/QueryStringExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/Extensions/ValidationExceptionExtensions.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/Helpers/MockJwtToken.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/IntegrationTestsWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/ResponseVerificationHelper.cs">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/SeedHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTracking.Tests.Common/TimeTracking.Tests.Common.csproj">
           <value>
             <set />
           </value>
@@ -3599,6 +3744,66 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/test/TimeTracking.UnitTests/UnitTestHeplers.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/ApiRoutes.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/ControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/ControllerTests/AuthControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/ControllerTests/RoleControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/ControllerTests/UserControllerTests.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/CustomWebApplicationFactory.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/Fakes/FakeEmailHelper.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/Fakes/FakeEmailРудзук.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/Fakes/FakeJwtToken.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/Request.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/SeedUserData.cs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/TimeTrackingIdentity.IntegrationTests/TimeTrackingIdentity.IntegrationTests.csproj">
           <value>
             <set />
           </value>

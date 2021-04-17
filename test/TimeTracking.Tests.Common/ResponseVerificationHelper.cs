@@ -58,7 +58,7 @@ namespace TimeTracking.Tests.Common
             response.TotalResults.Should().Be(expectedResult.TotalResults);
             response.Data.Should().BeEquivalentTo(mappedResult);
         }
-        
+
         public static void EnsurePagedResult<T>(this PagedResult<T> result, int count, int size, int page)
         {
             result.CurrentPage.Should().Be(page);
@@ -67,7 +67,7 @@ namespace TimeTracking.Tests.Common
             result.TotalPages.Should().Be((int)Math.Ceiling((decimal)count / size));
             result.Items.Count().Should().Be(size);
         }
-        
+
         public static void EnsurePagedResult<TDto>(this ApiPagedResponse<TDto> result, int count, int size, int page)
             where TDto : class, new()
         {

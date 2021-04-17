@@ -7,6 +7,9 @@ using TimeTracking.ReportGenerator.Models;
 
 namespace TimeTracking.ReportGenerator.WebApi.Controllers
 {
+    /// <summary>
+    /// Report controller
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/reports")]
@@ -14,6 +17,10 @@ namespace TimeTracking.ReportGenerator.WebApi.Controllers
     {
         private readonly IReportService _reportService;
 
+        /// <summary>
+        /// ReportController constructor
+        /// </summary>
+        /// <param name="reportService"></param>
         public ReportController(IReportService reportService)
         {
             _reportService = reportService;
