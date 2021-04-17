@@ -12,7 +12,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
     /// Role controller
     /// </summary>
     [ApiController]
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/role")]
     public class RoleController : ControllerBase
