@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using TimeTracking.Dal.Impl;
 using TimeTracking.Dal.Impl.Repositories;
-using TimeTracking.UnitTests.Data;
+using TimeTracking.Tests.Common;
+using TimeTracking.Tests.Common.Data;
 
 namespace TimeTracking.UnitTests.Repositories
 {

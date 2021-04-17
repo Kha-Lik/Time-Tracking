@@ -20,6 +20,10 @@ namespace TimeTracking.WebApi.Controllers
     {
         private readonly IProjectService _projectService;
 
+        /// <summary>
+        /// project controller
+        /// </summary>
+        /// <param name="projectService"></param>
         public ProjectController(IProjectService projectService)
         {
             _projectService = projectService;
@@ -55,7 +59,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{projectId}")]
-        public async Task<ApiResponse<ProjectDetailsDto>> GetMileStoneById([FromRoute] Guid projectId)
+        public async Task<ApiResponse<ProjectDetailsDto>> GetProjectById([FromRoute] Guid projectId)
         {
             return await _projectService.GetProjectByIdAsync(projectId);
         }

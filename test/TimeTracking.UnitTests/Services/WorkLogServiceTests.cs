@@ -20,7 +20,8 @@ using TimeTracking.Dal.Abstract.Repositories;
 using TimeTracking.Entities;
 using TimeTracking.Models;
 using TimeTracking.Models.Requests;
-using TimeTracking.UnitTests.Data;
+using TimeTracking.Tests.Common;
+using TimeTracking.Tests.Common.Data;
 
 namespace TimeTracking.UnitTests.Services
 {

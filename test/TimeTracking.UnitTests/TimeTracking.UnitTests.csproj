@@ -21,6 +21,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj" />
       <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj" />
+      <ProjectReference Include="..\TimeTracking.Tests.Common\TimeTracking.Tests.Common.csproj" />
     </ItemGroup>
 
 </Project>

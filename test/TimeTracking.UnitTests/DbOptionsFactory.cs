@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TimeTracking.Dal.Impl;
-using TimeTracking.UnitTests.Data;
+using TimeTracking.Tests.Common;
 
 namespace TimeTracking.UnitTests
 {
@@ -15,20 +14,8 @@ namespace TimeTracking.UnitTests
                 .Options;
 
             using var context = new TimeTrackingDbContext(options);
-            SeedData(context);
+            SeedHelper.SeedData(context);
             return options;
         }
-
-        private static void SeedData(TimeTrackingDbContext context)
-        {
-            context.Issues.AddRange(IssuesDbSet.Get().ToList());
-            context.Projects.AddRange(ProjectsDbSet.Get().ToList());
-            context.Milestones.AddRange(MilestonesDbSet.Get().ToList());
-            context.Teams.AddRange(TeamsDbSet.Get().ToList());
-            context.WorkLogs.AddRange(WorklogsDbSet.Get().ToList());
-            context.Users.AddRange(UsersDbSet.Get().ToList());
-            context.SaveChanges();
-        }
-
     }
 }

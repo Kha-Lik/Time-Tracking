@@ -62,13 +62,12 @@ namespace TimeTracking.Common.Swager
                 if (AppDomain.CurrentDomain.BaseDirectory != null)
                 {
                     var commentsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
-                    if (!File.Exists(commentsFile))
+                    if (File.Exists(commentsFile))
                     {
-                        throw new FileNotFoundException($" Xml comments file does not exist! ({commentsFile})");
+                        swaggerGenOptions.IncludeXmlComments(commentsFile);
+                        //throw new FileNotFoundException($" Xml comments file does not exist! ({commentsFile})");
                     }
-                    swaggerGenOptions.IncludeXmlComments(commentsFile);
                 }
-
                 swaggerGenOptions.UseInlineDefinitionsForEnums();
             });
 

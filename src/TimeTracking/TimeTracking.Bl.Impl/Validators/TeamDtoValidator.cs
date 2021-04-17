@@ -13,6 +13,7 @@ namespace TimeTracking.Bl.Impl.Validators
 
             RuleFor(x => x.MembersCount)
                 .NotEmpty()
+                .InclusiveBetween(1, 100)
                 .NotNull();
 
             RuleFor(x => x.ProjectId)

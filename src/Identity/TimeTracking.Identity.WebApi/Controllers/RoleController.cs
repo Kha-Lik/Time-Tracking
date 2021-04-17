@@ -8,14 +8,21 @@ using TimeTracking.Identity.Models.Requests;
 
 namespace TimeTracking.Identity.WebApi.Controllers
 {
+    /// <summary>
+    /// Role controller
+    /// </summary>
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/role")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleService _roleService;
 
+        /// <summary>
+        /// Role controller constructor
+        /// </summary>
+        /// <param name="roleService"></param>
         public RoleController(IRoleService roleService)
         {
             _roleService = roleService;

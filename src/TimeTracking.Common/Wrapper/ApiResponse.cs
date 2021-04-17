@@ -80,6 +80,7 @@ namespace TimeTracking.Common.Wrapper
             {
                 Data = null,
                 IsSuccess = false,
+                StatusCode = this.StatusCode,
                 ResponseException = this.ResponseException,
             };
 

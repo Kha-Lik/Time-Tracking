@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Requests;
@@ -12,6 +13,7 @@ namespace TimeTracking.WebApi.Controllers
     /// <summary>
     /// Milestone controller
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("api/milestone")]
     public class MilestoneController : ControllerBase

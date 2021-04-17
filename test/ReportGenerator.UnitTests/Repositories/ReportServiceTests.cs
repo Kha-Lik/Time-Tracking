@@ -22,11 +22,12 @@ namespace ReportGenerator.UnitTests.Repositories
         private static Fixture Fixture = new Fixture();
 
         [Test]
-        public async Task GenerateReportAsync_WhenHttpClientFailedResponseReturned_ShoulReturnHttpClientFailedResponse()
+        public async Task GenerateReportAsync_WhenHttpClientFailedResponseReturned_ShouldReturnHttpClientFailedResponse()
         {
             var parameters = Fixture.Freeze<ReportConfiguration>();
             var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = false };
-            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
+            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(
+                    It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
 
             var response = await ClassUnderTest.GenerateReportAsync(parameters);
@@ -40,7 +41,8 @@ namespace ReportGenerator.UnitTests.Repositories
         {
             var parameters = Fixture.Freeze<ReportConfiguration>();
             var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = true, Data = Fixture.Create<UserActivityDto>() };
-            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
+            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(
+                    It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
             MockFor<IReportExporter>()
                 .Setup(e => e.GenerateReportForExport(workLogResponse.Data, parameters.ReportFormatType))
@@ -57,7 +59,8 @@ namespace ReportGenerator.UnitTests.Repositories
             var parameters = Fixture.Freeze<ReportConfiguration>();
             var reportGeneratedResponse = Fixture.Create<ReportExporterResponse>();
             var workLogResponse = new ApiResponse<UserActivityDto>() { IsSuccess = true, Data = Fixture.Create<UserActivityDto>() };
-            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(It.IsAny<ReportGeneratorRequest>()))
+            MockFor<IWorkLogClientService>().Setup(e => e.GetUserActivities(
+                    It.IsAny<ReportGeneratorRequest>()))
                 .ReturnsAsync(workLogResponse);
             MockFor<IReportExporter>()
                 .Setup(e => e.GenerateReportForExport(workLogResponse.Data, parameters.ReportFormatType))

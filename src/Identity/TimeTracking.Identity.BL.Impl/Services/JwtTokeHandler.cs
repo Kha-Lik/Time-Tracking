@@ -36,9 +36,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 ValidateIssuer = false,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
-                ValidateLifetime = false //check expired tokens
+                ValidateLifetime = false, //check expired tokens
             });
         }
-
     }
 }

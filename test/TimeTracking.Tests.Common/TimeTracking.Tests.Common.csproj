@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Identity\TimeTracking.Identity.Dal.Impl\TimeTracking.Identity.Dal.Impl.csproj" />
+      <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoFixture" Version="4.15.0" />
+      <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.14" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.12" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.14" />
+    </ItemGroup>
+
+</Project>

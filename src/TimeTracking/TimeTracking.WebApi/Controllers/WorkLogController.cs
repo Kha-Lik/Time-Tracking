@@ -13,6 +13,9 @@ using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
 {
+    /// <summary>
+    /// Work log controller 
+    /// </summary>
     [Authorize]
     [ApiController]
     [Route("api/workLog")]
@@ -20,6 +23,10 @@ namespace TimeTracking.WebApi.Controllers
     {
         private readonly IWorkLogService _workLogService;
 
+        /// <summary>
+        /// Work log controller constructor
+        /// </summary>
+        /// <param name="workLogService"></param>
         public WorkLogController(IWorkLogService workLogService)
         {
             _workLogService = workLogService;
@@ -92,7 +99,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <param name="pagedRequest"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged([FromRoute] PagedRequest pagedRequest)
+        public async Task<ApiPagedResponse<WorkLogDetailsDto>> GetAllWorkLogsPaged([FromQuery] PagedRequest pagedRequest)
         {
             return await _workLogService.GetAllWorkLogsPaged(pagedRequest);
         }
@@ -103,6 +110,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <param name="workLogId"></param>
         /// <returns></returns>
         [HttpDelete]
+        [Route("{workLogId}")]
         public async Task<ApiResponse> DeleteWorklog([FromRoute] Guid workLogId)
         {
             return await _workLogService.DeleteWorkLog(workLogId);

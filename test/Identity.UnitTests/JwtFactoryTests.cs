@@ -74,7 +74,6 @@ namespace Identity.UnitTests
                 RefreshTokenValidFor = TimeSpan.FromDays(3),
             };
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Key));
-            //var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
             var token = await sut.GenerateEncodedAccessToken(user);
 
@@ -83,7 +82,6 @@ namespace Identity.UnitTests
             var jwt = new JwtSecurityToken(token.Token);
             jwt.Issuer.Should().Be(settings.Issuer);
             jwt.Audiences.Should().Contain(settings.Audience);
-            //jwt.SigningCredentials.Should().BeEquivalentTo(signingCredentials);
             //validate claims
             jwt.Claims.Should().Contain(c => c.Type == JwtRegisteredClaimNames.Iss && c.Value == settings.Issuer);
             jwt.Claims.Should().Contain(c => c.Type == JwtRegisteredClaimNames.Sub && c.Value == user.UserName);
