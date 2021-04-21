@@ -1,0 +1,64 @@
+version: '3.4'
+
+services:
+  timetracking.identity.webapi:
+    image: ${DOCKER_REGISTRY-}timetrackingidentitywebapi
+    build:
+      context: .
+      dockerfile: src\Identity\TimeTracking.Identity.WebApi\Dockerfile
+
+  timetracking.reportgenerator.webapi:
+    image: ${DOCKER_REGISTRY-}timetrackingreportgeneratorwebapi
+    build:
+      context: .
+      dockerfile: src\ReportGenerator\TimeTracking.ReportGenerator.WebApi\Dockerfile
+
+
+  timetracking.webapi:
+    image: ${DOCKER_REGISTRY-}timetrackingwebapi
+    build:
+      context: .
+      dockerfile: src\TimeTracking\TimeTracking.WebApi\Dockerfile
+
+
+  identity.unittests:
+    image: ${DOCKER_REGISTRY-}identityunittests
+    build:
+      context: .
+      dockerfile: test\Identity.UnitTests\Dockerfile
+
+
+  reportgenerator.unittests:
+    image: ${DOCKER_REGISTRY-}reportgeneratorunittests
+    build:
+      context: .
+      dockerfile: test\ReportGenerator.UnitTests\Dockerfile
+
+
+  timetracking.unittests:
+    image: ${DOCKER_REGISTRY-}timetrackingunittests
+    build:
+      context: .
+      dockerfile: test\TimeTracking.UnitTests\Dockerfile
+
+
+  reportgenerator.integrationtests:
+    image: ${DOCKER_REGISTRY-}reportgeneratorintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\ReportGenerator.IntegrationTests\Dockerfile
+
+
+  timetracking.integrationtests:
+    image: ${DOCKER_REGISTRY-}timetrackingintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\TimeTracking.IntegrationTests\Dockerfile
+
+
+  timetrackingidentity.integrationtests:
+    image: ${DOCKER_REGISTRY-}timetrackingidentityintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\TimeTrackingIdentity.IntegrationTests\Dockerfile
+
