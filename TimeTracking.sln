@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{3B2AA40A-DAF5-47B9-9DEA-097785F69791}"
+ProjectSection(SolutionItems) = preProject
+	src\Identity\Dockerfile = src\Identity\Dockerfile
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportGenerator", "ReportGenerator", "{A4E1197C-D5B1-40A0-919B-562D70131767}"
+ProjectSection(SolutionItems) = preProject
+	src\ReportGenerator\Dockerfile = src\ReportGenerator\Dockerfile
+EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Common", "src\TimeTracking.Common\TimeTracking.Common.csproj", "{DEB2030E-368A-49AA-8C13-CA69653868E9}"
 EndProject
@@ -35,6 +41,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Bl.Impl", "src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj", "{E82E3E5E-1CFA-4690-81E7-660758BB8E6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeTracking", "TimeTracking", "{A53C8BAE-437D-4A51-BA33-577986775920}"
+ProjectSection(SolutionItems) = preProject
+	src\TimeTracking\Dockerfile.txt = src\TimeTracking\Dockerfile.txt
+EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracking.Bl.Abstract", "src\TimeTracking\TimeTracking.Bl.Abstract\TimeTracking.Bl.Abstract.csproj", "{BFF356D0-48AD-4DEC-8267-BC4B5B3356FF}"
 EndProject
@@ -73,6 +82,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportGenerator.IntegrationTests", "test\IntegrationTests\ReportGenerator.IntegrationTests\ReportGenerator.IntegrationTests.csproj", "{7DE10367-AF49-4D7D-ABB9-EA7D82D46AA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrackingIdentity.IntegrationTests", "test\IntegrationTests\TimeTrackingIdentity.IntegrationTests\TimeTrackingIdentity.IntegrationTests.csproj", "{DB32A79E-AC98-43A2-AE74-830DBE16559B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docker-compose", "docker-compose.dcproj", "{3730678C-AF7D-4FA4-A94C-9A61D96D6A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,6 +219,10 @@ Global
 		{DB32A79E-AC98-43A2-AE74-830DBE16559B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB32A79E-AC98-43A2-AE74-830DBE16559B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB32A79E-AC98-43A2-AE74-830DBE16559B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3730678C-AF7D-4FA4-A94C-9A61D96D6A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3730678C-AF7D-4FA4-A94C-9A61D96D6A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3730678C-AF7D-4FA4-A94C-9A61D96D6A57}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3730678C-AF7D-4FA4-A94C-9A61D96D6A57}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9CC511B9-29DD-48C1-A9C4-832AFFDE8D31} = {3B2AA40A-DAF5-47B9-9DEA-097785F69791}
