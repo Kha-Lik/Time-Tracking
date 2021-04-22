@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TimeTrackingIdentity.IntegrationTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

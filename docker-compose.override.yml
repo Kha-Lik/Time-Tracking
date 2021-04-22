@@ -33,15 +33,6 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
       - ${APPDATA}/ASP.NET/Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
 
-  identity.unittests:
-
-
-  reportgenerator.unittests:
-
-
-  timetracking.unittests:
-
-
   reportgenerator.integrationtests:
 
 
@@ -49,4 +40,13 @@ services:
 
 
   timetrackingidentity.integrationtests:
+
+
+  identity.unittests:
+
+
+  reportgenerator.unittests:
+
+
+  timetracking.unittests:
 
