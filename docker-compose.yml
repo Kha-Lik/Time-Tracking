@@ -21,27 +21,6 @@ services:
       dockerfile: src\TimeTracking\TimeTracking.WebApi\Dockerfile
 
 
-  identity.unittests:
-    image: ${DOCKER_REGISTRY-}identityunittests
-    build:
-      context: .
-      dockerfile: test\Identity.UnitTests\Dockerfile
-
-
-  reportgenerator.unittests:
-    image: ${DOCKER_REGISTRY-}reportgeneratorunittests
-    build:
-      context: .
-      dockerfile: test\ReportGenerator.UnitTests\Dockerfile
-
-
-  timetracking.unittests:
-    image: ${DOCKER_REGISTRY-}timetrackingunittests
-    build:
-      context: .
-      dockerfile: test\TimeTracking.UnitTests\Dockerfile
-
-
   reportgenerator.integrationtests:
     image: ${DOCKER_REGISTRY-}reportgeneratorintegrationtests
     build:
@@ -61,4 +40,25 @@ services:
     build:
       context: .
       dockerfile: test\IntegrationTests\TimeTrackingIdentity.IntegrationTests\Dockerfile
+
+
+  identity.unittests:
+    image: ${DOCKER_REGISTRY-}identityunittests
+    build:
+      context: .
+      dockerfile: test\Identity.UnitTests\Dockerfile
+
+
+  reportgenerator.unittests:
+    image: ${DOCKER_REGISTRY-}reportgeneratorunittests
+    build:
+      context: .
+      dockerfile: test\ReportGenerator.UnitTests\Dockerfile
+
+
+  timetracking.unittests:
+    image: ${DOCKER_REGISTRY-}timetrackingunittests
+    build:
+      context: .
+      dockerfile: test\TimeTracking.UnitTests\Dockerfile
 

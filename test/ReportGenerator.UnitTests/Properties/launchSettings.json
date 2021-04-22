@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ReportGenerator.UnitTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
