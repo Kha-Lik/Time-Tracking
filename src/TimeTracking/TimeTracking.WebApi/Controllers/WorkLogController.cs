@@ -85,7 +85,7 @@ namespace TimeTracking.WebApi.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Authorize(Roles = "ProjectManager,TeamLead")]
+       // [Authorize(Roles = "ProjectManager,TeamLead")]
         [HttpPost]
         [Route("update-status")]
         public async Task<ApiResponse<WorkLogDto>> UpdateWorkLogStatus([FromBody] UpdateWorkLogStatusRequest request)

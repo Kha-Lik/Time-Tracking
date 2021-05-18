@@ -50,14 +50,14 @@ namespace TimeTracking.WebApi
             services.AddJwtAuthServices(Configuration);
             services.AddRabbitMqConfiguration(Configuration);
             services.AddFluentEmailServices(Configuration);
-
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CurrentCorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value);
-                        builder.WithMethods().AllowAnyMethod();
+                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value)
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
         }

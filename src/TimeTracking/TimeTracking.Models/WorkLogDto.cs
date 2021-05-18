@@ -15,5 +15,6 @@ namespace TimeTracking.Models
     {
         public Guid WorkLogId { get; set; }
         public Guid UserId { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

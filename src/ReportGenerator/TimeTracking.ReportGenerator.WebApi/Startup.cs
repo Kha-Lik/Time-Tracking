@@ -50,29 +50,22 @@ namespace TimeTracking.ReportGenerator.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<Startup>();
                     c.RegisterValidatorsFromAssemblyContaining<ReportConfigParameterValidator>();
                 });
-
-            //services.AddServicesFrom("TimeTracking.ReportGenerator.Bl.Impl"); // <-- Your implementations namespace.
             services.AddBlLogicServices(Configuration);
             services.AddOptions();
-            //services.Configure<ConsoleLifetimeOptions>(options => Options.Create(new ConsoleLifetimeOptions()));
-            //services.Configure<HostOptions>(options => Options.Create(new HostOptions()) );
-
-
-
             services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
             services.AddLogging();
             services.AddSwaggerConfiguration("Time tracking report generator");
             services.AddFluentValidatorServices(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.RegisterTemplateServices();
-            //services.AddClassesAsImplementedInterface(services.BuildServiceProvider(),Assembly.GetEntryAssembly(),typeof(IOptions<>));
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CurrentCorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value);
-                        builder.WithMethods().AllowAnyMethod();
+                        builder.WithOrigins("http://localhost:3000")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
         }

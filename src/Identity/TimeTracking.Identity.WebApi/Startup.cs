@@ -71,7 +71,6 @@ namespace TimeTracking.Identity.WebApi
                     c.RegisterValidatorsFromAssemblyContaining<TokenExchangeRequestValidator>();
                 });
 
-
             services.AddRabbitMqConfiguration(Configuration);
             services.AddJwtAuthServices(Configuration);
             services.AddBlLogicServices(Configuration);
@@ -84,8 +83,9 @@ namespace TimeTracking.Identity.WebApi
                 options.AddPolicy(name: "CurrentCorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value);
-                        builder.WithMethods().AllowAnyMethod();
+                        builder.WithOrigins("http://localhost:3000")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
         }

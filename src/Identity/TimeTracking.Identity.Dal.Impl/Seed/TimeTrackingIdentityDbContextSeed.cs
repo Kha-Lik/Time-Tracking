@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using MassTransit;
 using Microsoft.AspNetCore.Identity;
+using TimeTracking.Contracts.Events;
 using TimeTracking.Identity.Dal.Impl.Seed.Data;
 using TimeTracking.Identity.Entities;
 
@@ -11,7 +13,7 @@ namespace TimeTracking.Identity.Dal.Impl.Seed
 {
     public static class TimeTrackingIdentityDbContextSeed
     {
-        public static async Task SeedUsersAndRolesAsync(UserManager<User> userManager, RoleManager<Role> roleManager)
+        public static async Task SeedUsersAndRolesAsync(UserManager<User> userManager, RoleManager<Role> roleManager, IPublishEndpoint publish)
         {
             if (!roleManager.Roles.Any())
             {
@@ -24,11 +26,12 @@ namespace TimeTracking.Identity.Dal.Impl.Seed
             var rolesNames = Enum.GetNames(typeof(AuthorizationData.Roles));
             foreach (var stringRole in rolesNames)
             {
-                await EnsureUser(userManager, stringRole);
+                await EnsureUser(userManager, stringRole,publish);
+           
             }
         }
 
-        private static async Task EnsureUser(UserManager<User> userManager, string role)
+        private static async Task EnsureUser(UserManager<User> userManager, string role,IPublishEndpoint publish)
         {
             var user = await userManager.FindByNameAsync(AuthorizationData.DefaultUsername + role);
 
@@ -45,6 +48,14 @@ namespace TimeTracking.Identity.Dal.Impl.Seed
                 };
                 await userManager.CreateAsync(user, AuthorizationData.DefaultPassword + role);
                 await userManager.AddToRoleAsync(user, role);
+                await publish.Publish<UserSignedUp>(new
+                {
+                    UserId =user.Id,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    __CorrelationId = InVar.Id,
+                });
             }
 
         }

@@ -343,7 +343,6 @@ namespace TimeTracking.IntegrationTests.ControllersTests
 
         #endregion
 
-
         #region GetAllIssuesAsync
 
         [TestCase(1, 2, 1, 2)]

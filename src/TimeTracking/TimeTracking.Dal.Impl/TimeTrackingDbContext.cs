@@ -4,6 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TimeTracking.Common.Abstract.Repository;
+using TimeTracking.Common.Enums;
+using TimeTracking.Dal.Impl.Seeds;
 using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl
@@ -29,11 +31,6 @@ namespace TimeTracking.Dal.Impl
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
-
-
-
             modelBuilder.Entity<Issue>()
                 .HasKey(e => e.Id);
             modelBuilder.Entity<Issue>()
@@ -50,7 +47,9 @@ namespace TimeTracking.Dal.Impl
                 .HasForeignKey(e => e.IssueId);
             modelBuilder.Entity<Issue>()
                 .Property(e => e.Status)
-                .HasConversion<string>();
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (Status)Enum.Parse(typeof(Status), v));
 
             modelBuilder.Entity<Team>()
                 .HasKey(e => e.Id);
@@ -85,7 +84,9 @@ namespace TimeTracking.Dal.Impl
                 .HasForeignKey(e => e.MilestoneId);
             modelBuilder.Entity<Milestone>()
                 .Property(e => e.State)
-                .HasConversion<string>();
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (State)Enum.Parse(typeof(State), v));
 
             modelBuilder.Entity<WorkLog>()
                 .HasKey(e => e.Id);
@@ -93,7 +94,10 @@ namespace TimeTracking.Dal.Impl
                 .HasIndex(e => e.UserId);
             modelBuilder.Entity<WorkLog>()
                 .Property(e => e.ActivityType)
-                .HasConversion<string>();
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (ActivityType)Enum.Parse(typeof(ActivityType), v));
+
 
             modelBuilder.Entity<TimeTrackingUser>()
                 .HasKey(e => e.Id);
@@ -105,7 +109,6 @@ namespace TimeTracking.Dal.Impl
                 .HasMany(e => e.CreatedMilestones)
                 .WithOne(e => e.CreatedByUser)
                 .HasForeignKey(e => e.CreatedByUserId);
-
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

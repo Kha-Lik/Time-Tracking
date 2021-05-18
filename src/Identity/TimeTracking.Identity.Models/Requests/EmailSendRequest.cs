@@ -1,9 +1,11 @@
 ﻿#nullable enable
+using TimeTracking.Identity.Entities;
+
 namespace TimeTracking.Identity.Models.Requests
 {
-    public class ResendEmailRequest
+    public class  EmailSendRequest
     {
-        public string Email { get; set; }
+        public  User User { get; set; }
         public  string? ClientUrl { get; set; }
     }
 }

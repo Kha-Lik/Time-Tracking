@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using MassTransit;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,8 @@ namespace TimeTracking.Identity.WebApi
                 {
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
-                    await TimeTrackingIdentityDbContextSeed.SeedUsersAndRolesAsync(userManager, roleManager);
+                    var publish = services.GetRequiredService<IPublishEndpoint>();
+                    await TimeTrackingIdentityDbContextSeed.SeedUsersAndRolesAsync(userManager, roleManager, publish );
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Identity.BL.Abstract.Services;

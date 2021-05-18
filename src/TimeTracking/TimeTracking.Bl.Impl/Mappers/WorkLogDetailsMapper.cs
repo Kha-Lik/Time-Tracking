@@ -17,6 +17,7 @@ namespace TimeTracking.Bl.Impl.Mappers
                 IssueId = entity.IssueId,
                 WorkLogId = entity.Id,
                 UserId = entity.UserId,
+                IsApproved = entity.IsApproved,
             };
         }
     }
