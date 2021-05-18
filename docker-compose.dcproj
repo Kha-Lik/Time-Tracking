@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>8818ac3c-68eb-4b4a-bd4b-d182952d5a54</ProjectGuid>
+    <ProjectGuid>4ed9f800-ef70-409f-8c66-98fddf5f8bab</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>timetracking.identity.webapi</DockerServiceName>

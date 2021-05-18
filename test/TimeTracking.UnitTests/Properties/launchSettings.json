@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TimeTracking.UnitTests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
