@@ -31,8 +31,8 @@ namespace TimeTracking.ReportGenerator.WebApi.Controllers
         /// </summary>
         /// <param name="reportConfiguration"></param>
         /// <returns></returns>
-        [HttpGet]
-        public async Task<FileContentResult> GenerateReport([FromQuery] ReportConfiguration reportConfiguration)
+        [HttpPost]
+        public async Task<FileContentResult> GenerateReport([FromBody] ReportConfiguration reportConfiguration)
         {
             var response = await _reportService.GenerateReportAsync(reportConfiguration);
             return new FileContentResult(response.Data.FileBytes, response.Data.FileContentType)

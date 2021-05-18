@@ -73,7 +73,7 @@ namespace Identity.UnitTests
             };
             _mockUserManger.Setup(e => e.CreateAsync(It.IsAny<User>(), request.Password))
                 .ReturnsAsync(IdentityResult.Success);
-            mockEmailHelperService.Setup(e => e.SendEmailConfirmationEmail(It.IsAny<User>()))
+            mockEmailHelperService.Setup(e => e.SendEmailConfirmationEmail(It.IsAny<EmailSendRequest>()))
                 .ReturnsAsync(ApiResponse.Success());
 
             var response = await sut.RegisterAsync(request);
@@ -119,7 +119,7 @@ namespace Identity.UnitTests
             var identityResult = IdentityResult.Success;
             _mockUserManger.Setup(e => e.CreateAsync(It.IsAny<User>(), request.Password))
                 .ReturnsAsync(identityResult);
-            mockEmailHelperService.Setup(e => e.SendEmailConfirmationEmail(It.IsAny<User>()))
+            mockEmailHelperService.Setup(e => e.SendEmailConfirmationEmail(It.IsAny<EmailSendRequest>()))
                 .ReturnsAsync(emailFailedResponse);
 
             var response = await sut.RegisterAsync(request);
@@ -166,23 +166,6 @@ namespace Identity.UnitTests
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.EmailConfirmationFailed.GetDescription());
         }
 
-        [Test]
-        public async Task ForgotPasswordAsync_WhenEmailConfirmedAndUserFound_ShouldSendResetPasswordConfirmationEmail()
-        {
-            var request = new ForgotPasswordRequest()
-            {
-                Email = "email"
-            };
-            var user = new User();
-            _mockUserManger.Setup(e => e.IsEmailConfirmedAsync(It.IsAny<User>()))
-                .ReturnsAsync(true);
-            _mockUserManger.Setup(e => e.FindByEmailAsync(request.Email))
-                .ReturnsAsync(user);
-
-            var response = await sut.ForgotPasswordAsync(request);
-
-            mockEmailHelperService.Verify(e => e.SendResetPasswordConfirmationEmail(user));
-        }
 
         #endregion
 
@@ -267,22 +250,6 @@ namespace Identity.UnitTests
             response.IsSuccess.Should().BeFalse();
             response.ResponseException!.ErrorCode.Should().Be(ErrorCode.UserNotFound);
             response.ResponseException.ErrorMessage.Should().Be(ErrorCode.UserNotFound.GetDescription());
-        }
-
-        [Test]
-        public async Task ResentEmailAsync_WhenFoundUserByEmail_ShouldCallSendEmailConfirmationEmail()
-        {
-            var request = new ResendEmailRequest()
-            {
-                Email = "email",
-            };
-            var user = Fixture.Create<User>();
-            _mockUserManger.Setup(e => e.FindByEmailAsync(request.Email))
-                .ReturnsAsync(user);
-
-            var response = await sut.ResentEmailAsync(request);
-
-            mockEmailHelperService.Verify(e => e.SendEmailConfirmationEmail(user));
         }
 
         #endregion

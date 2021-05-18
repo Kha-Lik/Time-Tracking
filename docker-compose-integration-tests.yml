@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  reportgenerator.integrationtests:
+    image: ${DOCKER_REGISTRY-}reportgeneratorintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\ReportGenerator.IntegrationTests\Dockerfile
+
+  timetracking.integrationtests:
+    image: ${DOCKER_REGISTRY-}timetrackingintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\TimeTracking.IntegrationTests\Dockerfile
+
+  timetrackingidentity.integrationtests:
+    image: ${DOCKER_REGISTRY-}timetrackingidentityintegrationtests
+    build:
+      context: .
+      dockerfile: test\IntegrationTests\TimeTrackingIdentity.IntegrationTests\Dockerfile

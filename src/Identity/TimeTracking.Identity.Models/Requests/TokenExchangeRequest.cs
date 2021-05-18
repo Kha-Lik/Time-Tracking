@@ -2,7 +2,7 @@
 
 namespace TimeTracking.Identity.Models.Requests
 {
-    public class TokenExchangeRequest
+    public class  TokenExchangeRequest
     {
         [Required]
         public string Email { get; set; }

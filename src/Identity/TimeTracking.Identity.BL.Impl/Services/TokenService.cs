@@ -76,7 +76,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
             }
 
             var jwtSecurityToken = await _jwtFactory.GenerateEncodedAccessToken(user);
-            var activeRefreshToken = await _refreshTokenRepository.FilterOneAsync(e => e.IsActive);
+            var activeRefreshToken = user.RefreshTokens.FirstOrDefault(e => e.IsActive);
             if (activeRefreshToken != null)
             {
                 return new AuthResponse()

@@ -11,6 +11,11 @@ namespace TimeTracking.Identity.BL.Impl.Validators
                 .NotEmpty()
                 .NotNull()
                 .EmailAddress();
+            
+            RuleFor(x => x.ClientUrl)
+                .NotEmpty()
+                .NotNull()
+                .Matches(@"/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi");
         }
     }
 }

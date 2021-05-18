@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  identity.unittests:
+    image: ${DOCKER_REGISTRY-}identityunittests
+    build:
+      context: .
+      dockerfile: test\Identity.UnitTests\Dockerfile
+
+  reportgenerator.unittests:
+    image: ${DOCKER_REGISTRY-}reportgeneratorunittests
+    build:
+      context: .
+      dockerfile: test\ReportGenerator.UnitTests\Dockerfile
+
+  timetracking.unittests:
+    image: ${DOCKER_REGISTRY-}timetrackingunittests
+    build:
+      context: .
+      dockerfile: test\TimeTracking.UnitTests\Dockerfile

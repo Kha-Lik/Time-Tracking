@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -17,8 +18,8 @@ namespace TimeTracking.Identity.BL.Impl.Services
 {
     public interface IEmailHelperService
     {
-        Task<ApiResponse> SendEmailConfirmationEmail(User user);
-        Task<ApiResponse> SendResetPasswordConfirmationEmail(User user);
+        Task<ApiResponse> SendEmailConfirmationEmail(EmailSendRequest request);
+        Task<ApiResponse> SendResetPasswordConfirmationEmail(EmailSendRequest request);
     }
 
     public class EmailHelperService : IEmailHelperService
@@ -36,11 +37,12 @@ namespace TimeTracking.Identity.BL.Impl.Services
             _client = client.Value;
         }
 
-        public async Task<ApiResponse> SendEmailConfirmationEmail(User user)
+     
+        public async Task<ApiResponse> SendEmailConfirmationEmail(EmailSendRequest request)
         {
+            var user = request.User;
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var callbackUrl = GetCallbackUrl(user.Id, code, _client.EmailConfirmationPath);
-
+            var callbackUrl = GetCallbackUrl(user.Id, code, _client.EmailConfirmationPath,request.ClientUrl);
             var emailSendingSuccess = await _emailService.SendMessageWithPurpose(new MailModel()
             {
                 ToEmail = user.Email,
@@ -64,11 +66,11 @@ namespace TimeTracking.Identity.BL.Impl.Services
             return ApiResponse.Success();
         }
 
-        public async Task<ApiResponse> SendResetPasswordConfirmationEmail(User user)
+        public async Task<ApiResponse> SendResetPasswordConfirmationEmail(EmailSendRequest request)
         {
+            var user = request.User;
             var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var callbackUrl = GetCallbackUrl(user.Id, code, _client.ResetPasswordPath);
-
+            var callbackUrl = GetCallbackUrl(user.Id, code, _client.ResetPasswordPath,request.ClientUrl);
             var emailSendingSuccess = await _emailService.SendMessageWithPurpose(new MailModel()
             {
                 ToEmail = user.Email,
@@ -92,10 +94,16 @@ namespace TimeTracking.Identity.BL.Impl.Services
             }
             return ApiResponse.Success();
         }
-        private string GetCallbackUrl(Guid userId, string token, string path)
+        private  const string  RouteEnd = "/";
+        private string GetCallbackUrl(Guid userId, string token, string path, string? clientUrl= null)
         {
+            var url = $"{_client.Url}{path}";
+            if (!String.IsNullOrEmpty(clientUrl))
+            {
+                url = clientUrl.EndsWith(RouteEnd )? clientUrl: $"{clientUrl}{RouteEnd}";
+            }
             var callbackUrl =
-                $"{_client.Url}{path}?{nameof(ISendEmailCodeRequest.UserId)}={userId}&{nameof(ISendEmailCodeRequest.Code)}={WebUtility.UrlEncode(token)}";
+                $"{url}?{nameof(ISendEmailCodeRequest.UserId)}={userId}&{nameof(ISendEmailCodeRequest.Code)}={WebUtility.UrlEncode(token)}";
             return callbackUrl;
         }
     }

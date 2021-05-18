@@ -64,7 +64,12 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     });
             }
 
-            var sendEmailConfirmResult = await _emailHelperService.SendEmailConfirmationEmail(userToAdd);
+            var sendEmailConfirmResult = await _emailHelperService.SendEmailConfirmationEmail(
+                new EmailSendRequest()
+                {
+                    ClientUrl = model.ClientUrl,
+                    User =userToAdd,
+                });
             if (!sendEmailConfirmResult.IsSuccess)
             {
                 return sendEmailConfirmResult;
@@ -95,7 +100,11 @@ namespace TimeTracking.Identity.BL.Impl.Services
                         ErrorMessage = ErrorCode.EmailConfirmationFailed.GetDescription(),
                     });
             }
-            return await _emailHelperService.SendResetPasswordConfirmationEmail(user);
+            return await _emailHelperService.SendResetPasswordConfirmationEmail( new EmailSendRequest()
+            {
+                ClientUrl = request.ClientUrl,
+                User =user,
+            });
         }
 
 
@@ -136,7 +145,11 @@ namespace TimeTracking.Identity.BL.Impl.Services
                     ErrorMessage = ErrorCode.UserNotFound.GetDescription(),
                 });
             }
-            return await _emailHelperService.SendEmailConfirmationEmail(user);
+            return await _emailHelperService.SendEmailConfirmationEmail(new EmailSendRequest()
+            {
+                ClientUrl = request.ClientUrl,
+                User =user,
+            });
         }
 
 

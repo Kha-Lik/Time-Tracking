@@ -18,12 +18,13 @@ namespace TimeTracking.Common.Email
 
             services.AddFluentEmail(emailSettings.AdminEmail)
                 .AddRazorRenderer()
-                .AddSmtpSender(new SmtpClient(emailSettings.MailServer, emailSettings.MailPort)
+                .AddSmtpSender(new SmtpClient(emailSettings.MailServer,emailSettings.MailPort)
                 {
-                    Credentials = new NetworkCredential(emailSettings.AdminEmail, emailSettings.AdminPassword),
-                    EnableSsl = emailSettings.UseSsl,
+                    Credentials = new NetworkCredential(emailSettings.AdminEmail,emailSettings.AdminPassword),
+                    EnableSsl = true,
+                   // UseDefaultCredentials = false,
+                   // DeliveryMethod = SmtpDeliveryMethod.Network,
                 });
-
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IRazorViewFinder, RazorViewFinder>();
             services.RegisterTemplateServices();

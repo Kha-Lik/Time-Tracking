@@ -14,7 +14,7 @@ namespace TimeTracking.WebApi.Controllers
     /// <summary>
     /// issue controller
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/issue")]
     public class IssueController : ControllerBase
@@ -91,6 +91,5 @@ namespace TimeTracking.WebApi.Controllers
         {
             return await _issueService.GetAllIssuesAsync(request);
         }
-
     }
 }
