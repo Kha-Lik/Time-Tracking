@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TimeTracking.Dal.Impl;
 
 namespace TimeTracking.WebApi
 {
@@ -14,6 +15,7 @@ namespace TimeTracking.WebApi
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+            host.MigrateDatabase();
             host.Run();
         }
 

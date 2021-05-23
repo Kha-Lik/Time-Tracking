@@ -1,4 +1,6 @@
-﻿using TimeTracking.Common.Mappers;
+﻿using System;
+using System.Linq;
+using TimeTracking.Common.Mappers;
 using TimeTracking.Entities;
 using TimeTracking.Models;
 
@@ -22,9 +24,9 @@ namespace TimeTracking.Bl.Impl.Mappers
                 ReportedByLastName = entity.TimeTrackingUserReporter?.LastName,
                 ReportedByUserFirstName = entity.TimeTrackingUserReporter?.FirstName,
                 MileStoneName = entity.Milestone?.Title,
+                TotalRemainingTimeInSeconds = Math.Abs((long)(entity.OpenedAt - entity.CreatedAt).TotalSeconds),
+                TotalSpentTimeInSeconds = entity?.WorkLogs?.Sum(e => e.TimeSpent)??0,
             };
         }
     }
-
-
 }

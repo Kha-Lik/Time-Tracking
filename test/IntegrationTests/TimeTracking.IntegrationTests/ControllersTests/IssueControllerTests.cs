@@ -416,7 +416,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
             var mapper = GetService<IModelMapper<Issue, IssueDetailsDto>>();
             var issueDetailed = mapper.MapToModel(issue);
             issueDetailed.TotalRemainingTimeInSeconds = (long) (issue.ClosedAt - issue.OpenedAt).TotalSeconds;
-            issueDetailed.TotalSpentTimeInSeconds = issue.WorkLogs.Sum(e => e.TimeSpent.Seconds);
+            issueDetailed.TotalSpentTimeInSeconds = issue.WorkLogs.Sum(e => e.TimeSpent);
             return issueDetailed;
         }
 

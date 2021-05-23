@@ -48,9 +48,9 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// </summary>
         /// <param name="request">EmailConfirmationRequest</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("confirm-email")]
-        public async Task<ApiResponse> ConfirmEmail([FromQuery] EmailConfirmationRequest request)
+        public async Task<ApiResponse> ConfirmEmail([FromBody] EmailConfirmationRequest request)
         {
             if (request == null)
             {

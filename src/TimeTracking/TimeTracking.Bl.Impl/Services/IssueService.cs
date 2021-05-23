@@ -188,7 +188,7 @@ namespace TimeTracking.Bl.Impl.Services
                 {
                     var issueDetailed = _issueDetailsMapper.MapToModel(issueWithDetails);
                     issueDetailed.TotalRemainingTimeInSeconds = (long)(issueWithDetails.ClosedAt - issueWithDetails.OpenedAt).TotalSeconds;
-                    issueDetailed.TotalSpentTimeInSeconds = issueWithDetails.WorkLogs.Sum(e => e.TimeSpent.Seconds);
+                    issueDetailed.TotalSpentTimeInSeconds = issueWithDetails.WorkLogs.Sum(e => e.TimeSpent);
                     return new ApiResponse<IssueDetailsDto>(issueDetailed);
                 }
             }

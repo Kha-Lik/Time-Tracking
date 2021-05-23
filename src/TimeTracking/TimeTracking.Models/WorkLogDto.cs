@@ -6,7 +6,7 @@ namespace TimeTracking.Models
     public class WorkLogDto
     {
         public string Description { get; set; }
-        public TimeSpan TimeSpent { get; set; }
+        public long TimeSpent { get; set; }
         public ActivityType ActivityType { get; set; }
         public DateTimeOffset StartDate { get; set; }
         public Guid IssueId { get; set; }

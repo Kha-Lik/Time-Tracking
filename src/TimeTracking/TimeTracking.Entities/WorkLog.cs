@@ -12,7 +12,7 @@ namespace TimeTracking.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public TimeSpan TimeSpent { get; set; }
+        public long TimeSpent { get; set; }
         public bool IsApproved { get; set; }
         public DateTimeOffset StartDate { get; set; }
         public ActivityType ActivityType { get; set; }

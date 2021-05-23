@@ -48,7 +48,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "TeamLead")]
+        [Authorize(Roles = "TeamLead")]
         public async Task<ApiResponse<TeamDto>> CreateTeamAsync([FromBody] TeamDto dto)
         {
             return await _teamService.CreateTeamAsync(dto);

@@ -346,7 +346,7 @@ namespace TimeTracking.UnitTests.Services
                 UserSurname = userFoundResponse.Data.LastName,
                 UserEmail = userFoundResponse.Data.Email,
                 ProjectName = expectedWorkLogs?.Select(e => e.Issue?.Project?.Name).FirstOrDefault(),
-                TotalWorkLogInSeconds = (long?)expectedWorkLogs?.Sum(e => e.TimeSpent.TotalSeconds),
+                TotalWorkLogInSeconds = (long?)expectedWorkLogs?.Sum(e => e.TimeSpent),
                 WorkLogItems = expectedMappedWorkLogs,
             };
 

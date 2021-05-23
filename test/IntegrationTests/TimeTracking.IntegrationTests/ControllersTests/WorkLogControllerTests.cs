@@ -49,7 +49,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
                 StartDate = DateTimeOffset.Now,
                 IssueId = Guid.NewGuid(),
                 ActivityType = ActivityType.Research,
-                TimeSpent = TimeSpan.FromDays(2)
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
             };
 
             var httpResponse = await PostAsync(WorkLogControllerRoutes.CreateWorkLog, request);
@@ -69,7 +69,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
                 StartDate = DateTimeOffset.Now,
                 IssueId = IssuesDbSet.Get().First().Id,
                 ActivityType = ActivityType.Research,
-                TimeSpent = TimeSpan.FromDays(2)
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
             };
 
             var httpResponse = await PostAsync(WorkLogControllerRoutes.CreateWorkLog, request);
@@ -90,7 +90,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
                 Description = "description",
                 StartDate = DateTimeOffset.Now,
                 ActivityType = ActivityType.Research,
-                TimeSpent = TimeSpan.FromDays(2)
+                TimeSpent = TimeSpan.FromDays(2).Seconds
             };
             var httpResponse = await PostAsync(WorkLogControllerRoutes.CreateWorkLog, request);
             httpResponse.EnsureSuccessStatusCode();
@@ -101,7 +101,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
             {
                 StartDate = DateTimeOffset.Now,
                 ActivityType = ActivityType.Research,
-                TimeSpent = TimeSpan.FromDays(2)
+                TimeSpent = TimeSpan.FromDays(2).Seconds
             };
             httpResponse = await PostAsync(WorkLogControllerRoutes.CreateWorkLog, request);
             httpResponse.EnsureSuccessStatusCode();
@@ -231,7 +231,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
             response.Data.UserSurname.Should().Be(user.LastName);
             response.Data.UserEmail.Should().Be(user.Email);
             response.Data.ProjectName.Should().Be(workLogItems?.Select(e => e.Issue.Project.Name).FirstOrDefault());
-            response.Data.TotalWorkLogInSeconds.Should().Be((long?) workLogItems?.Sum(e => e.TimeSpent.TotalSeconds));
+            response.Data.TotalWorkLogInSeconds.Should().Be((long?) workLogItems?.Sum(e => e.TimeSpent));
             response.Data.WorkLogItems.Should()
                 .BeEquivalentTo(workLogItems?.Select(e => GetWorkLogDetails(e)).ToList());
             await ReSeedDatabase();
@@ -249,7 +249,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
                 Description = "description",
                 ActivityType = ActivityType.Coding,
                 StartDate = DateTimeOffset.MaxValue.AddDays(-3333),
-                TimeSpent = TimeSpan.FromDays(2),
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
                 WorkLogId = Guid.NewGuid()
             };
 
@@ -268,7 +268,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
                 Description = "description",
                 ActivityType = ActivityType.Coding,
                 StartDate = DateTimeOffset.MaxValue.AddDays(-3333),
-                TimeSpent = TimeSpan.FromDays(2),
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
                 WorkLogId = WorklogsDbSet.Get().First().Id
             };
 
@@ -293,7 +293,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
             {
                 ActivityType = ActivityType.Coding,
                 StartDate = DateTimeOffset.MaxValue.AddDays(-3333),
-                TimeSpent = TimeSpan.FromDays(2),
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
                 WorkLogId = WorklogsDbSet.Get().First().Id
             };
 
@@ -305,7 +305,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
             request = new WorkLogUpdateRequest()
             {
                 ActivityType = ActivityType.Coding,
-                TimeSpent = TimeSpan.FromDays(2),
+                TimeSpent = TimeSpan.FromDays(2).Seconds,
                 WorkLogId = WorklogsDbSet.Get().First().Id
             };
 
