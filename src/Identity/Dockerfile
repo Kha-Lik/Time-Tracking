@@ -16,10 +16,10 @@ COPY ["src/TimeTracking.Common/TimeTracking.Common.csproj", "src/TimeTracking.Co
 COPY ["src/TimeTracking.Templates/TimeTracking.Templates.csproj", "src/TimeTracking.Templates/"]
 COPY ["src/Identity/TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj", "src/Identity/TimeTracking.Identity.Dal.Abstract/"]
 COPY ["src/Identity/TimeTracking.Identity.Entities/TimeTracking.Identity.Entities.csproj", "src/Identity/TimeTracking.Identity.Entities/"]
+COPY ["src/TimeTracking.Contracts/TimeTracking.Contracts.csproj", "src/TimeTracking.Contracts/"]
 COPY ["src/Identity/TimeTracking.Identity.BL.Impl/TimeTracking.Identity.BL.Impl.csproj", "src/Identity/TimeTracking.Identity.BL.Impl/"]
 COPY ["src/Identity/TimeTracking.Identity.BL.Abstract/TimeTracking.Identity.BL.Abstract.csproj", "src/Identity/TimeTracking.Identity.BL.Abstract/"]
 COPY ["src/Identity/TimeTracking.Identity.Models/TimeTracking.Identity.Models.csproj", "src/Identity/TimeTracking.Identity.Models/"]
-COPY ["src/TimeTracking.Contracts/TimeTracking.Contracts.csproj", "src/TimeTracking.Contracts/"]
 RUN dotnet restore "src/Identity/TimeTracking.Identity.WebApi/TimeTracking.Identity.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/Identity/TimeTracking.Identity.WebApi"

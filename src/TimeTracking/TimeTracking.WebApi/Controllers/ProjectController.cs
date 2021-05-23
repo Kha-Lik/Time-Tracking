@@ -35,7 +35,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "ProjectManager")]
+        [Authorize(Roles = "ProjectManager")]
         public async Task<ApiResponse<ProjectDto>> CreateProjectAsync([FromBody] ProjectDto dto)
         {
             return await _projectService.CreateProjectAsync(dto);

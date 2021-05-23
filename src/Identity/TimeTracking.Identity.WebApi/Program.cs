@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TimeTracking.Common;
 using TimeTracking.Common.Abstract;
+using TimeTracking.Identity.Dal.Impl;
 using TimeTracking.Identity.Dal.Impl.Seed;
 using TimeTracking.Identity.Entities;
 
@@ -27,6 +28,7 @@ namespace TimeTracking.Identity.WebApi
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var roleManager = services.GetRequiredService<RoleManager<Role>>();
                     var publish = services.GetRequiredService<IPublishEndpoint>();
+                    host.MigrateDatabase();
                     await TimeTrackingIdentityDbContextSeed.SeedUsersAndRolesAsync(userManager, roleManager, publish );
                 }
                 catch (Exception ex)

@@ -53,7 +53,7 @@ namespace TimeTracking.UnitTests.Services
 
             var response = await ClassUnderTest.GetIssueByIdAsync(id);
             modelAfterMap.TotalRemainingTimeInSeconds = (long)(issueFound.ClosedAt - issueFound.OpenedAt).TotalSeconds;
-            modelAfterMap.TotalSpentTimeInSeconds = issueFound.WorkLogs.Sum(e => e.TimeSpent.Seconds);
+            modelAfterMap.TotalSpentTimeInSeconds = issueFound.WorkLogs.Sum(e => e.TimeSpent);
             response.VerifySuccessResponseWithData(modelAfterMap);
 
         }

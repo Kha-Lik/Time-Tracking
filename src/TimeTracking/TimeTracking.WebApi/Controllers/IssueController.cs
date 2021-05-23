@@ -14,7 +14,7 @@ namespace TimeTracking.WebApi.Controllers
     /// <summary>
     /// issue controller
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/issue")]
     public class IssueController : ControllerBase
@@ -75,7 +75,7 @@ namespace TimeTracking.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("create-issue")]
-        [Authorize(Roles = "ProjectManager")]
+        //[Authorize(Roles = "ProjectManager")]
         public async Task<ApiResponse<IssueDto>> CreateIssue([FromBody] IssueDto issueDto)
         {
             return await _issueService.CreateIssue(issueDto);

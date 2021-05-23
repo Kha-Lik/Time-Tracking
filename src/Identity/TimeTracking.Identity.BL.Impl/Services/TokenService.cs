@@ -59,7 +59,7 @@ namespace TimeTracking.Identity.BL.Impl.Services
                 };
             }
             // Used as user lock
-            if (user.LockoutEnd >= DateTimeOffset.UtcNow)
+            if (user.LockoutEnd !=null && user.LockoutEnd >= DateTimeOffset.UtcNow)
             {
                 return new AuthResponse()
                 {

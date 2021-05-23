@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using TimeTracking.Common.Abstract.Repository;
 using TimeTracking.Common.Enums;
 using TimeTracking.Dal.Impl.Seeds;
+using TimeTracking.Dal.Impl.Seeds.Data;
 using TimeTracking.Entities;
 
 namespace TimeTracking.Dal.Impl
@@ -109,6 +110,8 @@ namespace TimeTracking.Dal.Impl
                 .HasMany(e => e.CreatedMilestones)
                 .WithOne(e => e.CreatedByUser)
                 .HasForeignKey(e => e.CreatedByUserId);
+            
+           // modelBuilder.SeedData();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
