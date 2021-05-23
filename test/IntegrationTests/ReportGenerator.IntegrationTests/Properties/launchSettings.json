@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ReportGenerator.IntegrationTests": {
+      "commandName": "Project"
+    },
+    "Docker (1)": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -4,6 +4,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+
+        <DockerfileContext>..\..</DockerfileContext>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,6 +15,7 @@
         <PackageReference Include="AutoMockHelper" Version="1.1.2" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.4" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
         <PackageReference Include="Moq" Version="4.16.1" />
         <PackageReference Include="Moq.EntityFrameworkCore" Version="5.0.0.2" />
         <PackageReference Include="NUnit" Version="3.12.0" />
@@ -22,6 +27,10 @@
       <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Bl.Impl\TimeTracking.Bl.Impl.csproj" />
       <ProjectReference Include="..\..\src\TimeTracking\TimeTracking.Dal.Impl\TimeTracking.Dal.Impl.csproj" />
       <ProjectReference Include="..\TimeTracking.Tests.Common\TimeTracking.Tests.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Properties\" />
     </ItemGroup>
 
 </Project>
