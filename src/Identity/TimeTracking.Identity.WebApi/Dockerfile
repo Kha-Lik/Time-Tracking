@@ -1,8 +1,5 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
 FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 80
@@ -16,10 +13,10 @@ COPY ["src/TimeTracking.Common/TimeTracking.Common.csproj", "src/TimeTracking.Co
 COPY ["src/TimeTracking.Templates/TimeTracking.Templates.csproj", "src/TimeTracking.Templates/"]
 COPY ["src/Identity/TimeTracking.Identity.Dal.Abstract/TimeTracking.Identity.Dal.Abstract.csproj", "src/Identity/TimeTracking.Identity.Dal.Abstract/"]
 COPY ["src/Identity/TimeTracking.Identity.Entities/TimeTracking.Identity.Entities.csproj", "src/Identity/TimeTracking.Identity.Entities/"]
+COPY ["src/TimeTracking.Contracts/TimeTracking.Contracts.csproj", "src/TimeTracking.Contracts/"]
 COPY ["src/Identity/TimeTracking.Identity.BL.Impl/TimeTracking.Identity.BL.Impl.csproj", "src/Identity/TimeTracking.Identity.BL.Impl/"]
 COPY ["src/Identity/TimeTracking.Identity.BL.Abstract/TimeTracking.Identity.BL.Abstract.csproj", "src/Identity/TimeTracking.Identity.BL.Abstract/"]
 COPY ["src/Identity/TimeTracking.Identity.Models/TimeTracking.Identity.Models.csproj", "src/Identity/TimeTracking.Identity.Models/"]
-COPY ["src/TimeTracking.Contracts/TimeTracking.Contracts.csproj", "src/TimeTracking.Contracts/"]
 RUN dotnet restore "src/Identity/TimeTracking.Identity.WebApi/TimeTracking.Identity.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/Identity/TimeTracking.Identity.WebApi"
