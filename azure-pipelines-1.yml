@@ -11,7 +11,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  ImageName: 'ityshchenko/reportgeneratorapi:$(Build.BuildId)'
+  ImageName: 'dockersupportbankweb/reportgeneratorapi:$(Build.BuildId)'
 
 stages:
 - stage: Build
