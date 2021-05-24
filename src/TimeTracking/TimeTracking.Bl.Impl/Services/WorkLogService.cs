@@ -95,7 +95,7 @@ namespace TimeTracking.Bl.Impl.Services
                     UserSurname = userFoundResponse.Data.LastName,
                     UserEmail = userFoundResponse.Data.Email,
                     ProjectName = workLogActivities?.Select(e => e.Issue?.Project?.Name).FirstOrDefault(),
-                    TotalWorkLogInSeconds = (long?)workLogActivities?.Sum(e => e.TimeSpent),
+                    TotalWorkLogInSeconds = workLogActivities?.Sum(e => e.TimeSpent),
                     WorkLogItems = workLogActivities?.Select(e => _worklogDetailsMapper.MapToModel(e)).ToList(),
                 };
                 return new ApiResponse<UserActivityDto>(userActivity);

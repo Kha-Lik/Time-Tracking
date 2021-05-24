@@ -1,49 +1,22 @@
-version: "3.4"
+version: '3.4'
 
 services:
-  rabbitmq:
-    container_name: rabbitmq
-    ports:
-      - 5672:5672
-      - 15672:15672
-    environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=password
-    image: rabbitmq:3-management
-
-  timetracking.identity.webapi:
-    image: ${DOCKER_REGISTRY-}timetrackingidentitywebapi
-    build:
-      context: .
-      dockerfile: src\Identity\TimeTracking.Identity.WebApi\Dockerfile
-    ports:
-      - 8010:80
-      - 8020:443
-    restart: on-failure
-    depends_on:
-      - rabbitmq
-
   timetracking.reportgenerator.webapi:
     image: ${DOCKER_REGISTRY-}timetrackingreportgeneratorwebapi
     build:
       context: .
-      dockerfile: src\ReportGenerator\TimeTracking.ReportGenerator.WebApi\Dockerfile
-    ports:
-      - 8030:80
-      - 8040:443
-    restart: on-failure
-    depends_on:
-      - rabbitmq
+      dockerfile: src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/Dockerfile
 
   timetracking.webapi:
     image: ${DOCKER_REGISTRY-}timetrackingwebapi
     build:
       context: .
-      dockerfile: src\TimeTracking\TimeTracking.WebApi\Dockerfile
-    ports:
-      - 8050:80
-      - 8060:443
-    restart: on-failure
-    depends_on:
-      - rabbitmq
+      dockerfile: src/TimeTracking/TimeTracking.WebApi/Dockerfile
+
+
+  timetracking.identity.webapi:
+    image: ${DOCKER_REGISTRY-}timetrackingidentitywebapi
+    build:
+      context: .
+      dockerfile: src/Identity/TimeTracking.Identity.WebApi/Dockerfile
 
