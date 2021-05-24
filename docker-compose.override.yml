@@ -4,12 +4,12 @@ services:
   rabbitmq:
     container_name: rabbitmq
     ports:
-       - 5672:5672
-       - 15672:15672
+      - 5672:5672
+      - 15672:15672
     environment:
-       - RABBITMQ_DEFAULT_USER=guest
-       - RABBITMQ_DEFAULT_PASS=guest      
-       #- RABBITMQ_DEFAULT_VHOST=vhost 
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      #- RABBITMQ_DEFAULT_VHOST=vhost 
     image: rabbitmq:3-management
 
   timetracking.reportgenerator.webapi:
@@ -17,12 +17,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      - 50050:80
+      - 50051:443
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    restart: on-failure        
+    restart: on-failure
     depends_on:
       - rabbitmq
 
@@ -31,12 +31,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      -  50052:80
+      -  50053:443
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    restart: on-failure        
+    restart: on-failure
     depends_on:
       - rabbitmq
 
@@ -45,11 +45,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      -  50054:80
+      -  50055:443
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    restart: on-failure        
+    restart: on-failure
     depends_on:
       - rabbitmq
