@@ -19,7 +19,7 @@ services:
       dockerfile: src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
       - 50050:80
       - 50051:443
@@ -37,7 +37,7 @@ services:
       dockerfile: src/TimeTracking/TimeTracking.WebApi/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
       -  50052:80
       -  50053:443
@@ -55,7 +55,7 @@ services:
       dockerfile: src/Identity/TimeTracking.Identity.WebApi/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
     ports:
       -  50054:80
       -  50055:443
