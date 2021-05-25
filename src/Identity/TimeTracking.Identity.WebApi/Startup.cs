@@ -83,7 +83,7 @@ namespace TimeTracking.Identity.WebApi
                 options.AddPolicy(name: "CurrentCorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000")
+                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value)
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });

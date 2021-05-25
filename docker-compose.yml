@@ -2,21 +2,22 @@ version: '3.4'
 
 services:
   timetracking.reportgenerator.webapi:
-    image: ${DOCKER_REGISTRY-}timetrackingreportgeneratorwebapi
+    image: dockersupportbankweb/timetrackreportsapi:latest
     build:
       context: .
       dockerfile: src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/Dockerfile
 
   timetracking.webapi:
-    image: ${DOCKER_REGISTRY-}timetrackingwebapi
+    image: dockersupportbankweb/timetrackwebapi:latest
     build:
       context: .
       dockerfile: src/TimeTracking/TimeTracking.WebApi/Dockerfile
 
 
   timetracking.identity.webapi:
-    image: ${DOCKER_REGISTRY-}timetrackingidentitywebapi
+    image: dockersupportbankweb/timetrackidentiy:latest
     build:
       context: .
       dockerfile: src/Identity/TimeTracking.Identity.WebApi/Dockerfile
-
+ 
+ 
