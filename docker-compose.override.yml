@@ -9,7 +9,6 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
-      #- RABBITMQ_DEFAULT_VHOST=vhost 
     image: rabbitmq:3-management
 
   timetracking.reportgenerator.webapi:
@@ -20,6 +19,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - TimeTrackingClientSettings__Url=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50052/
+      - TimeTrackingClientSettings__IdentityUrl=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50054/
     ports:
       - 50050:80
       - 50051:443
