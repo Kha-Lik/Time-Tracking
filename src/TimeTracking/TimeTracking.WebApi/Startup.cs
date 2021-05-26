@@ -55,7 +55,7 @@ namespace TimeTracking.WebApi
                 options.AddPolicy(name: "CurrentCorsPolicy",
                     builder =>
                     {
-                        builder.WithOrigins(Configuration.GetSection("AllowedHosts").Value)
+                        builder.AllowAnyOrigin()
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
