@@ -3,6 +3,7 @@
 <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
 </PropertyGroup>
 
 <ItemGroup>
@@ -12,28 +13,28 @@
     <ItemGroup>
         <Content Update="EmailTemplates\*.*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
+        </Content> 
         <None Remove="ReportsTemplates\time-log.xlsx" />
         <Content Include="ReportsTemplates\time-log.xlsx">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Update="Views\Emails\ConfirmEmail.cshtml">
-          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
         <Content Update="Views\Emails\ResetPassword.cshtml">
           <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+          <CopyToPublishDirectory>Always</CopyToPublishDirectory>
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Update="Views\Emails\ConfirmEmail.cshtml">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
-    
-<ItemGroup>
-    <Content Update="Views\*.*">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-</ItemGroup>
+
+    <ItemGroup>
+        <Content Update="Views\*.*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
     
 <ItemGroup>
   <PackageReference Include="MassTransit" Version="7.1.6" />
