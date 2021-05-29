@@ -56,7 +56,6 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Services
                 worksheet.Rows.InsertCopy(row + 1, numberOfItems, worksheet.Rows[row]);
 
                 // Fill copied rows with sample data.
-                var random = new Random();
                 for (int i = 0; i < numberOfItems; i++)
                 {
                     var currentRow = worksheet.Rows[row + i];
@@ -64,10 +63,10 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Services
                     currentRow.Cells[1].SetValue(worklogs[i].Description);
                     currentRow.Cells[2].SetValue(worklogs[i].StartDate.DateTime.ToShortTimeString());
                     currentRow.Cells[3].SetValue(worklogs[i].ActivityType.ToString());
-                    currentRow.Cells[4].SetValue(worklogs[i].TimeSpent.ToString(@"dd\.hh\:mm\:ss"));
+                    currentRow.Cells[4].SetValue(new TimeSpan(worklogs[i].TimeSpent).TotalHours);
                 }
 
-                worksheet.Rows[11].Cells[4].SetValue(userActivity.TotalWorkLogInSeconds);
+                worksheet.Rows[11].Cells[4].SetValue(new TimeSpan(userActivity.TotalWorkLogInSeconds).TotalHours);
                 worksheet.Calculate();
                 // Save the modified Excel template to output file.
                 var saveOptions = GetFormatOptions(formatType);

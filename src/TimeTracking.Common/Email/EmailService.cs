@@ -72,7 +72,7 @@ namespace TimeTracking.Common.Email
             catch (Exception ex)
             {
 
-                _logger.LogError($"{DateTime.Now}: Failed to send email with purpose {emailPurpose.ToString()} ❌! ({ex.Message})");
+                _logger.LogError(ex,$"{DateTime.Now}: Failed to send email with purpose {emailPurpose.ToString()} ❌! ({ex.Message})");
                 return false;
             }
         }

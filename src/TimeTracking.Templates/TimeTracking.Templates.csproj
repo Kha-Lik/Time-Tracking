@@ -13,6 +13,10 @@
         <Content Update="EmailTemplates\*.*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <None Remove="ReportsTemplates\time-log.xlsx" />
+        <Content Include="ReportsTemplates\time-log.xlsx">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
     
 <ItemGroup>
@@ -71,12 +75,6 @@
     
 <ItemGroup>
   <Folder Include="ReportsTemplates" />
-</ItemGroup>
-    
-<ItemGroup>
-  <None Update="ReportsTemplates\time-log.xlsx">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </None>
 </ItemGroup>
 
 </Project>
