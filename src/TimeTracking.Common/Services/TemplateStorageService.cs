@@ -48,11 +48,11 @@ namespace TimeTracking.Common.Services
             string dir = "";
             try
             {
-                dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory()).Name, "src/src/TimeTracking.Templates");
+                dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory()).Parent.ToString(), "TimeTracking.Templates");
             }
             catch (NullReferenceException nre)
             {
-                dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory()).Parent.ToString(), "TimeTracking.Templates");
+                dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory()).Name, "src/src/TimeTracking.Templates");
             }
             return _fileSystem.Path.Combine(dir, path.Replace('/', _fileSystem.Path.DirectorySeparatorChar));
         }
