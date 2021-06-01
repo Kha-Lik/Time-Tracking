@@ -22,8 +22,8 @@ namespace TimeTracking.Common.Email
                 {
                     Credentials = new NetworkCredential(emailSettings.AdminEmail,emailSettings.AdminPassword),
                     EnableSsl = true,
-                   // UseDefaultCredentials = false,
-                   // DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
                 });
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IRazorViewFinder, RazorViewFinder>();
