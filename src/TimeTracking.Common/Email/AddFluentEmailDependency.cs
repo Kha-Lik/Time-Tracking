@@ -20,9 +20,9 @@ namespace TimeTracking.Common.Email
                 .AddRazorRenderer()
                 .AddSmtpSender(new SmtpClient(emailSettings.MailServer,emailSettings.MailPort)
                 {
+                    UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(emailSettings.AdminEmail,emailSettings.AdminPassword),
                     EnableSsl = true,
-                    UseDefaultCredentials = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                 });
             services.AddScoped<IEmailService, EmailService>();
