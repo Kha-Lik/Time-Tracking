@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: [windows-2016]
+    runs-on: [windows-latest]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -34,5 +34,15 @@ jobs:
         run: dotnet build ${{ github.workspace }}/TimeTracking.sln --configuration Release --no-restore
       - name: Install dependencies for Report Generator
         run: dotnet restore ${{ github.workspace }}/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/TimeTracking.ReportGenerator.WebApi.csproj
+      - name: docker login
+        env:
+         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+        run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: docker build csharp
+        run: docker build ${{ github.workspace }}/src/ReportGenerator/Dockerfile
+      - name: docker push
+        run: docker push ${{ github.workspace }}/src/ReportGenerator/Dockerfile
       - name: Unit Test
-        run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj -c release --no-restore --collect:"XPlat Code Coverage"
+        run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj -c release --no-restore 
