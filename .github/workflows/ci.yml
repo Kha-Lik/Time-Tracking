@@ -34,15 +34,13 @@ jobs:
         run: dotnet build ${{ github.workspace }}/TimeTracking.sln --configuration Release --no-restore
       - name: Install dependencies for Report Generator
         run: dotnet restore ${{ github.workspace }}/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/TimeTracking.ReportGenerator.WebApi.csproj
-      - name: docker login
-        env:
-         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
-         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-        run: |
-         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - name: docker build csharp
-        run: docker build ${{ github.workspace }}/src/ReportGenerator/Dockerfile
-      - name: docker push
-        run: docker push ${{ github.workspace }}/src/ReportGenerator/Dockerfile
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          directory: ${{ github.workspace }}/src/ReportGenerator
+          repository: dockersupportbankweb/timetrackreportsapi
+          tags: latest, ${{ github.run_number }}
       - name: Unit Test
         run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj -c release --no-restore 
