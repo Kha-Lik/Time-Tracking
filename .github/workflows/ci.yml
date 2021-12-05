@@ -32,8 +32,6 @@ jobs:
         run: dotnet restore ${{ github.workspace }}/TimeTracking.sln
       - name: Build
         run: dotnet build ${{ github.workspace }}/TimeTracking.sln --configuration Release --no-restore
-      - name: Install dependencies for Report Generator
-        run: dotnet restore ${{ github.workspace }}/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/TimeTracking.ReportGenerator.WebApi.csproj
       - name: Unit Test
         run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal 
       - name: Create Test Coverage Badge
