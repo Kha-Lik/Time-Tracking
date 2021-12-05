@@ -24,8 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Echo user
-        run: echo ${{  secrets.DOCKER_USER }}
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1.9.0
         with:
@@ -50,8 +48,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          file: ./Dockerfile
+          context: .
+          file: src/Identity/TimeTracking.Identity.WebApi/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USER }}/simplewhale:latest
 
