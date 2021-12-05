@@ -35,8 +35,19 @@ jobs:
       - name: Install dependencies for Report Generator
         run: dotnet restore ${{ github.workspace }}/src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/TimeTracking.ReportGenerator.WebApi.csproj
       - name: Unit Test
-        run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj -c release --no-restore 
-        
+        run: dotnet test ${{ github.workspace }}/test/Identity.UnitTests/Identity.UnitTests.csproj  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal <MyProject>.Tests/
+      - name: Create Test Coverage Badge
+        uses: simon-k/dotnet-code-coverage-badge@v1.0.0
+        id: create_coverage_badge
+        with:
+         label: Unit Test Coverage
+         color: brightgreen
+         path: ${{ github.workspace }}/test/Identity.UnitTests/TestResults/coverage.opencover.xml
+         gist-filename: code-coverage.json
+         gist-id: 1234567890abcdef1234567890abcdef
+         gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
+      - name: Print code coverage
+        run: echo "Code coverage percentage ${{steps.create_coverage_badge.outputs.percentage}}%"  
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
