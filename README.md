@@ -1,3 +1,3 @@
 # Time-Tracking
 Time tracking solution
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/<user>/<gist-id>/raw/<gist-filename>)
+[![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml)
