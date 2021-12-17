@@ -6,7 +6,7 @@
 FROM mcr.microsoft.com/dotnet/runtime:3.1 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["test/IntegrationTests/ReportGenerator.IntegrationTests/ReportGenerator.IntegrationTests.csproj", "test/IntegrationTests/ReportGenerator.IntegrationTests/"]
 COPY ["src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/TimeTracking.ReportGenerator.WebApi.csproj", "src/ReportGenerator/TimeTracking.ReportGenerator.WebApi/"]

@@ -6,7 +6,7 @@
 FROM mcr.microsoft.com/dotnet/runtime:3.1 AS base
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["test/IntegrationTests/TimeTracking.IntegrationTests/TimeTracking.IntegrationTests.csproj", "test/IntegrationTests/TimeTracking.IntegrationTests/"]
 COPY ["test/TimeTracking.Tests.Common/TimeTracking.Tests.Common.csproj", "test/TimeTracking.Tests.Common/"]

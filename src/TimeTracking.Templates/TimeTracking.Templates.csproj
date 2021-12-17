@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
 </PropertyGroup>
@@ -37,12 +37,12 @@
     </ItemGroup>
     
 <ItemGroup>
-  <PackageReference Include="MassTransit" Version="7.1.6" />
-  <PackageReference Include="MassTransit.AspNetCore" Version="7.1.6" />
-  <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.6" />
-  <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.6" />
+  <PackageReference Include="MassTransit" Version="7.3.0" />
+  <PackageReference Include="MassTransit.AspNetCore" Version="7.3.0" />
+  <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.0" />
+  <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.0" />
   <PackageReference Include="MicroElements.Swashbuckle.FluentValidation.WebApi" Version="0.1.0" />
-  <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.0" />
+  <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.3" />
 </ItemGroup>
     
 <ItemGroup>
