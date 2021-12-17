@@ -23,6 +23,7 @@ namespace TimeTracking.IntegrationTests.ControllersTests
         [SetUp]
         public override void SetUp()
         {
+            Factory = new TimeTrackingWebApplicationFactory();
             base.SetUp();
             var token = GetJwtToken();
             AddAuth(token);

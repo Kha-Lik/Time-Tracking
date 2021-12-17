@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -9,8 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MicroElements.Swashbuckle.FluentValidation.WebApi" Version="0.1.0" />
-      <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.3" />
     </ItemGroup>
 
 </Project>

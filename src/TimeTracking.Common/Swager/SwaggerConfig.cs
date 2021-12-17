@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using FluentValidation;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Any;
@@ -30,7 +31,6 @@ namespace TimeTracking.Common.Swager
                         Title = title,
                         Version = "v1"
                     });
-                swaggerGenOptions.AddFluentValidationRules();
                 // The name of this security definition is linked to the Id below
                 swaggerGenOptions.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -59,17 +59,16 @@ namespace TimeTracking.Common.Swager
                     Type = "string",
                     Example = new OpenApiString("00:00:00")
                 });
-                if (AppDomain.CurrentDomain.BaseDirectory != null)
+                var commentsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                    $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
+                if (File.Exists(commentsFile))
                 {
-                    var commentsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
-                    if (File.Exists(commentsFile))
-                    {
-                        swaggerGenOptions.IncludeXmlComments(commentsFile);
-                        //throw new FileNotFoundException($" Xml comments file does not exist! ({commentsFile})");
-                    }
+                    swaggerGenOptions.IncludeXmlComments(commentsFile);
+                    //throw new FileNotFoundException($" Xml comments file does not exist! ({commentsFile})");
                 }
                 swaggerGenOptions.UseInlineDefinitionsForEnums();
             });
+            services.AddFluentValidationRulesToSwagger();
 
             services.AddLogging(builder => builder.AddConsole().AddFilter(level => true));
             return services;
