@@ -13,12 +13,14 @@ namespace TimeTracking.Bl.Impl.Mappers
             return new IssueDetailsDto()
             {
                 Status = entity.Status,
+                ProjectName = entity.Project?.Abbreviation,
                 ClosedAt = entity.ClosedAt,
                 Description = entity.Description,
                 Title = entity.Title,
                 OpenedAt = entity.OpenedAt,
                 UpdatedAt = entity.UpdatedAt,
                 IssueId = entity.Id,
+                AssignedToUserId = entity.AssignedToUserId,
                 AssignedUserFirstName = entity.TimeTrackingUserAssigned?.FirstName,
                 AssignedUserLastName = entity.TimeTrackingUserAssigned?.LastName,
                 ReportedByLastName = entity.TimeTrackingUserReporter?.LastName,

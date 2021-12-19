@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TimeTracking.Common.Pagination;
 using TimeTracking.Common.Repository;
 using TimeTracking.Dal.Abstract.Repositories;
 using TimeTracking.Entities;
+using TimeTracking.Entities.FilterModels;
 
 namespace TimeTracking.Dal.Impl.Repositories
 {
@@ -28,7 +31,7 @@ namespace TimeTracking.Dal.Impl.Repositories
             return query.FirstOrDefaultAsync();
         }
 
-        public Task<PagedResult<Issue>> GetAllIssueWithDetails(int page, int size)
+        public Task<Common.Pagination.PagedResult<Issue>> GetAllIssueWithDetails(int page, int size)
         {
             var query = _dbContext.Issues
                 .Include(e => e.Milestone)
@@ -37,6 +40,23 @@ namespace TimeTracking.Dal.Impl.Repositories
                 .Include(e => e.WorkLogs);
 
             return query.PaginateAsync(page, size);
+        }
+
+        public async Task<List<Issue>> GetAllIssueFiltered(IssueFilteringModel filteringModel)
+        {
+            var query =  _dbContext.Issues
+                .Include(e=>e.Project)
+                .Where(e => e.MilestoneId == filteringModel.MilestoneId);
+            if (filteringModel.EndDate != default)
+            {
+                query.Where(e => e.CreatedAt <= filteringModel.EndDate);
+            }
+            if (filteringModel.StartDate != default)
+            {
+                query.Where(e => e.CreatedAt >= filteringModel.StartDate);
+            }
+
+            return await query.ToListAsync();
         }
     }
 }

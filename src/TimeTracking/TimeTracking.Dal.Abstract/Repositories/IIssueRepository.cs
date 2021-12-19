@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TimeTracking.Common.Abstract;
 using TimeTracking.Common.Abstract.Repository;
 using TimeTracking.Common.Pagination;
 using TimeTracking.Entities;
+using TimeTracking.Entities.FilterModels;
 
 namespace TimeTracking.Dal.Abstract.Repositories
 {
@@ -11,5 +12,6 @@ namespace TimeTracking.Dal.Abstract.Repositories
     {
         Task<Issue> GetIssueWithDetails(Guid id);
         Task<PagedResult<Issue>> GetAllIssueWithDetails(int page, int size);
+        Task<List<Issue>> GetAllIssueFiltered(IssueFilteringModel filteringModel);
     }
 }
