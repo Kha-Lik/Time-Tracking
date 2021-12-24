@@ -1,0 +1,89 @@
+{
+  "Routes": [
+    {
+      "ServiceName": "identity",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/identity/{everything}",
+      "UpstreamHttpMethod": [ "Get","Post","Put" ],
+      "SwaggerKey": "identity",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "reportGenerator",
+      "UpstreamPathTemplate": "/api/reporting/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post","Put" ],
+      "SwaggerKey": "reporting",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "timeTracking",
+      "UpstreamPathTemplate": "/api/issue-tracking/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post","Put", "Delete" ],
+      "SwaggerKey": "issue-tracking",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityKey",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "issue-tracking",
+      "Config": [
+        {
+          "Name": "Issue Tracking API",
+          "Version": "v1",
+          "Url": "http://localhost:57732/swagger/index.html"
+        }
+      ]
+    },
+    {
+      "Key": "identity",
+      "Config": [
+        {
+          "Name": "Identity API",
+          "Version": "v1",
+          "Url": "http://localhost:43396/swagger/index.html"
+        }
+      ]
+    },
+    {
+      "Key": "reporting",
+      "Config": [
+        {
+          "Name": "Reporting API",
+          "Version": "v1",
+          "Url": "http://localhost:44593/swagger/index.html"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:6500",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 49544,
+      "Type": "Consul"
+    }
+  }
+}

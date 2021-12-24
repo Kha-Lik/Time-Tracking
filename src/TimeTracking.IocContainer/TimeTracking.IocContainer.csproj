@@ -8,4 +8,8 @@
     <ProjectReference Include="..\TimeTracking.Common\TimeTracking.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ocelot" Version="17.0.0" />
+  </ItemGroup>
+
 </Project>

@@ -4,8 +4,8 @@ services:
   rabbitmq:
     container_name: rabbitmq
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
@@ -22,8 +22,8 @@ services:
       - TimeTrackingClientSettings__Url=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50052/
       - TimeTrackingClientSettings__IdentityUrl=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50054/
     ports:
-      - 50050:80
-      - 50051:443
+      - "50050:80"
+      - "50051:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -40,8 +40,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
     ports:
-      -  50052:80
-      -  50053:443
+      - "50052:80"
+      - "50053:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -58,11 +58,50 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
     ports:
-      -  50054:80
-      -  50055:443
+      - "50054:80"
+      - "50055:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     restart: on-failure
     depends_on:
-      - rabbitmq
+      - rabbitmq 
+
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - “ES_JAVA_OPTS=-Xms512m -Xmx512m”
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    volumes:
+      -  elasticsearch-data:/usr/share/elasticsearch/data
+    
+    
+  kibana:
+    container_name: kibana
+    environment:
+     - ELASTICSEARCH_URL=http://localhost:9200
+    depends_on:
+     - elasticsearch
+    ports:
+     - "5601:5601"
+
+  healthcheck:
+    container_name: healthcheck
+    environment:
+      -  ASPNETCORE_ENVIRONMENT=Development
+      - HealthChecksUI__HealthChecks__0__Name=Identity Health Check
+      - HealthChecksUI__HealthChecks__0__Uri=http://timetracking.identity.webapi/hc
+      - HealthChecksUI__HealthChecks__1__Name=Report Generator Health Check
+      - HealthChecksUI__HealthChecks__1__Uri=http://timetracking.reportgenerator.webapi/hc
+      - HealthChecksUI__HealthChecks__2__Name=time Tracking Health Check
+      - HealthChecksUI__HealthChecks__2__Uri=http://timetracking.webapi/hc
+    ports:
+      - "8600:80"
+
+  consul:
+    ports:
+      - "8500"

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -16,6 +18,7 @@ using Microsoft.Extensions.Options;
 using TimeTracking.Common.FluentValidator;
 using TimeTracking.Common.HttpClientHandler;
 using TimeTracking.Common.Jwt;
+using TimeTracking.Common.ServiceDiscovery;
 using TimeTracking.Common.Services;
 using TimeTracking.Common.Swager;
 using TimeTracking.ReportGenerator.Bl.Abstract;
@@ -36,8 +39,6 @@ namespace TimeTracking.ReportGenerator.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services
                 .AddControllers()
                 .AddNewtonsoftJson(options =>
@@ -52,11 +53,11 @@ namespace TimeTracking.ReportGenerator.WebApi
                 });
             services.AddBlLogicServices(Configuration);
             services.AddOptions();
+            services.AddJwtAuthServices(Configuration);
             services.AddSingleton(typeof(ILogger), typeof(Logger<Startup>));
             services.AddLogging();
             services.AddSwaggerConfiguration("Time tracking report generator");
             services.AddFluentValidatorServices(Configuration);
-            services.AddJwtAuthServices(Configuration);
             services.RegisterTemplateServices();
             services.AddCors(options =>
             {
@@ -68,6 +69,9 @@ namespace TimeTracking.ReportGenerator.WebApi
                             .AllowAnyMethod();
                     });
             });
+            services.AddHealthChecks();
+            services.AddConsulServices(Configuration);
+            
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -93,7 +97,15 @@ namespace TimeTracking.ReportGenerator.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+            });
         }
     }
 }

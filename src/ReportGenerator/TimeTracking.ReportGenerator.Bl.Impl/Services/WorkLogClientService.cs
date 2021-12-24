@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using TimeTracking.Common.HttpClientHandler;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.Wrapper;
@@ -51,9 +52,8 @@ namespace TimeTracking.ReportGenerator.Bl.Impl.Services
                 var response = await _provider.GetAsync(_settings.Url + Routes.UserActivities + nw.ToQueryString());
 
                 response.EnsureSuccessStatusCode();
-
-                var activities = await response.Content.ReadAsAsync<ApiResponse<UserActivityDto>>();
-                return activities;
+                var activities = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ApiResponse<UserActivityDto>>(activities);
             }
             catch (Exception e)
             {
