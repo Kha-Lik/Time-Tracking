@@ -7,6 +7,7 @@ using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Requests;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Models;
+using TimeTracking.Models.Filtering;
 using TimeTracking.Models.Requests;
 
 namespace TimeTracking.WebApi.Controllers
@@ -91,5 +92,18 @@ namespace TimeTracking.WebApi.Controllers
         {
             return await _issueService.GetAllIssuesAsync(request);
         }
+        
+        /// <summary>
+        /// Returns paged response filtered in request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("filtered")]
+        public async Task<ApiResponse<List<IssueDetailsDto>>> GetAllIssuesAsyncFiltered([FromQuery]IssueFilteringRequest request)
+        {
+            return await _issueService.GetAllIssuesFilteredAsync(request);
+        }
+        
     }
 }

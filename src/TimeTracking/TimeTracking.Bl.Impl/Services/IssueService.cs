@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MassTransit;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Common.Helpers;
 using TimeTracking.Common.Mappers;
-using TimeTracking.Common.Pagination;
 using TimeTracking.Common.Requests;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Dal.Abstract.Repositories;
 using TimeTracking.Entities;
+using TimeTracking.Entities.FilterModels;
 using TimeTracking.Models;
+using TimeTracking.Models.Filtering;
 using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Impl.Services
@@ -29,7 +29,7 @@ namespace TimeTracking.Bl.Impl.Services
         private readonly ISystemClock _systemClock;
         private readonly IBaseMapper<Issue, IssueDto> _issueMapper;
         private readonly IModelMapper<Issue, IssueDetailsDto> _issueDetailsMapper;
-
+        private readonly IModelMapper<IssueFilteringRequest, IssueFilteringModel> _issueFilteringMapper;
         public IssueService(ILogger<IssueService> logger,
             IIssueRepository issueRepository,
             IUserService userService,
@@ -37,7 +37,8 @@ namespace TimeTracking.Bl.Impl.Services
             IProjectService projectService,
             ISystemClock systemClock,
             IBaseMapper<Issue, IssueDto> issueMapper,
-            IModelMapper<Issue, IssueDetailsDto> issueDetailsMapper)
+            IModelMapper<Issue, IssueDetailsDto> issueDetailsMapper,
+            IModelMapper<IssueFilteringRequest, IssueFilteringModel> issueFilteringMapper)
         {
             _logger = logger;
             _issueRepository = issueRepository;
@@ -47,6 +48,7 @@ namespace TimeTracking.Bl.Impl.Services
             _systemClock = systemClock;
             _issueMapper = issueMapper;
             _issueDetailsMapper = issueDetailsMapper;
+            _issueFilteringMapper = issueFilteringMapper;
         }
 
         public async Task<ApiResponse<IssueDto>> CreateIssue(IssueDto dto)
@@ -204,6 +206,17 @@ namespace TimeTracking.Bl.Impl.Services
             var response = new ApiPagedResponse<IssueDetailsDto>();
             var pagedList = await _issueRepository.GetAllIssueWithDetails(request.Page, request.PageSize);
             return response.FromPagedResult(pagedList, _issueDetailsMapper.MapToModel);
+        }
+
+        public async Task<ApiResponse<List<IssueDetailsDto>>> GetAllIssuesFilteredAsync(IssueFilteringRequest request)
+        {
+            var resultList = await _issueRepository.
+                GetAllIssueFiltered(_issueFilteringMapper.MapToModel(request));
+            return new ApiResponse<List<IssueDetailsDto>>()
+            {
+                Data = resultList?.Select(e=>_issueDetailsMapper.MapToModel(e))?.ToList() ?? new List<IssueDetailsDto>(),
+                IsSuccess = true,
+            };
         }
     }
 }
