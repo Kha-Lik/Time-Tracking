@@ -1,4 +1,5 @@
 using APIGateway.Jwt;
+using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
@@ -9,11 +10,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddControllersWithViews();
 builder.Services.AddOcelot()
-    .AddConsul(); 
+    .AddConsul()
+    .AddCacheManager(settings => settings.WithDictionaryHandle()); 
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 builder.Services.AddJwtAuthServices(builder.Configuration);
 builder.Configuration.AddJsonFile(
     $"ocelot.development.json", true, true);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CurrentCorsPolicy",
+        b =>
+        {
+            b.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,7 +43,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.UseAuthentication();
-
+app.UseCors("CurrentCorsPolicy");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

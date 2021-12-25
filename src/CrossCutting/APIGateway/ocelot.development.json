@@ -2,6 +2,20 @@
   "Routes": [
     {
       "ServiceName": "identity",
+      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/identity/auth/{everything}",
+      "UpstreamHttpMethod": [ "Get","Post","Put" ],
+      "SwaggerKey": "identity",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 300
+      }
+    },
+    {
+      "ServiceName": "identity",
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/identity/{everything}",
@@ -13,6 +27,9 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityKey",
         "AllowedScopes": []
+      },
+      "FileCacheOptions": { 
+        "TtlSeconds": 300
       }
     },
     {
@@ -28,6 +45,9 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityKey",
         "AllowedScopes": []
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 300
       }
     },
     {
@@ -43,6 +63,9 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityKey",
         "AllowedScopes": []
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 300
       }
     }
   ],
@@ -84,6 +107,13 @@
       "Host": "localhost",
       "Port": 49544,
       "Type": "Consul"
+    },
+    "RateLimitOptions": {
+      "ClientWhitelist": [],
+      "EnableRateLimiting": true,
+      "Period": "3s",
+      "PeriodTimespan": 1,
+      "Limit": 1
     }
   }
 }
