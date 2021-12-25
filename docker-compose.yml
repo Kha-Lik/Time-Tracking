@@ -39,6 +39,16 @@ services:
     container_name: consul
     ports:
       - "8500"
+  
+  timetracking.gateway:
+    image: ${DOCKER_REGISTRY-}timetracking.gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    build:
+      context: .
+      dockerfile: src/CrossCutting/ApiGateway/Dockerfile
+    
+  
 volumes:
     elasticsearch-data:
  

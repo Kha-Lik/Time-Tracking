@@ -15,7 +15,7 @@ builder.Services.AddOcelot()
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 builder.Services.AddJwtAuthServices(builder.Configuration);
 builder.Configuration.AddJsonFile(
-    $"ocelot.development.json", true, true);
+$"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "CurrentCorsPolicy",

@@ -18,7 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="ocelot.development.json">
+      <Content Update="ocelot.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="ocelot.Docker.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
