@@ -36,6 +36,7 @@ namespace TimeTracking.Identity.WebApi.Controllers
         /// </summary>
         /// <param name="request">RegistrationRequest</param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public async Task<ApiResponse> Register([FromBody] RegistrationRequest request)

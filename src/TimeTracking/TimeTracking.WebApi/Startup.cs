@@ -1,6 +1,8 @@
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,7 @@ using TimeTracking.Common.Email;
 using TimeTracking.Common.FluentValidator;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.RabbitMq;
+using TimeTracking.Common.ServiceDiscovery;
 using TimeTracking.Common.Swager;
 using TimeTracking.Dal.Impl;
 using TimeTracking.WebApi.Internal;
@@ -46,8 +49,8 @@ namespace TimeTracking.WebApi
             services.AddDalDependencies(Configuration);
             services.AddBlLogicServices();
             services.AddSwaggerConfiguration("Time tracking");
-            services.AddFluentValidatorServices(Configuration);
             services.AddJwtAuthServices(Configuration);
+            services.AddFluentValidatorServices(Configuration);
             services.AddRabbitMqConfiguration(Configuration);
             services.AddFluentEmailServices(Configuration);
             services.AddCors(options =>
@@ -60,6 +63,9 @@ namespace TimeTracking.WebApi
                             .AllowAnyMethod();
                     });
             });
+            services.AddHealthChecks()
+                .AddSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddConsulServices(Configuration);
         }
 
 
@@ -86,7 +92,15 @@ namespace TimeTracking.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+            });
         }
     }
 }

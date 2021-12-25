@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using MassTransit;
 using MicroElements.Swashbuckle.FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,6 +24,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -34,6 +37,7 @@ using TimeTracking.Common.FluentValidator;
 using TimeTracking.Common.Helpers;
 using TimeTracking.Common.Jwt;
 using TimeTracking.Common.RabbitMq;
+using TimeTracking.Common.ServiceDiscovery;
 using TimeTracking.Common.Swager;
 using TimeTracking.Identity.BL;
 using TimeTracking.Identity.BL.Impl;
@@ -78,6 +82,7 @@ namespace TimeTracking.Identity.WebApi
             services.AddFluentValidatorServices(Configuration);
             services.AddFluentEmailServices(Configuration);
             services.AddSwaggerConfiguration("Time tracking identity api");
+            services.AddConsulServices(Configuration);
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CurrentCorsPolicy",
@@ -88,6 +93,9 @@ namespace TimeTracking.Identity.WebApi
                             .AllowAnyMethod();
                     });
             });
+            services.AddHealthChecks()
+                .AddNpgSql(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddConsulServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -116,7 +124,15 @@ namespace TimeTracking.Identity.WebApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+            });
         }
     }
 }
