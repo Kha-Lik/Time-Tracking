@@ -13,7 +13,6 @@ services:
       context: .
       dockerfile: src/TimeTracking/TimeTracking.WebApi/Dockerfile
 
-
   timetracking.identity.webapi:
     image: dockersupportbankweb/timetrackidentiy:latest
     build:
@@ -32,13 +31,18 @@ services:
       context: .
       dockerfile: src/CrossCutting/HealthMonitoring/Dockerfile
       
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  
+  postgres_image:
+    image: postgres:latest
+    restart: always
+      
   consul:
     image: consul:latest
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
     hostname: consul
     container_name: consul
-    ports:
-      - "8500"
   
   timetracking.gateway:
     image: ${DOCKER_REGISTRY-}timetracking.gateway
@@ -51,4 +55,6 @@ services:
   
 volumes:
     elasticsearch-data:
+    postgre_db_volume:
+    timetracking-sqldata:
  

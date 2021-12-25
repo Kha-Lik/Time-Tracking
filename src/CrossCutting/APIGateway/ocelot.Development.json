@@ -105,7 +105,7 @@
     "BaseUrl": "http://localhost:6500",
     "ServiceDiscoveryProvider": {
       "Host": "localhost",
-      "Port": 49544,
+      "Port": 8600,
       "Type": "Consul"
     },
     "RateLimitOptions": {

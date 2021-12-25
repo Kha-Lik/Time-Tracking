@@ -19,8 +19,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - TimeTrackingClientSettings__Url=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50052/
-      - TimeTrackingClientSettings__IdentityUrl=http://timetrackinglilo.australiasoutheast.cloudapp.azure.com:50054/
+      - TimeTrackingClientSettings__Url=http://timetracking.webapi:50052/
+      - TimeTrackingClientSettings__IdentityUrl=http://timetracking.identity.webapi:50054/
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfiguration__serviceAddress=http://timetracking.reportgenerator.webapi:50050
     ports:
       - "50050:80"
       - "50051:443"
@@ -39,6 +42,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - ConnectionString__DefaultConnection=Server=sqldata;Database=timetracking;User Id=sa;Password=Pass@word
+      - RabbitMqConfiguration__Host=rabbitmq
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfiguration__serviceAddress=http://timetracking.webapi:50052
     ports:
       - "50052:80"
       - "50053:443"
@@ -48,6 +56,7 @@ services:
     restart: on-failure
     depends_on:
       - rabbitmq
+      - sqldata
 
   timetracking.identity.webapi:
     image: dockersupportbankweb/timetrackidentiy:latest
@@ -57,6 +66,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - ConnectionString__DefaultConnection=Server=postgres_image;Port=5432;Database=timetracking;User Id=postgres;Password=root;TrustServerCertificate=true
+      - RabbitMqConfiguration__Host=rabbitmq
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfiguration__serviceAddress=http://timetracking.identity.webapi:50054
     ports:
       - "50054:80"
       - "50055:443"
@@ -65,7 +79,8 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     restart: on-failure
     depends_on:
-      - rabbitmq 
+      - rabbitmq
+      - postgres_image
 
   elasticsearch:
     container_name: elasticsearch
@@ -92,13 +107,13 @@ services:
   healthcheck:
     container_name: healthcheck
     environment:
-      -  ASPNETCORE_ENVIRONMENT=Development
-      - HealthChecksUI__HealthChecks__0__Name=Identity Health Check
-      - HealthChecksUI__HealthChecks__0__Uri=http://timetracking.identity.webapi/hc
-      - HealthChecksUI__HealthChecks__1__Name=Report Generator Health Check
-      - HealthChecksUI__HealthChecks__1__Uri=http://timetracking.reportgenerator.webapi/hc
-      - HealthChecksUI__HealthChecks__2__Name=time Tracking Health Check
-      - HealthChecksUI__HealthChecks__2__Uri=http://timetracking.webapi/hc
+      - ASPNETCORE_ENVIRONMENT=Development
+      - HealthChecks-UI__HealthChecks__0__Name=Identity Health Check
+      - HealthChecks-UI__HealthChecks__0__Uri=http://timetracking.identity.webapi/hc
+      - HealthChecks-UI__HealthChecks__1__Name=Report Generator Health Check
+      - HealthChecks-UI__HealthChecks__1__Uri=http://timetracking.reportgenerator.webapi/hc
+      - HealthChecks-UI__HealthChecks__2__Name=time Tracking Health Check
+      - HealthChecks-UI__HealthChecks__2__Uri=http://timetracking.webapi/hc
     ports:
       - "8600:80"
     depends_on:
@@ -108,7 +123,7 @@ services:
 
   consul:
     ports:
-      - "8500"
+      - "8500:8500"
         
   timetracking.gateway:
     container_name: timetracking.gateway
@@ -120,3 +135,22 @@ services:
       - timetracking.webapi
     ports:
       - "6500:80"
+  
+  sqldata:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - timetracking-sqldata:/var/opt/mssql
+      
+  postgres_image:
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "timetracking"
+    volumes:
+      - postgre_db_volume:/var/lib/postgresql/data
