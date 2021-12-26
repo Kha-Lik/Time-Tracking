@@ -12,6 +12,7 @@ services:
     image: rabbitmq:3-management
 
   timetracking.reportgenerator.webapi:
+    container_name: timetracking.reportgenerator.webapi
     image: dockersupportbankweb/timetrackreportsapi:latest
     build:
       context: .
@@ -19,11 +20,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - TimeTrackingClientSettings__Url=http://timetracking.webapi:50052/
-      - TimeTrackingClientSettings__IdentityUrl=http://timetracking.identity.webapi:50054/
+      - TimeTrackingClientSettings__Url=http://timetracking.webapi:80/
+      - TimeTrackingClientSettings__IdentityUrl=http://timetracking.identity.webapi:80/
       - ElasticConfiguration__Uri=http://elasticsearch:9200
       - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
-      - ServiceConfiguration__serviceAddress=http://timetracking.reportgenerator.webapi:50050
+      - ServiceConfiguration__serviceAddress=http://timetracking.reportgenerator.webapi:80
     ports:
       - "50050:80"
       - "50051:443"
@@ -35,6 +36,7 @@ services:
       - rabbitmq
 
   timetracking.webapi:
+    container_name: timetracking.webapi
     image: dockersupportbankweb/timetrackwebapi:latest
     build:
       context: .
@@ -42,11 +44,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionString__DefaultConnection=Server=sqldata;Database=timetracking;User Id=sa;Password=Pass@word
+      - ConnectionStrings__DefaultConnection=Server=sqldata;Database=timetracking;User Id=sa;Password=Pass@word
       - RabbitMqConfiguration__Host=rabbitmq
       - ElasticConfiguration__Uri=http://elasticsearch:9200
       - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
-      - ServiceConfiguration__serviceAddress=http://timetracking.webapi:50052
+      - ServiceConfiguration__serviceAddress=http://timetracking.webapi:80
     ports:
       - "50052:80"
       - "50053:443"
@@ -59,6 +61,7 @@ services:
       - sqldata
 
   timetracking.identity.webapi:
+    container_name: timetracking.identity.webapi
     image: dockersupportbankweb/timetrackidentiy:latest
     build:
       context: .
@@ -66,11 +69,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionString__DefaultConnection=Server=postgres_image;Port=5432;Database=timetracking;User Id=postgres;Password=root;TrustServerCertificate=true
+      - ConnectionStrings__DefaultConnection=Host=postgres_image;Port=5432;Database=timetracking;User Id=postgres;Password=postgres;TrustServerCertificate=true
       - RabbitMqConfiguration__Host=rabbitmq
       - ElasticConfiguration__Uri=http://elasticsearch:9200
       - ServiceConfiguration__serviceDiscoveryAddress=http://consul:8500
-      - ServiceConfiguration__serviceAddress=http://timetracking.identity.webapi:50054
+      - ServiceConfiguration__serviceAddress=http://timetracking.identity.webapi:80
     ports:
       - "50054:80"
       - "50055:443"
@@ -122,6 +125,7 @@ services:
       - timetracking.webapi
 
   consul:
+    container_name: consul
     ports:
       - "8500:8500"
         
@@ -137,6 +141,7 @@ services:
       - "6500:80"
   
   sqldata:
+    container_name: sqldata
     environment:
       - SA_PASSWORD=Pass@word
       - ACCEPT_EULA=Y
@@ -146,6 +151,7 @@ services:
       - timetracking-sqldata:/var/opt/mssql
       
   postgres_image:
+    container_name: postgres_image
     ports:
       - "5432:5432"
     environment:
