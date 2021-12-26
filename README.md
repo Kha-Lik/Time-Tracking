@@ -1,5 +1,10 @@
 # Time-Tracking  [![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml)
 Time tracking solution
+
+Achitecture and technologies
+
+![image](https://user-images.githubusercontent.com/46414904/147396810-38e5ce76-eb8f-40d7-a813-5bd351a5df3c.png)
+
 # __________________________________      
 # How to run locally without docker
 1. Start elasticsearch container
