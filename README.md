@@ -27,3 +27,10 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up rabbitmq
 # How to run locally with docker
 in project directoy run command
 ```docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d```
+
+# Local links
+
+##Rabbit mq management UI
+**http://localhost:15672/**
+![image](https://user-images.githubusercontent.com/46414904/147396476-d29dc228-2662-4f60-833e-65ab7e603c6c.png)
+
