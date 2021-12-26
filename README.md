@@ -3,15 +3,25 @@ Time tracking solution
 # __________________________________      
 # How to run locally without docker
 1. Start elasticsearch container
-```docker-compose -f docker-compose.yml -f docker-compose.override.yml up  elasticsearch```
+```
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up  elasticsearch
+```
 2.Start kibana container
-```docker-compose -f docker-compose.yml -f docker-compose.override.yml up  kibana```
+```
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up  kibana
+```
 3. Start consul container
-```docker-compose -f docker-compose.yml -f docker-compose.override.yml up consul```
+```
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up consul
+```
 4. Start rabbitmq container
-```docker-compose -f docker-compose.yml -f docker-compose.override.yml up rabbitmq```
+```
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up rabbitmq
+```
 5.Change connection string in TimeTracking and TimeTracking.Identuty projects
+
 6. Create databases and run migrations 
+
 7. Start projects locally 
 # __________________________________
 # How to run locally with docker
