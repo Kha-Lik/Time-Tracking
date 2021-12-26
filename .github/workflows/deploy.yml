@@ -20,4 +20,6 @@ jobs:
             git clone git@github.com:Kha-Lik/Time-Tracking.git
             cd Time-Tracking
             docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
+            cd ../..
+            rm -r lilo_src
             echo 'Deployment successful to digital ocean' 
