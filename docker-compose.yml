@@ -50,7 +50,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     build:
       context: .
-      dockerfile: src/CrossCutting/ApiGateway/Dockerfile
+      dockerfile: src/CrossCutting/APIGateway/Dockerfile
     
   
 volumes:
