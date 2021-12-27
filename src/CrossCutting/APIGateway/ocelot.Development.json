@@ -45,7 +45,7 @@
     {
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
-      "ServiceName": "timeTracking",
+      "ServiceName": "issue-tracking",
       "UpstreamPathTemplate": "/api/issue-tracking/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post","Put", "Delete" ],
       "SwaggerKey": "issue-tracking",
