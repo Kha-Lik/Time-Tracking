@@ -95,7 +95,7 @@ namespace TimeTracking.Identity.WebApi
             });
             services.AddHealthChecks()
                 .AddNpgSql(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddConsulServices(Configuration);
+	    services.AddConsulServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
