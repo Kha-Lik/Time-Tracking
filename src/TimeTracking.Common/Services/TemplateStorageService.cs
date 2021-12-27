@@ -61,8 +61,7 @@ namespace TimeTracking.Common.Services
             catch (NullReferenceException nre)
             {
                 _logger.LogError(nre,$"Trying to fix directory issue according to docker context");
-                dir = _fileSystem.Path.Combine(_fileSystem.Directory.GetParent(_fileSystem.Directory.GetCurrentDirectory())
-                    .Name, "src/src/TimeTracking.Templates");
+                dir = "/app";
                 _logger.LogInformation($"Full dir path: {dir}");
             }
             
