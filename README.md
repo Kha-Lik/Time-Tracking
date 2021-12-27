@@ -1,4 +1,4 @@
-# Time-Tracking  [![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml)  [![Deploy](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml)
+# LILO [![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml) [![Deploy](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml)
 Time tracking solution
 
 Achitecture and technologies
@@ -30,12 +30,12 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up rabbitmq
 7. Start projects locally 
 # __________________________________
 # How to run locally with docker
-in project directoy run command
+in project directory run command
 ```docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d```
 
 # Local links
 
-##Rabbit mq management UI
+##Rabbit MQ management UI
 ** http://localhost:15672/**
 ![image](https://user-images.githubusercontent.com/46414904/147396476-d29dc228-2662-4f60-833e-65ab7e603c6c.png)
 
@@ -92,11 +92,11 @@ http://localhost:44593/swagger/index.html
 
 http://localhost:57732/swagger/index.html
 
-## Time tracking identity
+## Time Tracking identity
 
 http://localhost:43396/swagger/index.html
 
-## Ocelot api gateway
+## Ocelot API Gateway
 
 http://localhost:6500
 
