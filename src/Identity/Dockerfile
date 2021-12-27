@@ -8,7 +8,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/Identity/TimeTracking.Identity.WebApi/TimeTracking.Identity.WebApi.csproj", "src/Identity/TimeTracking.Identity.WebApi/"]
 COPY ["src/Identity/TimeTracking.Identity.Dal.Impl/TimeTracking.Identity.Dal.Impl.csproj", "src/Identity/TimeTracking.Identity.Dal.Impl/"]
