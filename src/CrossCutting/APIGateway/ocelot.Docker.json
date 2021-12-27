@@ -11,7 +11,12 @@
         "Type": "LeastConnection"
       },
       "FileCacheOptions": {
-        "TtlSeconds": 300
+        "TtlSeconds": 30
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking":2,
+        "DurationOfBreak":5000,
+        "TimeoutValue":2000
       }
     },
     {
@@ -28,8 +33,13 @@
         "AuthenticationProviderKey": "IdentityKey",
         "AllowedScopes": []
       },
-      "FileCacheOptions": { 
-        "TtlSeconds": 300
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking":2,
+        "DurationOfBreak":5000,
+        "TimeoutValue":2000
       }
     },
     {
@@ -47,7 +57,12 @@
         "AllowedScopes": []
       },
       "FileCacheOptions": {
-        "TtlSeconds": 300
+        "TtlSeconds": 30
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking":2,
+        "DurationOfBreak":5000,
+        "TimeoutValue":2000
       }
     },
     {
@@ -65,7 +80,7 @@
         "AllowedScopes": []
       },
       "FileCacheOptions": {
-        "TtlSeconds": 300
+        "TtlSeconds": 30
       }
     }
   ],
@@ -104,14 +119,14 @@
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:6500",
     "ServiceDiscoveryProvider": {
-      "Host": "localhost",
-      "Port": 49544,
+      "Host": "consul",
+      "Port": 8500,
       "Type": "Consul"
     },
     "RateLimitOptions": {
       "ClientWhitelist": [],
       "EnableRateLimiting": true,
-      "Period": "3s",
+      "Period": "1s",
       "PeriodTimespan": 1,
       "Limit": 1
     }
