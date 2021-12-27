@@ -1,4 +1,4 @@
-# Time-Tracking  [![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml)
+# Time-Tracking  [![CI](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/ci.yml)  [![Deploy](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml/badge.svg)](https://github.com/FairyFox5700/Time-Tracking/actions/workflows/deploy.yml)
 Time tracking solution
 
 Achitecture and technologies
@@ -6,7 +6,7 @@ Achitecture and technologies
 ![image](https://user-images.githubusercontent.com/46414904/147396810-38e5ce76-eb8f-40d7-a813-5bd351a5df3c.png)
 
 # __________________________________      
-# How to run locally without docker
+# How to run locally almost without docker
 1. Start elasticsearch container
 ```
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up  elasticsearch
@@ -23,7 +23,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up consul
 ```
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up rabbitmq
 ```
-5.Change connection string in TimeTracking and TimeTracking.Identuty projects
+5. Change connection string in TimeTracking and TimeTracking.Identity projects
 
 6. Create databases and run migrations 
 
