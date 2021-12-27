@@ -1,19 +1,15 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TimeTracking.Bl.Abstract.Services;
 using TimeTracking.Bl.Impl.Helpers;
 using TimeTracking.Bl.Impl.Mappers;
 using TimeTracking.Bl.Impl.Services;
-using TimeTracking.Bl.Impl.Validators;
 using TimeTracking.Common.Mappers;
-using TimeTracking.Common.Pagination;
-using TimeTracking.Common.Wrapper;
-using TimeTracking.Dal.Abstract.Repositories;
 using TimeTracking.Entities;
+using TimeTracking.Entities.FilterModels;
 using TimeTracking.Models;
+using TimeTracking.Models.Filtering;
 
 namespace TimeTracking.Bl.Impl
 {
@@ -39,7 +35,7 @@ namespace TimeTracking.Bl.Impl
         {
             services.AddTransient<IModelMapper<Issue, IssueDetailsDto>, IssueDetailsMapper>();
             services.AddTransient<IBaseMapper<Issue, IssueDto>, IssueMapper>();
-
+            services.AddTransient<IModelMapper<IssueFilteringRequest, IssueFilteringModel>, IssueFilteringRequestMapper>();
             services.AddTransient<IBaseMapper<Milestone, MilestoneDto>, MileStoneMapper>();
             services.AddTransient<IModelMapper<Milestone, MilestoneDetailsDto>, MilestoneDetailsMapper>();
 

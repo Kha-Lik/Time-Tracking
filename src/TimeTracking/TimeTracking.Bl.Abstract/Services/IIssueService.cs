@@ -5,6 +5,7 @@ using TimeTracking.Common.Requests;
 using TimeTracking.Common.Wrapper;
 using TimeTracking.Entities;
 using TimeTracking.Models;
+using TimeTracking.Models.Filtering;
 using TimeTracking.Models.Requests;
 
 namespace TimeTracking.Bl.Abstract.Services
@@ -16,5 +17,6 @@ namespace TimeTracking.Bl.Abstract.Services
         Task<ApiResponse<IssueDto>> ChangeIssueStatus(Status status, Guid issueId);
         Task<ApiResponse<IssueDetailsDto>> GetIssueByIdAsync(Guid issueId);
         Task<ApiPagedResponse<IssueDetailsDto>> GetAllIssuesAsync(PagedRequest request);
+        Task<ApiResponse<List<IssueDetailsDto>>> GetAllIssuesFilteredAsync(IssueFilteringRequest request);
     }
 }
