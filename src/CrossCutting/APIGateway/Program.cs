@@ -1,8 +1,12 @@
+using System.Reflection;
 using APIGateway.Jwt;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
+using Ocelot.Provider.Polly;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +15,8 @@ builder.Services
     .AddControllersWithViews();
 builder.Services.AddOcelot()
     .AddConsul()
-    .AddCacheManager(settings => settings.WithDictionaryHandle()); 
+    .AddCacheManager(settings => settings.WithDictionaryHandle())
+    .AddPolly(); 
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 builder.Services.AddJwtAuthServices(builder.Configuration);
 builder.Configuration.AddJsonFile(
@@ -26,8 +31,8 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod();
         });
 });
-var app = builder.Build();
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
